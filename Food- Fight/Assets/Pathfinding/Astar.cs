@@ -30,12 +30,7 @@ public class AstarNode
             g = from.g + distFrom;
         }
         h = distTrgt;
-    }
-
-    public void update(AstarNode newFrom, int distFrom)
-    {
-        from = newFrom;
-        g = from.g + distFrom;
+        f = g + h;
     }
 }
 
@@ -58,28 +53,34 @@ public class Astar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        debug_drawv2line(this.gameObject.transform.position, target.transform.position);
+        Vector3 algotrgtpos = algo(); 
+        debug_drawv2line(this.gameObject.transform.position, algotrgtpos);
 
+        open.Clear();
+        closed.Clear();
     }
 
-    private void algo()
+    private Vector3 algo()
     {
         Tuple<int, int> thispos = tileV2(this.gameObject.transform.position, tilescale);
         open.Add(new AstarNode(null, thispos, 0, taxicabDistance(thispos, tileV2(target.transform.position, tilescale)))); //start node
         AstarNode best = open[0];
-        while (best.h < 2)
+        searchAround(best);
+        best = open[0];
+        while (best.h > 2)
         {
-            searchAround(best);
-            AstarNode newBest = best;
             foreach(AstarNode n in open)
             {
-                if (n.f <= newBest.f) 
+                if (n.f <= best.f) 
                 {
-                    newBest = n;
+                    best = n;
                 }
             }
+            searchAround(best);
+            best = open[0];
         }
-
+        //Debug.Log("I git here");
+        return new Vector3(best.x * tilescale, best.y * tilescale);
     }
 
     private void searchAround(AstarNode node)
@@ -118,8 +119,11 @@ public class Astar : MonoBehaviour
                 {
                     if (n.x == pos.Item1 && n.y == pos.Item2)
                     {
-                        // The node here already exists, so we can update it's g score
-                        n.update(node, pos.Item3);
+                        // The node here already exists, so we can update it's g score if it is shorter than what it is currently
+                        if (node.g + pos.Item3 < n.g)
+                        {
+                            n.g = node.g + pos.Item3;
+                        }
                         oflag = true;
                         break;
                     }
@@ -130,7 +134,9 @@ public class Astar : MonoBehaviour
             {
                 //There is no node in the current location. make a new one
                 Tuple<int, int> nodepos = new Tuple<int, int>(pos.Item1, pos.Item2);
-                open.Add(new AstarNode(node, nodepos, pos.Item3, taxicabDistance(nodepos, tileV2(target.transform.position, tilescale))));
+                AstarNode newNode = new AstarNode(node, nodepos, pos.Item3, taxicabDistance(nodepos, tileV2(target.transform.position, tilescale)));
+                open.Add(newNode);
+
             }
         }
     }
@@ -138,7 +144,7 @@ public class Astar : MonoBehaviour
     private int taxicabDistance(Tuple<int, int> nodepos, Tuple<int, int> trgtpos) //Determine the distance between node and target as if we were a cabbie fighting one's way 
                                                                          //through the lawless streets of manhattan
     {
-        return Mathf.Abs(nodepos.Item1 - trgtpos.Item1) + Mathf.Abs(nodepos.Item2 - trgtpos.Item2);
+        return Mathf.Abs(nodepos.Item1 - trgtpos.Item1) + Mathf.Abs(nodepos.Item2 - trgtpos.Item2) * 10;
     }
 
     private AstarNode searchOpenFor(Tuple<int, int> pos) //Comb through 'open' looking for given node. 'from' parameter ignored
