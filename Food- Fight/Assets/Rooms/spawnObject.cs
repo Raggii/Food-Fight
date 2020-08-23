@@ -7,6 +7,7 @@ public class spawnObject : MonoBehaviour
 
     public GameObject[] objects;
     // Start is called before the first frame update
+    /*
     void Start()
     {
 
@@ -14,4 +15,5 @@ public class spawnObject : MonoBehaviour
         Instantiate(objects[rand], transform.position, Quaternion.identity);
 
     }
+    */
 }

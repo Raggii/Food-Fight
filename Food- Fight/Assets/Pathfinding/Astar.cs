@@ -9,6 +9,7 @@ using UnityEngine;
 public class AstarNode
 {
     public AstarNode from;
+
     public int x; //x-coordinate in nodespace
     public int y; //y-coordinate in nodespace
 
@@ -60,13 +61,13 @@ public class Astar : MonoBehaviour
     void Update()
     {
         AstarNode algotrgtpos = algo(); 
-        debug_drawv2line(this.gameObject.transform.position, new Vector2(algotrgtpos.x * tilescale, algotrgtpos.y * tilescale));
+        //debug_drawv2line(this.gameObject.transform.position, new Vector2(algotrgtpos.x * tilescale, algotrgtpos.y * tilescale));
 
         AstarNode node = algotrgtpos;
         while(node.from != null)
         {
-            node = node.from;
             debug_drawv2line(new Vector3(node.x * tilescale, node.y * tilescale), new Vector3(node.from.x * tilescale, node.from.y * tilescale));
+            node = node.from;
         }
 
         open.Clear();
