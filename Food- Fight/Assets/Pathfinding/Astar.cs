@@ -46,15 +46,22 @@ public class Astar : MonoBehaviour
 
     public GameObject target;
 
+    public GameObject[] obs;
+    Collider2D[] colliders;
+
     List<AstarNode> open = new List<AstarNode>();
     List<AstarNode> closed = new List<AstarNode>();
 
-    float tilescale = 0.2f;
+    float tilescale = 1.0f;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        colliders = new Collider2D[obs.Length];
+        for(int i = 0; i < obs.Length; i++)
+        {
+            colliders[i] = obs[i].GetComponent("Collider2D") as Collider2D;
+        }
     }
 
     // Update is called once per frame
@@ -64,11 +71,7 @@ public class Astar : MonoBehaviour
         //debug_drawv2line(this.gameObject.transform.position, new Vector2(algotrgtpos.x * tilescale, algotrgtpos.y * tilescale));
 
         AstarNode node = algotrgtpos;
-        while(node.from != null)
-        {
-            debug_drawv2line(new Vector3(node.x * tilescale, node.y * tilescale), new Vector3(node.from.x * tilescale, node.from.y * tilescale));
-            node = node.from;
-        }
+        backpropogate(node);
 
         open.Clear();
         closed.Clear();
@@ -114,19 +117,35 @@ public class Astar : MonoBehaviour
 
         foreach (Tuple<int, int, int> pos in searchPos)
         {
+            bool obstructflag = false;
             bool cflag = false;
             bool oflag = false;
-            foreach (AstarNode n in closed) // Search through 'closed' for already existing node
+
+            //Check if the node lies on an obstruction
+            Vector2 vec = new Vector2(pos.Item1 * tilescale, pos.Item2 * tilescale);
+            foreach(Collider2D c in colliders)
             {
-                if (n.x == pos.Item1 && n.y == pos.Item2)
+                if (c.OverlapPoint(vec))
                 {
-                    // The node here is closed, so we can ignore it
-                    cflag = true;
-                    break;
+                    //We cannot put a node here as it would be inside a solid object
+                    obstructflag = true;
                 }
             }
 
-            if (!cflag)
+            if (!obstructflag)
+            {
+                foreach (AstarNode n in closed) // Search through 'closed' for already existing node
+                {
+                    if (n.x == pos.Item1 && n.y == pos.Item2)
+                    {
+                        // The node here is closed, so we can ignore it
+                        cflag = true;
+                        break;
+                    }
+                }
+            }
+
+            if (!cflag && !obstructflag)
             {
                 foreach (AstarNode n in open) // Search through 'open' for already existing node
                 {
@@ -144,7 +163,7 @@ public class Astar : MonoBehaviour
                 }
             }
 
-            if (!oflag && !cflag)
+            if (!oflag && !cflag && !obstructflag)
             {
                 //There is no node in the current location. make a new one
                 Tuple<int, int> nodepos = new Tuple<int, int>(pos.Item1, pos.Item2);
@@ -159,6 +178,22 @@ public class Astar : MonoBehaviour
                                                                          //through the lawless streets of manhattan
     {
         return (Mathf.Abs(nodepos.Item1 - trgtpos.Item1) + Mathf.Abs(nodepos.Item2 - trgtpos.Item2)) * 10;
+    }
+
+    private void backpropogate(AstarNode node)
+    {
+        while(node.from != null)
+        {
+            debug_drawv2line(new Vector3(node.x * tilescale, node.y * tilescale), new Vector3(node.from.x * tilescale, node.from.y * tilescale));
+
+            if (node.g - node.from.g > 10)
+            {
+                // !!CORNER!!!! ! !
+                Debug.DrawLine(this.gameObject.transform.position, new Vector3(node.x * tilescale, node.y * tilescale), Color.red);
+            }
+
+            node = node.from;
+        }
     }
 
     Tuple<int, int> tileV2(Vector3 v, float s)
