@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.Collections;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
@@ -32,6 +33,11 @@ public class AstarNode
         h = distTrgt;
         f = g + h;
     }
+
+    public void update()
+    {
+        f = g + h;
+    }
 }
 
 public class Astar : MonoBehaviour
@@ -53,34 +59,40 @@ public class Astar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 algotrgtpos = algo(); 
-        debug_drawv2line(this.gameObject.transform.position, algotrgtpos);
+        AstarNode algotrgtpos = algo(); 
+        debug_drawv2line(this.gameObject.transform.position, new Vector2(algotrgtpos.x * tilescale, algotrgtpos.y * tilescale));
+
+        AstarNode node = algotrgtpos;
+        while(node.from != null)
+        {
+            node = node.from;
+            debug_drawv2line(new Vector3(node.x * tilescale, node.y * tilescale), new Vector3(node.from.x * tilescale, node.from.y * tilescale));
+        }
 
         open.Clear();
         closed.Clear();
     }
 
-    private Vector3 algo()
+    private AstarNode algo()
     {
         Tuple<int, int> thispos = tileV2(this.gameObject.transform.position, tilescale);
-        open.Add(new AstarNode(null, thispos, 0, taxicabDistance(thispos, tileV2(target.transform.position, tilescale)))); //start node
+        Tuple<int, int> trgtpos = tileV2(target.transform.position, tilescale);
+        open.Add(new AstarNode(null, thispos, 0, taxicabDistance(thispos, trgtpos))); //start node
         AstarNode best = open[0];
-        searchAround(best);
-        best = open[0];
-        while (best.h > 2)
+
+        while (best.h > 10)
         {
-            foreach(AstarNode n in open)
+            searchAround(best);
+            best = open[0];
+            foreach (AstarNode n in open)
             {
-                if (n.f <= best.f) 
+                if (n.f < best.f)
                 {
                     best = n;
                 }
             }
-            searchAround(best);
-            best = open[0];
         }
-        //Debug.Log("I git here");
-        return new Vector3(best.x * tilescale, best.y * tilescale);
+        return best;
     }
 
     private void searchAround(AstarNode node)
@@ -123,6 +135,7 @@ public class Astar : MonoBehaviour
                         if (node.g + pos.Item3 < n.g)
                         {
                             n.g = node.g + pos.Item3;
+                            n.update();
                         }
                         oflag = true;
                         break;
@@ -144,22 +157,8 @@ public class Astar : MonoBehaviour
     private int taxicabDistance(Tuple<int, int> nodepos, Tuple<int, int> trgtpos) //Determine the distance between node and target as if we were a cabbie fighting one's way 
                                                                          //through the lawless streets of manhattan
     {
-        return Mathf.Abs(nodepos.Item1 - trgtpos.Item1) + Mathf.Abs(nodepos.Item2 - trgtpos.Item2) * 10;
+        return (Mathf.Abs(nodepos.Item1 - trgtpos.Item1) + Mathf.Abs(nodepos.Item2 - trgtpos.Item2)) * 10;
     }
-
-    private AstarNode searchOpenFor(Tuple<int, int> pos) //Comb through 'open' looking for given node. 'from' parameter ignored
-    {
-        foreach (AstarNode n in open)
-        {
-            if (n.x == pos.Item1 && n.y == pos.Item2)
-            {
-                return n;
-            }
-        }
-        return null;
-    }
-
-
 
     Tuple<int, int> tileV2(Vector3 v, float s)
     {
