@@ -51,8 +51,9 @@ public class levelGeneration : MonoBehaviour
         direction = 1;// Random.Range(1, 6);
     }
 
-    private void update()
+    void FixedUpdate()
     {
+        direction = Random.Range(1, 6);
         if (timeBtwRoom <= 0)
         {
             Move();

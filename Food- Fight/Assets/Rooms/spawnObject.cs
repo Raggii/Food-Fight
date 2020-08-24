@@ -10,7 +10,10 @@ public class spawnObject : MonoBehaviour
 
     void Start()
     {
-
+        if(objects.Length <= 0)
+        {
+            return;
+        }
         int rand = Random.Range(0, objects.Length);
         Instantiate(objects[rand], transform.position, Quaternion.identity);
 
