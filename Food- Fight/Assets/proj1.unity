@@ -162,8 +162,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 08c3d67d920f8dc4fb52efd9d0424e93, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   startingPositions:
   - {fileID: 663847943}
   - {fileID: 0}
@@ -219,8 +219,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 08c3d67d920f8dc4fb52efd9d0424e93, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   startingPositions:
   - {fileID: 663847943}
   - {fileID: 0}
@@ -256,8 +256,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 76128c8475dc18447b6c723808ee8526, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   target: {fileID: 1297349137}
   obs: []
 --- !u!4 &769666597
@@ -432,8 +432,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 08c3d67d920f8dc4fb52efd9d0424e93, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   startingPositions:
   - {fileID: 663847943}
   - {fileID: 0}
@@ -452,7 +452,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1054076501}
   - component: {fileID: 1054076500}
-  - component: {fileID: 1054076502}
+  - component: {fileID: 1054076503}
   m_Layer: 0
   m_Name: astar
   m_TagString: Untagged
@@ -522,9 +522,9 @@ Transform:
   m_LocalScale: {x: 0.271732, y: 0.25500327, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1054076502
+--- !u!114 &1054076503
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -534,8 +534,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 08c3d67d920f8dc4fb52efd9d0424e93, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   startingPositions:
   - {fileID: 663847943}
   - {fileID: 0}
@@ -1056,7 +1056,7 @@ PrefabInstance:
     - target: {fileID: 7893370887921477408, guid: c4836a1f6219c4443b8b0c69a0d377e2,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7893370887921477408, guid: c4836a1f6219c4443b8b0c69a0d377e2,
         type: 3}

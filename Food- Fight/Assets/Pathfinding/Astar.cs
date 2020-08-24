@@ -52,7 +52,7 @@ public class Astar : MonoBehaviour
     List<AstarNode> open = new List<AstarNode>();
     List<AstarNode> closed = new List<AstarNode>();
 
-    float tilescale = 1.0f;
+    float tilescale = 0.2f;
 
     // Start is called before the first frame update
     void Start()
@@ -182,17 +182,21 @@ public class Astar : MonoBehaviour
 
     private void backpropogate(AstarNode node)
     {
-        while(node.from != null)
+        AstarNode prevnode = node;
+        debug_drawv2line(new Vector3(prevnode.x * tilescale, prevnode.y * tilescale), new Vector3(node.from.x * tilescale, node.from.y * tilescale));
+        AstarNode newNode = node.from;
+        while(newNode.from != null)
         {
-            debug_drawv2line(new Vector3(node.x * tilescale, node.y * tilescale), new Vector3(node.from.x * tilescale, node.from.y * tilescale));
+            debug_drawv2line(new Vector3(newNode.x * tilescale, newNode.y * tilescale), new Vector3(newNode.from.x * tilescale, newNode.from.y * tilescale));
 
-            if (node.g - node.from.g > 10)
+            if (newNode.g - newNode.from.g != prevnode.g - newNode.g)
             {
                 // !!CORNER!!!! ! !
-                Debug.DrawLine(this.gameObject.transform.position, new Vector3(node.x * tilescale, node.y * tilescale), Color.red);
+                Debug.DrawLine(this.gameObject.transform.position, new Vector3(newNode.x * tilescale, newNode.y * tilescale), Color.red);
             }
 
-            node = node.from;
+            prevnode = newNode;
+            newNode = newNode.from;
         }
     }
 
