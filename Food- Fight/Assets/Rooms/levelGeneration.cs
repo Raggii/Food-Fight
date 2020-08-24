@@ -23,7 +23,7 @@ public class levelGeneration : MonoBehaviour
         transform.position = startingPositions[randStartPos].position;
         Instantiate(rooms[0], transform.position, Quaternion.identity);
 
-        direction = Random.Range(1, 6);
+        direction = 1;// Random.Range(1, 6);
 
     }
 
@@ -48,7 +48,7 @@ public class levelGeneration : MonoBehaviour
         }
 
         Instantiate(rooms[0], transform.position, Quaternion.identity);
-        direction = Random.Range(1, 6);
+        direction = 1;// Random.Range(1, 6);
     }
 
     private void update()
@@ -58,10 +58,11 @@ public class levelGeneration : MonoBehaviour
             Move();
             timeBtwRoom = startTimeBtwRoom;
         }
-        else {
+        else
+        {
             timeBtwRoom -= Time.deltaTime;
         }
-    
+
     }
 
 }
