@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
+using System;
+
 
 public class levelGeneration : MonoBehaviour
 {
@@ -16,11 +18,16 @@ public class levelGeneration : MonoBehaviour
 
     private float timeBtwRoom;
     public float startTimeBtwRoom = 0.25f;
+
+    public int maxSideways;
+    public int maxDown;
+    private int downCounter = 0;
+    private int sidewaysCounter = 0;
     // Start is called before the first frame update
     void Start()
     {
 
-        int randStartPos = Random.Range(0, startingPositions.Length);
+        int randStartPos = UnityEngine.Random.Range(0, startingPositions.Length);
         transform.position = startingPositions[randStartPos].position;
         Instantiate(rooms[0], transform.position, Quaternion.identity);
 
@@ -29,41 +36,49 @@ public class levelGeneration : MonoBehaviour
 
     private void Move()
     {
-        if (direction == 1 || direction == 2 )
+        if (direction == 1 || direction == 2)
         { //Move Right
             if (previousDirection == 3 || previousDirection == 4)
             { // ILLEGAL ACTION
-                direction = Random.Range(1, 6);
+                direction = UnityEngine.Random.Range(1, 6);
+            } else if(sidewaysCounter > maxSideways)
+            { // Right == positive direction
+                direction = UnityEngine.Random.Range(1, 6);
             }
             else
             {
                 Vector2 newPos = new Vector2(transform.position.x + moveAmount, transform.position.y);
                 transform.position = newPos;
                 previousDirection = direction;
-                direction = Random.Range(1, 6);
+                direction = UnityEngine.Random.Range(1, 6);
+                sidewaysCounter += 1;
             }
         }
         else if (direction == 3 || direction == 4)
         { //Move Left
             if (previousDirection == 1 || previousDirection == 2)
             { // ILLEGAL ACTION
-                direction = Random.Range(1, 6);
+                direction = UnityEngine.Random.Range(1, 6);
+            } else if (sidewaysCounter < -1 * maxSideways)
+            { // Left == Negitive direction
+                direction = UnityEngine.Random.Range(1, 6);
             }
             else
             {
                 Vector2 newPos = new Vector2(transform.position.x - moveAmount, transform.position.y);
                 transform.position = newPos;
                 previousDirection = direction;
-                direction = Random.Range(1, 6);
+                direction = UnityEngine.Random.Range(1, 6);
+                sidewaysCounter -= 1;
             }
-   
         }
         else if (direction == 5)
         { // Move Down
             Vector2 newPos = new Vector2(transform.position.x, transform.position.y - moveAmount);
             transform.position = newPos;
             previousDirection = direction;
-            direction = Random.Range(1, 6);
+            direction = UnityEngine.Random.Range(1, 6);
+            downCounter += 1;
         }
 
         Instantiate(rooms[0], transform.position, Quaternion.identity);
@@ -71,15 +86,10 @@ public class levelGeneration : MonoBehaviour
 
     void FixedUpdate()
     {
-        direction = Random.Range(1, 6);
-        if (timeBtwRoom <= 0)
+        if (downCounter <= maxDown)
         {
+            direction = UnityEngine.Random.Range(1, 6);
             Move();
-            timeBtwRoom = startTimeBtwRoom;
-        }
-        else
-        {
-            timeBtwRoom -= Time.deltaTime;
         }
 
     }
