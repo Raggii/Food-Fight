@@ -494,8 +494,8 @@ MonoBehaviour:
   - {fileID: 2413709038795831052, guid: 834ebfbe9d73c4a46854a3495ef4f926, type: 3}
   moveAmount: 9
   startTimeBtwRoom: 0.25
-  maxSideways: 3
-  maxDown: 10
+  maxSideways: 1
+  maxDown: 1
 --- !u!1 &1297349137
 GameObject:
   m_ObjectHideFlags: 0
@@ -622,7 +622,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.034840822, y: -0.0069680214}
+  m_Offset: {x: -0.007212281, y: -0.0069680214}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -633,7 +633,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.0730958, y: 4.358652}
+  m_Size: {x: 0.6425531, y: 1.2704802}
   m_EdgeRadius: 0
 --- !u!50 &1313120958
 Rigidbody2D:
@@ -664,7 +664,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1313120955}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -44.04, y: -5.83, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1563391841}
@@ -873,7 +873,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 32.774036
+  orthographic size: 4.784277
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -897,7 +897,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1563391838}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -47.7, y: -22.2, z: 0}
+  m_LocalPosition: {x: 0, y: -0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1313120959}
@@ -1037,7 +1037,7 @@ Transform:
   m_GameObject: {fileID: 1618084639}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 1}
   m_Children: []
   m_Father: {fileID: 1313120959}
   m_RootOrder: 1
