@@ -494,8 +494,8 @@ MonoBehaviour:
   - {fileID: 2413709038795831052, guid: 834ebfbe9d73c4a46854a3495ef4f926, type: 3}
   moveAmount: 9
   startTimeBtwRoom: 0.25
-  maxSideways: 1
-  maxDown: 1
+  maxSideways: 5
+  maxDown: 10
 --- !u!1 &1297349137
 GameObject:
   m_ObjectHideFlags: 0
@@ -608,7 +608,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac86f7d314771264aa186cb574237844, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2.5
+  speed: 5
 --- !u!61 &1313120957
 BoxCollider2D:
   m_ObjectHideFlags: 0
