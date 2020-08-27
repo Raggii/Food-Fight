@@ -99,7 +99,7 @@ public class levelGeneration : MonoBehaviour
     private void Move()
     {
         nextDirection = UnityEngine.Random.Range(1, 6);
-        roomNumber = roomSelection(previousDirection, nextDirection);
+        roomNumber = 0;// roomSelection(previousDirection, nextDirection);
         if (currentDirection == 1 || currentDirection == 2)
         { //Move Right
             if (previousDirection == 3 || previousDirection == 4)
