@@ -5,34 +5,25 @@ using UnityEngine;
 public class MovementController : MonoBehaviour
 {
     public float speed;
+    public Rigidbody2D rb;
 
-    private float horizontalDir = 0f;
-    private float verticalDir = 0f;
-    private Vector3 nextPos;
-    private bool moved = false;
+    private Vector2 dir;
+    private Vector2 movment;
 
-    // Update is called once per frame
+
+    public void Update()
+    {
+        dir.x = Input.GetAxisRaw("Horizontal");
+        dir.y = Input.GetAxisRaw("Vertical");
+    }
+
+
     void FixedUpdate()
     {
-        horizontalDir = Input.GetAxisRaw("Horizontal");
-        verticalDir = Input.GetAxisRaw("Vertical");
-        nextPos = transform.position;
 
-        if (horizontalDir != 0)
-        {
-            nextPos += transform.right * speed * Time.deltaTime * horizontalDir;
-            moved = true;
-        }
+        movment.x = Time.fixedDeltaTime * dir.x * speed;
+        movment.y = Time.fixedDeltaTime * dir.y * speed;
 
-        if (verticalDir != 0)
-        {
-            nextPos += transform.up * speed * Time.deltaTime * verticalDir;
-            moved = true;
-        }
-
-        if (moved)
-        {
-            transform.position = nextPos;
-        }
+        rb.MovePosition(rb.position + movment);
     }
 }
