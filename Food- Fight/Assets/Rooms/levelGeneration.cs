@@ -37,18 +37,15 @@ public class levelGeneration : MonoBehaviour
     }
 
     private int betterMove()
-    { // change curren direction as well
+    { // change current direction as well
         if (previousDirection == 1 || previousDirection == 2)
         { //Going Right so cannot go left
           //has to check for left right max movement
           //has to have left door
-            if (sidewaysCounter >= maxSideways)
+            if (sidewaysCounter >= maxSideways - 1)
             {
                 roomNumber = 1; // Down if unable to move 
                                 // 1 is room left down.
-                Vector2 newPos = new Vector2(transform.position.x, transform.position.y - moveAmountDown);
-                transform.position = newPos;
-                downCounter += 1;
                 currentDirection = 5;
             }
             else
@@ -59,20 +56,17 @@ public class levelGeneration : MonoBehaviour
                 // Room Left Right and Room Left Down
                 if (roomNumber == 0)
                 { // Right
-                    Vector2 newPos = new Vector2(transform.position.x + moveAmountSideways, transform.position.y);
-                    transform.position = newPos;
-                    sidewaysCounter += 1;
                     currentDirection = 1;
                 }
                 else if (roomNumber == 1)
                 { // down
-                    Vector2 newPos = new Vector2(transform.position.x, transform.position.y - moveAmountDown);
-                    transform.position = newPos;
-                    downCounter += 1;
                     currentDirection = 5;
                 }
             }
             // Do stuff here
+            Vector2 newPos = new Vector2(transform.position.x + moveAmountSideways, transform.position.y);
+            transform.position = newPos;
+            sidewaysCounter += 1;
             Instantiate(rooms[roomNumber], transform.position, Quaternion.identity);
             previousDirection = currentDirection;
 
@@ -81,13 +75,10 @@ public class levelGeneration : MonoBehaviour
         { //Going left cannot go right
           //also check for max side to side movement
           // has to have right door
-            if (sidewaysCounter <= -1 * maxSideways)
+            if (sidewaysCounter <= -1 * maxSideways + 1)
             {
                 roomNumber = 4; // Down if unable to move 
                                 // 4 - room Right down
-                Vector2 newPos = new Vector2(transform.position.x, transform.position.y - moveAmountDown);
-                transform.position = newPos;
-                downCounter += 1;
                 currentDirection = 5;
             }
             else
@@ -98,22 +89,19 @@ public class levelGeneration : MonoBehaviour
                 {
                     roomNumber = 4;
                     // Down
-                    Vector2 newPos = new Vector2(transform.position.x, transform.position.y - moveAmountDown);
-                    transform.position = newPos;
-                    downCounter += 1;
                     currentDirection = 5;
                 }
                 else
                 {
                     //Left
-                    Vector2 newPos = new Vector2(transform.position.x - moveAmountSideways, transform.position.y);
-                    transform.position = newPos;
-                    sidewaysCounter -= 1;
                     currentDirection = 3;
                 }
                 // 0 == room left Right
             }
             // Do stuff here
+            Vector2 newPos = new Vector2(transform.position.x - moveAmountSideways, transform.position.y);
+            transform.position = newPos;
+            sidewaysCounter -= 1;
             Instantiate(rooms[roomNumber], transform.position, Quaternion.identity);
             previousDirection = currentDirection;
 
@@ -124,30 +112,23 @@ public class levelGeneration : MonoBehaviour
             if (roomNumber == 0)
             {
                 roomNumber = 2; // Left Up room
-                Vector2 newPos = new Vector2(transform.position.x - moveAmountSideways, transform.position.y);
-                transform.position = newPos;
-                sidewaysCounter -= 1;
                 currentDirection = 3;
             }
             else if (roomNumber == 1)
             {
                 roomNumber = 3; // Right
-                Vector2 newPos = new Vector2(transform.position.x + moveAmountSideways, transform.position.y);
-                transform.position = newPos;
-                sidewaysCounter += 1;
                 currentDirection = 1;
             }
             else
             {
                 roomNumber = 5; // Down
-                Vector2 newPos = new Vector2(transform.position.x, transform.position.y - moveAmountDown);
-                transform.position = newPos;
-                downCounter += 1;
                 currentDirection = 5;
             }
 
             // Do stuff here
-
+            Vector2 newPos = new Vector2(transform.position.x, transform.position.y - moveAmountDown);
+            transform.position = newPos;
+            downCounter += 1;
             Instantiate(rooms[roomNumber], transform.position, Quaternion.identity);
             previousDirection = currentDirection;
         }
