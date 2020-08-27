@@ -5,6 +5,7 @@ using System.Security.Cryptography;
 using UnityEngine;
 using System;
 using System.Collections.Specialized;
+using System.ComponentModel;
 
 public class levelGeneration : MonoBehaviour
 {
@@ -14,11 +15,9 @@ public class levelGeneration : MonoBehaviour
 
     private int currentDirection = 1;
     private int previousDirection = 0;
-    private int nextDirection = 0;
     private float moveAmountSideways = 17;
     private float moveAmountDown = 9;
 
-    private float timeBtwRoom;
     public float startTimeBtwRoom = 0.25f;
 
     public int maxSideways;
@@ -26,7 +25,7 @@ public class levelGeneration : MonoBehaviour
     private int downCounter = 0;
     private int sidewaysCounter = 0;
 
-    private int roomNumber;
+    private int roomNumber = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -37,114 +36,124 @@ public class levelGeneration : MonoBehaviour
         Instantiate(rooms[1], transform.position, Quaternion.identity);
     }
 
-    //Returns 1 - 4 depending on what room is needed
-    // taking into account which room was previous and what came before
-    // Also should not give any invalid remarks as they where taken out before
-    private int roomSelection(int previousPosition, int nextPosition)
-    {
-
-        if (previousPosition == 1 || previousPosition == 2)
-        { // Last went right so need left Door
-            if (nextPosition == 1 || nextPosition == 2)
-            { //went left again
-                return 1;// Needs Left Right Room
-            }
-            else if (nextPosition == 3 || nextPosition == 4)
-            { // Went back right? is wrong so wont happen
-                return 1;
-
+    private int betterMove()
+    { // change curren direction as well
+        if (previousDirection == 1 || previousDirection == 2)
+        { //Going Right so cannot go left
+          //has to check for left right max movement
+          //has to have left door
+            if (sidewaysCounter >= maxSideways)
+            {
+                roomNumber = 1; // Down if unable to move 
+                                // 1 is room left down.
+                Vector2 newPos = new Vector2(transform.position.x, transform.position.y - moveAmountDown);
+                transform.position = newPos;
+                downCounter += 1;
+                currentDirection = 5;
             }
             else
             {
-                return 0;// is going to go down so needs left down
+                // random direction of down or Right
+                roomNumber = UnityEngine.Random.Range(0, 2);
+                // all rooms that need left and are valid 
+                // Room Left Right and Room Left Down
+                if (roomNumber == 0)
+                { // Right
+                    Vector2 newPos = new Vector2(transform.position.x + moveAmountSideways, transform.position.y);
+                    transform.position = newPos;
+                    sidewaysCounter += 1;
+                    currentDirection = 1;
+                }
+                else if (roomNumber == 1)
+                { // down
+                    Vector2 newPos = new Vector2(transform.position.x, transform.position.y - moveAmountDown);
+                    transform.position = newPos;
+                    downCounter += 1;
+                    currentDirection = 5;
+                }
             }
+            // Do stuff here
+            Instantiate(rooms[roomNumber], transform.position, Quaternion.identity);
+            previousDirection = currentDirection;
+
         }
-        else if (previousPosition == 3 || previousPosition == 4)
-        { // went left so needs right door
-            if (nextPosition == 1 || nextPosition == 2)
-            { //went left so over laps wont happen
-                return 1;
-            }
-            else if (nextPosition == 3 || nextPosition == 4)
-            { // Went right so needs right Left
-                return 4;
+        else if (previousDirection == 3 || previousDirection == 4)
+        { //Going left cannot go right
+          //also check for max side to side movement
+          // has to have right door
+            if (sidewaysCounter <= -1 * maxSideways)
+            {
+                roomNumber = 4; // Down if unable to move 
+                                // 4 - room Right down
+                Vector2 newPos = new Vector2(transform.position.x, transform.position.y - moveAmountDown);
+                transform.position = newPos;
+                downCounter += 1;
+                currentDirection = 5;
             }
             else
-            { // went down so needs right down
-                return 3;// is going to go down so needs left down
+            {
+                // random direction of down or Left
+                roomNumber = UnityEngine.Random.Range(0, 2);
+                if (roomNumber == 1)
+                {
+                    roomNumber = 4;
+                    // Down
+                    Vector2 newPos = new Vector2(transform.position.x, transform.position.y - moveAmountDown);
+                    transform.position = newPos;
+                    downCounter += 1;
+                    currentDirection = 5;
+                }
+                else
+                {
+                    //Left
+                    Vector2 newPos = new Vector2(transform.position.x - moveAmountSideways, transform.position.y);
+                    transform.position = newPos;
+                    sidewaysCounter -= 1;
+                    currentDirection = 3;
+                }
+                // 0 == room left Right
             }
+            // Do stuff here
+            Instantiate(rooms[roomNumber], transform.position, Quaternion.identity);
+            previousDirection = currentDirection;
+
         }
         else
-        {
-            if (nextPosition == 1 || nextPosition == 2)
-            { //went left needs down left
-                return 9;
-            }
-            else if (nextPosition == 3 || nextPosition == 4)
-            { // Went right needs down right
-                return 10;
-            }
-            else
-            { // went down so needs down up
-                return 11;// is going to go down so needs left down
-            }
-
-        }
-
-
-
-    }
-
-
-    private void Move()
-    {
-        nextDirection = UnityEngine.Random.Range(1, 6);
-        roomNumber = 0;// roomSelection(previousDirection, nextDirection);
-        if (currentDirection == 1 || currentDirection == 2)
-        { //Move Right
-            if (previousDirection == 3 || previousDirection == 4)
-            { // ILLEGAL ACTION
-                currentDirection = UnityEngine.Random.Range(1, 6);
-            } else if(sidewaysCounter > maxSideways)
-            { // Right == positive direction
-                currentDirection = UnityEngine.Random.Range(1, 6);
-            }
-            else
+        { // Going down so needs an up door
+            roomNumber = UnityEngine.Random.Range(0, 3);
+            if (roomNumber == 0)
             {
-                Vector2 newPos = new Vector2(transform.position.x + moveAmountSideways, transform.position.y);
-                transform.position = newPos;
-                previousDirection = currentDirection;
-                currentDirection = nextDirection;
-                sidewaysCounter += 1;
-            }
-        }
-        else if (currentDirection == 3 || currentDirection == 4)
-        { //Move Left
-            if (previousDirection == 1 || previousDirection == 2)
-            { // ILLEGAL ACTION
-                currentDirection = UnityEngine.Random.Range(1, 6);
-            } else if (sidewaysCounter < -1 * maxSideways)
-            { // Left == Negitive direction
-                currentDirection = UnityEngine.Random.Range(1, 6);
-            }
-            else
-            {
+                roomNumber = 2; // Left Up room
                 Vector2 newPos = new Vector2(transform.position.x - moveAmountSideways, transform.position.y);
                 transform.position = newPos;
-                previousDirection = currentDirection;
-                currentDirection = nextDirection;
                 sidewaysCounter -= 1;
+                currentDirection = 3;
             }
-        }
-        else if (currentDirection == 5)
-        { // Move Down
-            Vector2 newPos = new Vector2(transform.position.x, transform.position.y - moveAmountDown);
-            transform.position = newPos;
+            else if (roomNumber == 1)
+            {
+                roomNumber = 3; // Right
+                Vector2 newPos = new Vector2(transform.position.x + moveAmountSideways, transform.position.y);
+                transform.position = newPos;
+                sidewaysCounter += 1;
+                currentDirection = 1;
+            }
+            else
+            {
+                roomNumber = 5; // Down
+                Vector2 newPos = new Vector2(transform.position.x, transform.position.y - moveAmountDown);
+                transform.position = newPos;
+                downCounter += 1;
+                currentDirection = 5;
+            }
+
+            // Do stuff here
+
+            Instantiate(rooms[roomNumber], transform.position, Quaternion.identity);
             previousDirection = currentDirection;
-            currentDirection = nextDirection;
-            downCounter += 1;
         }
-        Instantiate(rooms[roomNumber], transform.position, Quaternion.identity);
+        //currentDirection = UnityEngine.Random.Range(1, 6);
+
+        return 0;
     }
 
     void FixedUpdate()
@@ -153,9 +162,13 @@ public class levelGeneration : MonoBehaviour
         if (downCounter <= maxDown)
         {
             //currentDirection = UnityEngine.Random.Range(1, 6);
-            Move();
+            betterMove();
         }
 
     }
 
 }
+
+
+
+
