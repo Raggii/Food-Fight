@@ -44,6 +44,41 @@ public class AstarNode
 public class Astar : MonoBehaviour
 {
 
+    private struct sSpline
+    {
+        public List<Vector2> points;
+
+        public sSpline(List<Vector2> points)
+        {
+            this.points = points;
+        }
+
+        public Vector2 GetSplinePoint(float t)
+        {
+            int p0, p1, p2, p3;
+
+            p1 = (int)t + 1;
+            p2 = p1 + 1;
+            p3 = p2 + 1;
+            p0 = p1 - 1;
+
+            t = t - (int)t;
+
+            float tt = t * t;
+            float ttt = tt * t;
+
+            float q1 = -ttt + 2.0f * tt - t;
+            float q2 = 3.0f * ttt - 5.0f * tt + 2.0f;
+            float q3 = -3.0f * ttt + 4.0f * tt + t;
+            float q4 = ttt - tt;
+
+            float tx = 0.5f * (points[p0].x * q1 + points[p1].x * q2 + points[p2].x * q3 + points[p3].x * q4);
+            float ty = 0.5f * (points[p0].y * q1 + points[p1].y * q2 + points[p2].y * q3 + points[p3].y * q4);
+
+            return new Vector2(tx, ty);
+        }
+    }
+
     public GameObject target;
 
     public GameObject[] obs;
@@ -68,10 +103,27 @@ public class Astar : MonoBehaviour
     void Update()
     {
         AstarNode algotrgtpos = algo(); 
-        //debug_drawv2line(this.gameObject.transform.position, new Vector2(algotrgtpos.x * tilescale, algotrgtpos.y * tilescale));
 
         AstarNode node = algotrgtpos;
-        backpropogate(node);
+        List<Vector2> corners = backpropogate(node);
+        //corners.Insert(0, target.gameObject.transform.position);
+        corners.Insert(0, target.gameObject.transform.position);
+        //corners.Insert(corners.Count - 1, this.gameObject.transform.position);
+        corners.Insert(corners.Count, this.gameObject.transform.position);
+
+        //Calculate spline points. Only if there are more than 3 points
+        if (corners.Count > 3)
+        {
+            sSpline spline = new sSpline(corners);
+            Vector2 prevPoint = spline.GetSplinePoint(0f);
+            Vector2 newPoint;
+            for (float t = 0; t < (float)spline.points.Count - 3; t += 0.1f)
+            {
+                newPoint = spline.GetSplinePoint(t);
+                Debug.DrawLine(prevPoint, newPoint, Color.yellow);
+                prevPoint = newPoint;
+            }
+        }
 
         open.Clear();
         closed.Clear();
@@ -105,6 +157,7 @@ public class Astar : MonoBehaviour
         closed.Add(node);
 
         var searchPos = new List<Tuple<int, int, int>>() {
+            //deltax, deltay, approximate distance * 10
             Tuple.Create(node.x,     node.y + 1,    10),
             Tuple.Create(node.x + 1, node.y + 1,    14),
             Tuple.Create(node.x + 1, node.y,        10),
@@ -180,24 +233,28 @@ public class Astar : MonoBehaviour
         return (Mathf.Abs(nodepos.Item1 - trgtpos.Item1) + Mathf.Abs(nodepos.Item2 - trgtpos.Item2)) * 10;
     }
 
-    private void backpropogate(AstarNode node)
+    private List<Vector2> backpropogate(AstarNode node)
     {
+        List<Vector2> points = new List<Vector2>();
         AstarNode prevnode = node;
-        debug_drawv2line(new Vector3(prevnode.x * tilescale, prevnode.y * tilescale), new Vector3(node.from.x * tilescale, node.from.y * tilescale));
+        //debug_drawv2line(new Vector3(prevnode.x * tilescale, prevnode.y * tilescale), new Vector3(node.from.x * tilescale, node.from.y * tilescale));
         AstarNode newNode = node.from;
         while(newNode.from != null)
         {
-            debug_drawv2line(new Vector3(newNode.x * tilescale, newNode.y * tilescale), new Vector3(newNode.from.x * tilescale, newNode.from.y * tilescale));
+            //debug_drawv2line(new Vector3(newNode.x * tilescale, newNode.y * tilescale), new Vector3(newNode.from.x * tilescale, newNode.from.y * tilescale));
 
             if (newNode.g - newNode.from.g != prevnode.g - newNode.g)
             {
                 // !!CORNER!!!! ! !
                 Debug.DrawLine(this.gameObject.transform.position, new Vector3(newNode.x * tilescale, newNode.y * tilescale), Color.red);
+                points.Add(new Vector3(newNode.x * tilescale, newNode.y * tilescale));
             }
 
             prevnode = newNode;
             newNode = newNode.from;
         }
+
+        return points;
     }
 
     Tuple<int, int> tileV2(Vector3 v, float s)
