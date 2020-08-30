@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovementController : MonoBehaviour
+public class MovementMotor : MonoBehaviour
 {
     [Header("Constants")]
     //public float mass;
