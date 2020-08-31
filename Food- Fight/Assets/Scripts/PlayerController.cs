@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,26 +7,34 @@ public class PlayerController : MonoBehaviour
 {
 
     public GameObject projectile;
+    public GameObject firePos;
+    public GameObject centerAxis;
     public float projectileVelocity;
 
     // Update is called once per frame
     void Update()
     {
+        updateFirePosDirection();
+
         if (Input.GetKeyDown(KeyCode.Mouse0) ) {
             Fire();
         }
     }
 
+    private void updateFirePosDirection()
+    {
+        Vector3 clickLocation = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        centerAxis.transform.LookAt(clickLocation);
+    }
 
     private void Fire()
     {
-        Vector3 clickLocation = Input.mousePosition;
-        Vector3 direction = transform.position - clickLocation.normalized;
-
-        GameObject newProj = Instantiate(projectile);
-        newProj.transform.position = transform.position + direction;
-        newProj.GetComponent<Rigidbody2D>().velocity = projectileVelocity * direction;
         
+        GameObject newProj = Instantiate(projectile);
+        newProj.transform.position = firePos.transform.position;
+        newProj.transform.rotation = new Quaternion(firePos.transform.rotation.x, firePos.transform.rotation.y, 0, firePos.transform.rotation.w);
+        newProj.GetComponent<Rigidbody2D>().velocity = projectileVelocity * transform.up;
+        newProj.SetActive(true);
 
     }
 }
