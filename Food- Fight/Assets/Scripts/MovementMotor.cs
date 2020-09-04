@@ -67,7 +67,7 @@ public class MovementMotor : MonoBehaviour
         Vector2 forces = new Vector2((velocity.x - firstVelocity.x) / Time.fixedDeltaTime, (velocity.y - firstVelocity.y) / Time.fixedDeltaTime);
         
         rb.AddForce(forces);
-        Debug.Log("Velocity: " + rb.velocity + ", Forces: " + forces);
+        //Debug.Log("Velocity: " + rb.velocity + ", Forces: " + forces);
     }
 
     /*

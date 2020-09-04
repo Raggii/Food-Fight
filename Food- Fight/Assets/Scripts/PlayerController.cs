@@ -30,11 +30,10 @@ public class PlayerController : MonoBehaviour
     private void Fire()
     {
         
-        GameObject newProj = Instantiate(projectile);
-        newProj.transform.position = firePos.transform.position;
-        newProj.transform.rotation = new Quaternion(firePos.transform.rotation.x, firePos.transform.rotation.y, 0, firePos.transform.rotation.w);
-        newProj.GetComponent<Rigidbody2D>().velocity = projectileVelocity * transform.up;
+        GameObject newProj = Instantiate(projectile, firePos.transform.position, firePos.transform.rotation);
+//        newProj.transform.position = firePos.transform.position;
+//        newProj.transform.rotation = new Quaternion(firePos.transform.rotation.x, firePos.transform.rotation.y, 0, firePos.transform.rotation.w);
         newProj.SetActive(true);
-
+        newProj.GetComponent<Rigidbody2D>().velocity = projectileVelocity * newProj.transform.up;
     }
 }
