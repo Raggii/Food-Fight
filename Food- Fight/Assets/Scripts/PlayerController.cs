@@ -10,13 +10,28 @@ public class PlayerController : MonoBehaviour
     public GameObject firePos;
     public GameObject centerAxis;
     public float projectileVelocity;
+    public float rateOfFire = 10; // proj per second. Default ak47 rate of fire.
+    public bool isSemi;
+    
+    private float lastFireTime = 0f;
+    private float waitTime = 0f;
+
+    public void Awake()
+    {
+        waitTime = 1 / rateOfFire;
+    }
 
     // Update is called once per frame
     void Update()
     {
         UpdateFirePosDirection();
 
-        if (Input.GetKeyDown(KeyCode.Mouse0) ) {
+        if (Input.GetKeyDown(KeyCode.Mouse0) && isSemi) {
+            Fire();
+        }
+
+        if (Input.GetKey(KeyCode.Mouse0) && !isSemi)
+        {
             Fire();
         }
     }
@@ -27,13 +42,19 @@ public class PlayerController : MonoBehaviour
         centerAxis.transform.LookAt(clickLocation);
     }
 
+    public bool CanFire()
+    {
+        return Time.time > waitTime + lastFireTime;
+    }
+
     private void Fire()
     {
-        
-        GameObject newProj = Instantiate(projectile, firePos.transform.position, firePos.transform.rotation);
-//        newProj.transform.position = firePos.transform.position;
-//        newProj.transform.rotation = new Quaternion(firePos.transform.rotation.x, firePos.transform.rotation.y, 0, firePos.transform.rotation.w);
-        newProj.SetActive(true);
-        newProj.GetComponent<Rigidbody2D>().velocity = projectileVelocity * newProj.transform.up;
+        if (CanFire())
+        {
+            GameObject newProj = Instantiate(projectile, firePos.transform.position, firePos.transform.rotation);
+            newProj.SetActive(true);
+            newProj.GetComponent<Rigidbody2D>().velocity = projectileVelocity * newProj.transform.up;
+            lastFireTime = Time.time;
+        }
     }
 }
