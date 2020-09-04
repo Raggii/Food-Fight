@@ -14,14 +14,14 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        updateFirePosDirection();
+        UpdateFirePosDirection();
 
         if (Input.GetKeyDown(KeyCode.Mouse0) ) {
             Fire();
         }
     }
 
-    private void updateFirePosDirection()
+    private void UpdateFirePosDirection()
     {
         Vector3 clickLocation = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         centerAxis.transform.LookAt(clickLocation);
