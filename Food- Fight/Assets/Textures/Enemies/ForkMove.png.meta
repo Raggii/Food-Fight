@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: 8d3bac11a50b2434c93367cbad6b05b6
+guid: feae91c85f4058a41aa455eef4c00cf0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3184843885288312604
-    second: SpoonMove_0
+      213: 9018493048310507884
+    second: ForkMove_0
   - first:
-      213: -1985376681176927040
-    second: SpoonMove_1
+      213: -2482864503286307894
+    second: ForkMove_1
   - first:
-      213: 6120176129519224170
-    second: SpoonMove_2
+      213: 3982514314376268967
+    second: ForkMove_2
   - first:
-      213: 7498893586162794407
-    second: SpoonMove_3
+      213: 3862313165157122678
+    second: ForkMove_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -111,7 +111,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SpoonMove_0
+      name: ForkMove_0
       rect:
         serializedVersion: 2
         x: 0
@@ -125,14 +125,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4e0b0504c592dc3d0800000000000000
-      internalID: -3184843885288312604
+      spriteID: c69a0e935af182d70800000000000000
+      internalID: 9018493048310507884
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpoonMove_1
+      name: ForkMove_1
       rect:
         serializedVersion: 2
         x: 32
@@ -146,14 +146,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0c4fa1d6d668274e0800000000000000
-      internalID: -1985376681176927040
+      spriteID: ac3613893e71b8dd0800000000000000
+      internalID: -2482864503286307894
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpoonMove_2
+      name: ForkMove_2
       rect:
         serializedVersion: 2
         x: 64
@@ -167,14 +167,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a6581d283cb3fe450800000000000000
-      internalID: 6120176129519224170
+      spriteID: 7ac4e4d2babb44730800000000000000
+      internalID: 3982514314376268967
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpoonMove_3
+      name: ForkMove_3
       rect:
         serializedVersion: 2
         x: 96
@@ -188,8 +188,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7af30bb5cfb611860800000000000000
-      internalID: 7498893586162794407
+      spriteID: 672418c3c51b99530800000000000000
+      internalID: 3862313165157122678
       vertices: []
       indices: 
       edges: []
