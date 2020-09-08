@@ -23,7 +23,7 @@ public class EnemyController : MonoBehaviour
         {
             float angle = Mathf.Atan2(player.transform.position.x - transform.position.x, player.transform.position.y - transform.position.y) * Mathf.Rad2Deg;
 
-            Debug.Log(Mathf.Abs(angle - prevAngle));
+            //Debug.Log(Mathf.Abs(angle - prevAngle));
 
             if (minimumRotationAngle <= Mathf.Abs(angle - prevAngle))
             {
