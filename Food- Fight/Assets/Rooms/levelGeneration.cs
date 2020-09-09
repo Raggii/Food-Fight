@@ -15,8 +15,8 @@ public class levelGeneration : MonoBehaviour
 
     private int currentDirection = 1;
     private int previousDirection = 0;
-    private float moveAmountSideways = 17;
-    private float moveAmountDown = 9;
+    private float moveAmountSideways = 18;
+    private float moveAmountDown = 10;
 
     public float startTimeBtwRoom = 0.25f;
 
