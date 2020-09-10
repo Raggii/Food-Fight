@@ -1199,7 +1199,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!95 &1428578478
 Animator:
   serializedVersion: 3
@@ -1208,7 +1208,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1428578477}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: e51869e7f98acbd44a8d77151876ff99, type: 2}
   m_CullingMode: 0
@@ -1513,7 +1513,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1860654892}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 9f96b815a7b4dbf4b985dcae736a33b3, type: 2}
   m_CullingMode: 0
@@ -1631,8 +1631,6 @@ GameObject:
   - component: {fileID: 2086723092}
   - component: {fileID: 2086723094}
   - component: {fileID: 2086723095}
-  - component: {fileID: 2086723096}
-  - component: {fileID: 2086723097}
   m_Layer: 0
   m_Name: EnemyExample
   m_TagString: Damagable
@@ -1663,8 +1661,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2086723091}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2, y: 3.3, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalPosition: {x: -2, y: 5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1428578480}
   m_Father: {fileID: 0}
@@ -1686,10 +1684,10 @@ BoxCollider2D:
   m_Offset: {x: 0.006407857, y: 0.011834621}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.32, y: 0.32}
-    newSize: {x: 0.32, y: 0.32}
-    adaptiveTilingThreshold: 0.5
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
@@ -1709,11 +1707,20 @@ MonoBehaviour:
   m_Name:
   m_EditorClassIdentifier:
   player: {fileID: 1313120955}
-  anim: {fileID: 2086723096}
   minimumRotationAngle: 3
   minimumRange: 5
   rotationDelta: 5
+<<<<<<< HEAD
 
+=======
+--- !u!4 &3058060814241441281 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4723323460257397933, guid: c214edd7247ff5a499f4e2a8103c95d9,
+    type: 3}
+  m_PrefabInstance: {fileID: 7781366603715582636}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4399417051838053386
+>>>>>>> parent of 4662da4... Merge branch 'master' of https://github.com/vaan3225/Food-Fight
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2

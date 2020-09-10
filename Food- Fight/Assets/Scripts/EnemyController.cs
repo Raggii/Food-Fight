@@ -6,13 +6,9 @@ public class EnemyController : MonoBehaviour
 {
 
     public GameObject player;
-    public Animator anim;
     public float minimumRotationAngle;
     public float minimumRange;
     public float rotationDelta;
-
-    public bool shooting = false;
-    public bool moving = false;
 
     private float prevAngle = 0f;
 
@@ -20,8 +16,6 @@ public class EnemyController : MonoBehaviour
     {
         return Mathf.Abs(Vector2.Distance(player.transform.position, transform.position)) <= minimumRange;
     }
-
-    
 
     void FixedUpdate()
     {
@@ -36,18 +30,6 @@ public class EnemyController : MonoBehaviour
                 RotateObject(90 - angle);
             }
         }
-
-        anim.SetBool("shooting", shooting);
-        
-        anim.SetBool("moving", moving);
-        
-    }
-
-    public void Shoot()
-    {
-
-        GameObject d = Instantiate(this.gameObject, this.transform);
-        Destroy(d, 0.1f);
     }
 
     public void RotateObject(float newAngle)
