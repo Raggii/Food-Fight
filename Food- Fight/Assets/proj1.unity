@@ -1710,17 +1710,7 @@ MonoBehaviour:
   minimumRotationAngle: 3
   minimumRange: 5
   rotationDelta: 5
-<<<<<<< HEAD
 
-=======
---- !u!4 &3058060814241441281 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4723323460257397933, guid: c214edd7247ff5a499f4e2a8103c95d9,
-    type: 3}
-  m_PrefabInstance: {fileID: 7781366603715582636}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &4399417051838053386
->>>>>>> parent of 4662da4... Merge branch 'master' of https://github.com/vaan3225/Food-Fight
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
