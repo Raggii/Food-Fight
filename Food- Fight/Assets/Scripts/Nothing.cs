@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class Nothing : MonoBehaviour
 {
+
+    public void Print(string ddd)
+    {
+
+        Debug.Log(ddd);
+
+    }
+
     // Start is called before the first frame update
     void Start()
     {
