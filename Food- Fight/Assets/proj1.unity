@@ -545,7 +545,7 @@ PrefabInstance:
       value:
       objectReference: {fileID: 7287120910695971978, guid: c45b6313988c68c428e44a4ef1a37fdd,
 =======
-      value: 
+      value:
       objectReference: {fileID: 1600294857240270081, guid: feeaa90c66b32794b8c3816997ae0fd4,
 >>>>>>> parent of 85bc335... Update 1.11
         type: 3}
@@ -556,7 +556,7 @@ PrefabInstance:
       value:
       objectReference: {fileID: 2893715145117236138, guid: 2c00d02ea26db9247946475d1bc6b0ee,
 =======
-      value: 
+      value:
       objectReference: {fileID: 8115681246486522258, guid: 6ba15f0407ff309488dce7de27c4543e,
 >>>>>>> parent of 85bc335... Update 1.11
         type: 3}
@@ -567,7 +567,7 @@ PrefabInstance:
       value:
       objectReference: {fileID: 2576249685372490474, guid: 73635381f753d8a45952853bdf34405a,
 =======
-      value: 
+      value:
       objectReference: {fileID: 207730419854868606, guid: e24207e3bab8ddc44a7b7d51fab6533f,
 >>>>>>> parent of 85bc335... Update 1.11
         type: 3}
@@ -578,7 +578,7 @@ PrefabInstance:
       value:
       objectReference: {fileID: 4061973668707860351, guid: 24842a0f890b8b142ac1d4f39ca4b802,
 =======
-      value: 
+      value:
       objectReference: {fileID: 3516050544566866956, guid: 5bd9eddae6143db4e848a21b897a045e,
 >>>>>>> parent of 85bc335... Update 1.11
         type: 3}
@@ -589,7 +589,7 @@ PrefabInstance:
       value:
       objectReference: {fileID: 4729558911280022448, guid: 3683fd06abc466143a87a225d8dfb61e,
 =======
-      value: 
+      value:
       objectReference: {fileID: 7723620285522515270, guid: 3fe05d0a457432e4abd4b8301f0d2b4e,
 >>>>>>> parent of 85bc335... Update 1.11
         type: 3}
@@ -600,7 +600,7 @@ PrefabInstance:
       value:
       objectReference: {fileID: 2072787331633731330, guid: 53daf1b060c648340b178f3fa4eb57c6,
 =======
-      value: 
+      value:
       objectReference: {fileID: 2088077850422671232, guid: 4e4bb6f08f47ce643baa4bac616d114c,
 >>>>>>> parent of 85bc335... Update 1.11
         type: 3}
@@ -1328,8 +1328,8 @@ MonoBehaviour:
   m_Name:
   m_EditorClassIdentifier:
 =======
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
 --- !u!1001 &1461981264
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1814,9 +1814,6 @@ MonoBehaviour:
   minimumRotationAngle: 3
   minimumRange: 5
   rotationDelta: 5
-<<<<<<< HEAD
-<<<<<<< HEAD
-
 =======
 --- !u!4 &3058060814241441281 stripped
 Transform:
@@ -1825,10 +1822,8 @@ Transform:
   m_PrefabInstance: {fileID: 7781366603715582636}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4399417051838053386
->>>>>>> parent of 4662da4... Merge branch 'master' of https://github.com/vaan3225/Food-Fight
 =======
 --- !u!1001 &1346372092747960562
->>>>>>> parent of 85bc335... Update 1.11
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
