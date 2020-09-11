@@ -1,19 +1,28 @@
 fileFormatVersion: 2
-guid: feae91c85f4058a41aa455eef4c00cf0
+guid: 293e12f8319130f47be0a9477c49c274
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 9018493048310507884
-    second: ForkMove_0
+      213: -1078416406995621301
+    second: PiappleMoveFull_0
   - first:
-      213: -2482864503286307894
-    second: ForkMove_1
+      213: 917676081802935536
+    second: PiappleMoveFull_1
   - first:
-      213: 3982514314376268967
-    second: ForkMove_2
+      213: -6550348662141325347
+    second: PiappleMoveFull_2
   - first:
-      213: 3862313165157122678
-    second: ForkMove_3
+      213: 600888451158399727
+    second: PiappleMoveFull_3
+  - first:
+      213: 2272711091948276541
+    second: PiappleMoveFull_4
+  - first:
+      213: 2142156773709156857
+    second: PiappleMoveFull_5
+  - first:
+      213: -2229965269567804859
+    second: PiappleMoveFull_6
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -111,7 +120,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ForkMove_0
+      name: PiappleMoveFull_0
       rect:
         serializedVersion: 2
         x: 0
@@ -125,14 +134,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c69a0e935af182d70800000000000000
-      internalID: 9018493048310507884
+      spriteID: b4aa215ddf1b801f0800000000000000
+      internalID: -1078416406995621301
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ForkMove_1
+      name: PiappleMoveFull_1
       rect:
         serializedVersion: 2
         x: 32
@@ -146,14 +155,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ac3613893e71b8dd0800000000000000
-      internalID: -2482864503286307894
+      spriteID: 0fc7cbac88d3cbc00800000000000000
+      internalID: 917676081802935536
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ForkMove_2
+      name: PiappleMoveFull_2
       rect:
         serializedVersion: 2
         x: 64
@@ -167,14 +176,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7ac4e4d2babb44730800000000000000
-      internalID: 3982514314376268967
+      spriteID: ddf6c16d89c7815a0800000000000000
+      internalID: -6550348662141325347
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ForkMove_3
+      name: PiappleMoveFull_3
       rect:
         serializedVersion: 2
         x: 96
@@ -188,8 +197,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 672418c3c51b99530800000000000000
-      internalID: 3862313165157122678
+      spriteID: fea5ee8dcd8c65800800000000000000
+      internalID: 600888451158399727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PiappleMoveFull_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3bcaa062ba4a8f10800000000000000
+      internalID: 2272711091948276541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PiappleMoveFull_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f1912e6c387abd10800000000000000
+      internalID: 2142156773709156857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PiappleMoveFull_6
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54ae3f5f6629d01e0800000000000000
+      internalID: -2229965269567804859
       vertices: []
       indices: 
       edges: []
