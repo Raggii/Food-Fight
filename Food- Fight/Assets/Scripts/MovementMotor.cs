@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class MovementMotor : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class MovementMotor : MonoBehaviour
     public float decclaration = 40f;
     public float speedThreshold = 0.3f;
 
+    public Animator animator;
+
     [Header("Components")]
     public Rigidbody2D rb;
 
@@ -22,8 +25,22 @@ public class MovementMotor : MonoBehaviour
 
     public void Update()
     {
+
         dir.x = Input.GetAxisRaw("Horizontal");
         dir.y = Input.GetAxisRaw("Vertical");
+
+        animator.SetFloat("Speed", Mathf.Abs(dir.x) + Mathf.Abs(dir.y));
+
+        if (dir.x == 0) { 
+        
+        }
+        else if(dir.x < 0) {
+            gameObject.GetComponent<SpriteRenderer>().flipX = true;
+        } else {
+            gameObject.GetComponent<SpriteRenderer>().flipX = false;
+        }
+
+
     }
 
 
