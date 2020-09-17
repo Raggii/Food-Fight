@@ -37,9 +37,8 @@ public class ProjectileController : MonoBehaviour
             } else {
                 healthMangCollider.Heal(effectValue);
             }
-
         }
-
+        
 
         Destroy(this.gameObject);
 
