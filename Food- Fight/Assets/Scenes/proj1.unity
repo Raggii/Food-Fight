@@ -2747,6 +2747,8 @@ MonoBehaviour:
   - {fileID: 3468605670539618969, guid: 8b3a56624ab37074595fad9bedfe87ae, type: 3}
   firePos: {fileID: 1267564986}
   centerAxis: {fileID: 116786365}
+  playerRB: {fileID: 1313120958}
+  recoilForce: 0
   projectileVelocity: 5
   rateOfFire: 10
   isSemi: 1
