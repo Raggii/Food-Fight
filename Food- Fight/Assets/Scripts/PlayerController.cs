@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 
-    public GameObject projectile;
+    public GameObject[] projectile;
     public GameObject firePos;
     public GameObject centerAxis;
     public float projectileVelocity;
@@ -51,7 +51,8 @@ public class PlayerController : MonoBehaviour
     {
         if (CanFire())
         {
-            GameObject newProj = Instantiate(projectile, firePos.transform.position, firePos.transform.rotation);
+            int project = UnityEngine.Random.Range(0, projectile.Length);
+            GameObject newProj = Instantiate(projectile[project], firePos.transform.position, firePos.transform.rotation);
             newProj.SetActive(true);
             newProj.GetComponent<Rigidbody2D>().velocity = projectileVelocity * newProj.transform.up;
             lastFireTime = Time.time;
