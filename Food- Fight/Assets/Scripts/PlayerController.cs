@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
 
     private void Recoil()
     {
-        playerRB.velocity = new Vector2(0, 0);
+        GetComponent<MovementMotor>().InstantStop();
         playerRB.AddForce(firePos.transform.up * -recoilForce);
     }
 

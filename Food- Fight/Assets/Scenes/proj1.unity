@@ -144,14 +144,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 116786365}
-  m_LocalRotation: {x: -0.5, y: -0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: 0, y: -0.006, z: 0}
+  m_LocalRotation: {x: -0.7071068, y: 3.5143846e-11, z: -0.7071068, w: 0.000000014936303}
+  m_LocalPosition: {x: 0, y: -0.07199999, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1267564987}
   m_Father: {fileID: 1313120959}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90.00001, y: -90, z: 0}
+  m_LocalEulerAnglesHint: {x: -180, y: -90, z: -0.000015258789}
 --- !u!1001 &387122884
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2533,7 +2533,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1267564986}
   m_LocalRotation: {x: 0.5, y: -0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: 0, y: -0.019, z: 0.07}
+  m_LocalPosition: {x: -0, y: 0, z: 0.138}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 116786366}
@@ -2747,7 +2747,9 @@ MonoBehaviour:
   - {fileID: 3468605670539618969, guid: 8b3a56624ab37074595fad9bedfe87ae, type: 3}
   firePos: {fileID: 1267564986}
   centerAxis: {fileID: 116786365}
-  projectileVelocity: 5
+  playerRB: {fileID: 1313120958}
+  recoilForce: 500
+  projectileVelocity: 10
   rateOfFire: 10
   isSemi: 1
 --- !u!212 &1313120961

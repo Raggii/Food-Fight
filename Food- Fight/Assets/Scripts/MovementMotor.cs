@@ -21,7 +21,7 @@ public class MovementMotor : MonoBehaviour
     private Vector2 dir = new Vector2(0, 0);
     //private Vector2 movment = new Vector2(0, 0);
     private Vector2 velocity = new Vector2(0, 0);
-
+    private float currentPause = 0f;
 
     public void Update()
     {
@@ -43,8 +43,15 @@ public class MovementMotor : MonoBehaviour
 
     }
 
+    public void InstantStop()
+    {
+        currentPause = Time.time + 0.1f;
+        velocity = new Vector2(0, 0);
+        dir = new Vector2(0, 0);
+        rb.velocity = new Vector2(0, 0);
+    }
 
-    public float getNewVelocity(float direction, float velocityVal, float deltaTime)
+    public float GetNewVelocity(float direction, float velocityVal, float deltaTime)
     {
         float newVelocity = velocityVal;
         if (velocityVal != direction * maxSpeed)
@@ -75,45 +82,19 @@ public class MovementMotor : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector2 firstVelocity = rb.velocity;
-        velocity.x = getNewVelocity(dir.x, rb.velocity.x, Time.fixedDeltaTime);
-        velocity.y = getNewVelocity(dir.y, rb.velocity.y, Time.fixedDeltaTime);
-        //rb.velocity = velocity;
-
-
-        Vector2 forces = new Vector2((velocity.x - firstVelocity.x) / Time.fixedDeltaTime, (velocity.y - firstVelocity.y) / Time.fixedDeltaTime);
-        
-        rb.AddForce(forces);
-        //Debug.Log("Velocity: " + rb.velocity + ", Forces: " + forces);
-    }
-
-    /*
-    private float getNewVelocity(float direction, float velocityValue)
-    {
-        float desiredVel = direction * maxSpeed;
-        if (velocityValue != desiredVel)
+        if (currentPause <= Time.time)
         {
-            if (Mathf.Abs(velocityValue - desiredVel) < deltaVelX)
-            {
-                velocityValue = desiredVel;
-            }
-            else
-            {
-                if (desiredVel != 0)
-                {
-                    velocityValue += deltaVelX * Mathf.Sign(direction);
-                }
-                else
-                {
-                    velocityValue -= deltaVelX * Mathf.Sign(velocityValue);
-                }
-            }
+            Vector2 firstVelocity = rb.velocity;
+            velocity.x = GetNewVelocity(dir.x, rb.velocity.x, Time.fixedDeltaTime);
+            velocity.y = GetNewVelocity(dir.y, rb.velocity.y, Time.fixedDeltaTime);
+            //rb.velocity = velocity;
+
+
+            Vector2 forces = new Vector2((velocity.x - firstVelocity.x) / Time.fixedDeltaTime, (velocity.y - firstVelocity.y) / Time.fixedDeltaTime);
+
+            rb.AddForce(forces);
         }
-        return velocityValue;
+        //   Debug.Log("Velocity: " + rb.velocity + ", Forces: " + forces);
     }
-    main :::
-         velocity.x = getNewVelocity(dir.x, velocity.x);
-        velocity.y = getNewVelocity(dir.y, velocity.y);
-        rb.velocity = velocity;
-    */
+
 }
