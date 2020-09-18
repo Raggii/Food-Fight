@@ -9,8 +9,16 @@ public class EnemyController : MonoBehaviour
     public float minimumRotationAngle;
     public float minimumRange;
     public float rotationDelta;
+    public GameObject projectile;
 
+    private float lastFireTime = 0f;
+    private float waitTime = 0.5f;
     private float prevAngle = 0f;
+
+    public void Start()
+    {
+        lastFireTime = Time.time;
+    }
 
     public bool InRange()
     {
@@ -28,7 +36,24 @@ public class EnemyController : MonoBehaviour
             if (minimumRotationAngle <= Mathf.Abs(angle - prevAngle))
             {
                 RotateObject(90 - angle);
+                Shoot();
             }
+        }
+    }
+
+    public bool CanFire()
+    {
+        return Time.time > waitTime + lastFireTime;
+    }
+
+    public void Shoot()
+    {
+        if (CanFire())
+        {
+            GameObject newProj = Instantiate(projectile, transform.position + transform.right * 1, transform.rotation, transform);
+            newProj.SetActive(true);
+            newProj.GetComponent<Rigidbody2D>().velocity = newProj.transform.right * 10;
+            lastFireTime = Time.time;
         }
     }
 
