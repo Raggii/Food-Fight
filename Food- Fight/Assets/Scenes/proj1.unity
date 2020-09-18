@@ -2430,6 +2430,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offset: 0
+  player: {fileID: 1313120955}
 --- !u!1001 &1265309423
 PrefabInstance:
   m_ObjectHideFlags: 0
