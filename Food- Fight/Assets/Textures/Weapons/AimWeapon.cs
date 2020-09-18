@@ -17,5 +17,18 @@ public class AimWeapon : MonoBehaviour
         Vector3 diff = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         float rotZ = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0f, 0f, rotZ + offset);
+        /*if (transform.rotation.z == 0)
+        {
+
+        }
+        else if (transform.rotation.z < -90)
+        {
+            gameObject.GetComponent<SpriteRenderer>().flipX = true;
+        }
+        else if(transform.rotation.z < 90)
+        {
+            gameObject.GetComponent<SpriteRenderer>().flipX = false;
+        }*/
+
     }
 }
