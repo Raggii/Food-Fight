@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     public GameObject[] projectile;
     public GameObject firePos;
     public GameObject centerAxis;
+    public Rigidbody2D playerRB;
+    public float recoilForce;
     public float projectileVelocity;
     public float rateOfFire = 10; // proj per second. Default ak47 rate of fire.
     public bool isSemi;
@@ -47,6 +49,12 @@ public class PlayerController : MonoBehaviour
         return Time.time > waitTime + lastFireTime;
     }
 
+    private void Recoil()
+    {
+        playerRB.velocity = new Vector2(0, 0);
+        playerRB.AddForce(firePos.transform.up * -recoilForce);
+    }
+
     private void Fire()
     {
         if (CanFire())
@@ -55,6 +63,7 @@ public class PlayerController : MonoBehaviour
             GameObject newProj = Instantiate(projectile[project], firePos.transform.position, firePos.transform.rotation);
             newProj.SetActive(true);
             newProj.GetComponent<Rigidbody2D>().velocity = projectileVelocity * newProj.transform.up;
+            Recoil();
             lastFireTime = Time.time;
         }
     }
