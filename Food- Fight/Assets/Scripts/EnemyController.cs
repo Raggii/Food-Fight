@@ -50,7 +50,7 @@ public class EnemyController : MonoBehaviour
     {
         if (CanFire())
         {
-            GameObject newProj = Instantiate(projectile, transform.position + transform.right * 1, transform.rotation, transform);
+            GameObject newProj = Instantiate(projectile, transform.position + transform.right * 1, transform.rotation);
             newProj.SetActive(true);
             newProj.GetComponent<Rigidbody2D>().velocity = newProj.transform.right * 10;
             lastFireTime = Time.time;
