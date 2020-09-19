@@ -5,6 +5,7 @@ using UnityEngine;
 public class AimWeapon : MonoBehaviour
 {
     public float offset;
+    public GameObject player;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,9 +15,19 @@ public class AimWeapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 diff = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        Vector3 mouseWorldCoords = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 diff = mouseWorldCoords - transform.position;
         float rotZ = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0f, 0f, rotZ + offset);
+
+        if (player.transform.position.x - mouseWorldCoords.x <= 0)
+        {
+            gameObject.GetComponent<SpriteRenderer>().flipY = false;
+        } else
+        {
+            gameObject.GetComponent<SpriteRenderer>().flipY = true;
+        }
+
         /*if (transform.rotation.z == 0)
         {
 
