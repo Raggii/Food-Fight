@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     public GameObject firePos;
     public GameObject centerAxis;
     public Rigidbody2D playerRB;
-    public float recoilForce;
+    public float recoilVelocity;
     public float projectileVelocity;
     public float rateOfFire = 10; // proj per second. Default ak47 rate of fire.
     public bool isSemi;
@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
     private void Recoil()
     {
         GetComponent<MovementMotor>().InstantStop();
-        playerRB.AddForce(firePos.transform.up * -recoilForce);
+        playerRB.velocity = firePos.transform.up * -recoilVelocity;
     }
 
     private void Fire()

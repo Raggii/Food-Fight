@@ -2430,6 +2430,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offset: 0
+  player: {fileID: 1313120955}
 --- !u!1001 &1265309423
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2748,7 +2749,7 @@ MonoBehaviour:
   firePos: {fileID: 1267564986}
   centerAxis: {fileID: 116786365}
   playerRB: {fileID: 1313120958}
-  recoilForce: 0
+  recoilVelocity: 20
   projectileVelocity: 5
   rateOfFire: 10
   isSemi: 1
@@ -3189,7 +3190,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1404751532}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -51.56, y: -7.29, z: 0}
+  m_LocalPosition: {x: -51.56, y: -1.51, z: 0}
   m_LocalScale: {x: 0.40528902, y: 0.42622948, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
