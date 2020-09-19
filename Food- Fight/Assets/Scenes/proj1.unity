@@ -2430,6 +2430,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offset: 0
+  player: {fileID: 1313120955}
 --- !u!1001 &1265309423
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2748,7 +2749,7 @@ MonoBehaviour:
   firePos: {fileID: 1267564986}
   centerAxis: {fileID: 116786365}
   playerRB: {fileID: 1313120958}
-  recoilForce: 0
+  recoilForce: 1000
   projectileVelocity: 5
   rateOfFire: 10
   isSemi: 1
