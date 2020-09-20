@@ -2431,6 +2431,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   offset: 0
+  player: {fileID: 1313120955}
 --- !u!1001 &1265309423
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2705,10 +2706,10 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: c0e773ac18ee4294ea37d24dc8822299, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!4 &1313120959
 Transform:
@@ -2738,13 +2739,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1bf7f948229b624ea0576b0412b8fa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 7375919155989089823, guid: 3472a41c4108d3148a6957d80d5891a6,
-    type: 3}
+  projectile:
+  - {fileID: 3091992792435088935, guid: d48e93f4983238b4cb841ebba44b97c1, type: 3}
+  - {fileID: 103641593523461195, guid: f4460bce771da124da56fbc0b84fa7b4, type: 3}
+  - {fileID: 2957862315170052704, guid: 95020825f4a8bf9498a93ef059ed4da1, type: 3}
+  - {fileID: 7375919155989089823, guid: 3472a41c4108d3148a6957d80d5891a6, type: 3}
+  - {fileID: 1555143362566517201, guid: 0a4deea4a8459994487108b3030aa9c0, type: 3}
+  - {fileID: 3167342185695279715, guid: de3e136be5a0b0d429dd4f2a2bd4182a, type: 3}
+  - {fileID: 3468605670539618969, guid: 8b3a56624ab37074595fad9bedfe87ae, type: 3}
   firePos: {fileID: 1267564986}
   centerAxis: {fileID: 116786365}
+  playerRB: {fileID: 1313120958}
+  recoilVelocity: 20
   projectileVelocity: 5
   rateOfFire: 10
-  isSemi: 1
+  isSemi: 0
 --- !u!212 &1313120961
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3182,7 +3191,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1404751532}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -50.15, y: -5.02, z: 0}
+  m_LocalPosition: {x: -51.56, y: -1.18, z: 0}
   m_LocalScale: {x: 0.40528902, y: 0.42622948, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

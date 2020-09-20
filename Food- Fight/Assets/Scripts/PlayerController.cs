@@ -6,9 +6,11 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 
-    public GameObject projectile;
+    public GameObject[] projectile;
     public GameObject firePos;
     public GameObject centerAxis;
+    public Rigidbody2D playerRB;
+    public float recoilVelocity;
     public float projectileVelocity;
     public float rateOfFire = 10; // proj per second. Default ak47 rate of fire.
     public bool isSemi;
@@ -47,13 +49,21 @@ public class PlayerController : MonoBehaviour
         return Time.time > waitTime + lastFireTime;
     }
 
+    private void Recoil()
+    {
+        GetComponent<MovementMotor>().InstantStop();
+        playerRB.velocity = firePos.transform.up * -recoilVelocity;
+    }
+
     private void Fire()
     {
         if (CanFire())
         {
-            GameObject newProj = Instantiate(projectile, firePos.transform.position, firePos.transform.rotation);
+            int project = UnityEngine.Random.Range(0, projectile.Length);
+            GameObject newProj = Instantiate(projectile[project], firePos.transform.position, firePos.transform.rotation);
             newProj.SetActive(true);
             newProj.GetComponent<Rigidbody2D>().velocity = projectileVelocity * newProj.transform.up;
+            Recoil();
             lastFireTime = Time.time;
         }
     }

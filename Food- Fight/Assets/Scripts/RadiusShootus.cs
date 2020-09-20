@@ -18,7 +18,7 @@ public class RadiusShootus : MonoBehaviour
     private void OnDrawGizmosSelected()
     {        
         currRadius = startRadius;
-        Gizmos.color = Color.white;
+        Gizmos.color = Color.red;
         t = transform.position + transform.up;
         prevPoint = transform.position;
 
@@ -28,18 +28,19 @@ public class RadiusShootus : MonoBehaviour
             currRadius += increment;
             DrawCircle(currRadius);
             t = NextCoords(t , angleChange);
-            t.z = Mathf.Sin(cnt)* cnt;
+            //t.z = Mathf.Sin(cnt)* cnt;
 
             Gizmos.DrawIcon(t * currRadius, "Radius");
             Gizmos.DrawLine(prevPoint, t * currRadius);
             prevPoint = t * currRadius;
-            
         }
         
     }
 
+    
     private void FixedUpdate()
     {
+        
         cnt += 0.1f;
         if(cnt >= 360)
         {
