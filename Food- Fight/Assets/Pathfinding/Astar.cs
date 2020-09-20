@@ -44,6 +44,12 @@ public class AstarNode
 public class Astar : MonoBehaviour
 {
 
+    private float MINIMUM_POINT_DISTANCE = 1.0f; //The minimum distance a path point can lie from an object
+    private float REPULSION_FACTOR = 0.3f;
+    private float MAXIMUM_REPULSION_DISTANCE = 5.0f;
+
+    private bool DEBUG = true;
+
     private struct sSpline
     {
         public List<Vector2> points;
@@ -106,6 +112,7 @@ public class Astar : MonoBehaviour
 
         AstarNode node = algotrgtpos;
         List<Vector2> corners = backpropogate(node);
+        RepelPointsFromObstacles(corners);
         //corners.Insert(0, target.gameObject.transform.position);
         corners.Insert(0, target.gameObject.transform.position);
         //corners.Insert(corners.Count - 1, this.gameObject.transform.position);
@@ -237,16 +244,21 @@ public class Astar : MonoBehaviour
     {
         List<Vector2> points = new List<Vector2>();
         AstarNode prevnode = node;
-        //debug_drawv2line(new Vector3(prevnode.x * tilescale, prevnode.y * tilescale), new Vector3(node.from.x * tilescale, node.from.y * tilescale));
+        if (DEBUG)
+        {
+            debug_drawv2line(new Vector3(prevnode.x * tilescale, prevnode.y * tilescale), new Vector3(node.from.x * tilescale, node.from.y * tilescale));
+        }
         AstarNode newNode = node.from;
         while(newNode.from != null)
         {
-            //debug_drawv2line(new Vector3(newNode.x * tilescale, newNode.y * tilescale), new Vector3(newNode.from.x * tilescale, newNode.from.y * tilescale));
+            if (DEBUG)
+            {
+                debug_drawv2line(new Vector3(newNode.x * tilescale, newNode.y * tilescale), new Vector3(newNode.from.x * tilescale, newNode.from.y * tilescale));
+            }
 
             if (newNode.g - newNode.from.g != prevnode.g - newNode.g)
             {
                 // !!CORNER!!!! ! !
-                Debug.DrawLine(this.gameObject.transform.position, new Vector3(newNode.x * tilescale, newNode.y * tilescale), Color.red);
                 points.Add(new Vector3(newNode.x * tilescale, newNode.y * tilescale));
             }
 
@@ -255,6 +267,22 @@ public class Astar : MonoBehaviour
         }
 
         return points;
+    }
+
+    private void RepelPointsFromObstacles(List<Vector2> points)
+    {
+        foreach (object ob in obs)
+        {
+            for (int i = 0; i < points.Count(); i++)
+            {
+                float mag = points[i].magnitude;
+                points[i] = points[i] * Mathf.Min(Mathf.Max((MINIMUM_POINT_DISTANCE * MINIMUM_POINT_DISTANCE * REPULSION_FACTOR)/(points[i].x*points[i].x+points[i].y*points[i].y), mag*MINIMUM_POINT_DISTANCE), mag*MINIMUM_POINT_DISTANCE);
+                if (DEBUG)
+                {
+                    Debug.DrawLine(transform.position, points[i], Color.red);
+                }
+            }
+        }
     }
 
     Tuple<int, int> tileV2(Vector3 v, float s)
