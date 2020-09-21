@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5416536536845242948}
   - component: {fileID: -1588886438279649944}
   - component: {fileID: 7788466500455716661}
+  - component: {fileID: 6474636533566574200}
   m_Layer: 0
   m_Name: Projectile 1
   m_TagString: Untagged
@@ -98,7 +99,7 @@ Rigidbody2D:
   m_Mass: 0.0001
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0.3
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -130,3 +131,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.05, y: 0.052474506}
   m_EdgeRadius: 0
+--- !u!114 &6474636533566574200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7375919155989089823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56f18e6acf72ec64da915976bf929f09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effectValue: 25
+  isDamage: 1
+  timeToLive: 2

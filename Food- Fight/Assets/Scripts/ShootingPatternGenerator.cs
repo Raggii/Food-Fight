@@ -13,7 +13,7 @@ public class ShootingPatternGenerator : MonoBehaviour
 
     [Header("Projectile Data")]
     public GameObject projectile;
-    public float timeToLive = 2f;
+    public float timeToLive = 1f;
     
     [Header("Forces and Velocities (temporary)")]
     public float upwardsVelocity;
@@ -98,16 +98,12 @@ public class ShootingPatternGenerator : MonoBehaviour
             }
             else
             {
-                /* Forces need to be added dynamically. This means this has to be done on the projectile it self.
-                   Need to add to the script of the projectile during flight.*/
-
-                 // Constant velocities for now...
-                newProjRB.velocity = newProj.transform.up * upwardsVelocity + newProj.transform.right * sideVelocity
-                                     + (newProj.transform.position - transform.position) * -pullVelcoity;
+                newProj.GetComponent<ShootingPatternProjectileController>().SetValues(
+                    upwardsVelocity, sideVelocity, pullVelcoity, this.transform);
 
                 // Using this to visualise the fire rate... 
                 Debug.DrawLine(newProj.transform.position, transform.position);
-                
+                newProj.SetActive(true);
                 Destroy(newProj, timeToLive);
             }
         }
