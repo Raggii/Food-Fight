@@ -37,19 +37,19 @@ public class TreeLevels : MonoBehaviour
         int maxUpRight;
         if (nextLeft >= currentLeft)
         {
-            maxUpLeft = currentLeft;
+            maxUpLeft = 0;
         } 
         else
         {
-            maxUpLeft = nextLeft;
+            maxUpLeft = currentLeft - nextLeft;
         }
-        if (currentRight >= nextRight)
+        if (nextRight >= currentRight)
         {
-            maxUpRight = nextRight;
+            maxUpRight = currentRight;
         }
         else 
         {
-            maxUpRight = currentRight;
+            maxUpRight = nextRight;
 
 
         }
