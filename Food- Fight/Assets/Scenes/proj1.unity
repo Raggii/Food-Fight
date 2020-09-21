@@ -442,7 +442,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
-  m_WarningMessage:
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
@@ -591,57 +591,57 @@ PrefabInstance:
     - target: {fileID: 4534950627047375671, guid: a7452b0eeee34434e80f84430a65d635,
         type: 3}
       propertyPath: startingPositions.Array.data[0]
-      value:
+      value: 
       objectReference: {fileID: 2028769838}
     - target: {fileID: 4534950627047375671, guid: a7452b0eeee34434e80f84430a65d635,
         type: 3}
       propertyPath: startingPositions.Array.data[1]
-      value:
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4534950627047375671, guid: a7452b0eeee34434e80f84430a65d635,
         type: 3}
       propertyPath: startingPositions.Array.data[2]
-      value:
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4534950627047375671, guid: a7452b0eeee34434e80f84430a65d635,
         type: 3}
       propertyPath: startingPositions.Array.data[3]
-      value:
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4534950627047375671, guid: a7452b0eeee34434e80f84430a65d635,
         type: 3}
       propertyPath: rooms.Array.data[0]
-      value:
+      value: 
       objectReference: {fileID: 6623430175451606100, guid: 7ec82038624096f4f8bd4f38e97e1957,
         type: 3}
     - target: {fileID: 4534950627047375671, guid: a7452b0eeee34434e80f84430a65d635,
         type: 3}
       propertyPath: rooms.Array.data[1]
-      value:
+      value: 
       objectReference: {fileID: 2142375773828167934, guid: 9b93e97f05e057d4fb3111703c5f5f56,
         type: 3}
     - target: {fileID: 4534950627047375671, guid: a7452b0eeee34434e80f84430a65d635,
         type: 3}
       propertyPath: rooms.Array.data[2]
-      value:
+      value: 
       objectReference: {fileID: 7003968528382660177, guid: 1fbd04df977a99148af801aef63f0570,
         type: 3}
     - target: {fileID: 4534950627047375671, guid: a7452b0eeee34434e80f84430a65d635,
         type: 3}
       propertyPath: rooms.Array.data[3]
-      value:
+      value: 
       objectReference: {fileID: 2668677095310417831, guid: 2a8388c78e910c247bbe7b3f19965509,
         type: 3}
     - target: {fileID: 4534950627047375671, guid: a7452b0eeee34434e80f84430a65d635,
         type: 3}
       propertyPath: rooms.Array.data[4]
-      value:
+      value: 
       objectReference: {fileID: 6798289097578815587, guid: 8b615fd3b7b2151418acb88194494e9a,
         type: 3}
     - target: {fileID: 4534950627047375671, guid: a7452b0eeee34434e80f84430a65d635,
         type: 3}
       propertyPath: rooms.Array.data[5]
-      value:
+      value: 
       objectReference: {fileID: 6931799849946936414, guid: f66eb94aa5dad23489c7e756d0e2ebcf,
         type: 3}
     - target: {fileID: 4534950627047375671, guid: a7452b0eeee34434e80f84430a65d635,
@@ -1103,8 +1103,8 @@ MonoBehaviour:
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 76128c8475dc18447b6c723808ee8526, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   target: {fileID: 1297349137}
   obs: []
 --- !u!4 &769666597
@@ -1809,8 +1809,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 76128c8475dc18447b6c723808ee8526, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   target: {fileID: 1297349137}
   obs: []
 --- !u!1001 &1056670738
@@ -2281,8 +2281,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6cd5e4d42cfbf8449eae3323b75cb1e, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   player: {fileID: 1313120955}
 --- !u!81 &1212304134
 AudioListener:
@@ -2427,8 +2427,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0792bdeeffa7e3140bb5e3898611d6f1, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   offset: 0
   player: {fileID: 1313120955}
 --- !u!1001 &1265309423
@@ -2655,8 +2655,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac86f7d314771264aa186cb574237844, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   maxSpeed: 4
   acceleration: 15
   decclaration: 20
@@ -2736,8 +2736,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b1bf7f948229b624ea0576b0412b8fa1, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   projectile:
   - {fileID: 3091992792435088935, guid: d48e93f4983238b4cb841ebba44b97c1, type: 3}
   - {fileID: 103641593523461195, guid: f4460bce771da124da56fbc0b84fa7b4, type: 3}
@@ -2752,7 +2752,7 @@ MonoBehaviour:
   recoilVelocity: 20
   projectileVelocity: 5
   rateOfFire: 10
-  isSemi: 1
+  isSemi: 0
 --- !u!212 &1313120961
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2818,7 +2818,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
-  m_WarningMessage:
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
@@ -3190,7 +3190,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1404751532}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -51.56, y: -1.51, z: 0}
+  m_LocalPosition: {x: -51.56, y: -1.18, z: 0}
   m_LocalScale: {x: 0.40528902, y: 0.42622948, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3206,8 +3206,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5598d9b85e7c72e46b71b8d4e6a0ceb2, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   player: {fileID: 1313120955}
   minimumRotationAngle: 3
   minimumRange: 5
@@ -3248,7 +3248,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
-  m_WarningMessage:
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
@@ -3327,8 +3327,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4c796b68e94b1ef429d0be67063e3377, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1472880280
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4208,8 +4208,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 64f768f5eb8ce7a41b84e33704d58bc9, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   maxHealth: 100
   destroyOnDeath: 1
   currentHealth: 100
@@ -4264,8 +4264,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5598d9b85e7c72e46b71b8d4e6a0ceb2, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   player: {fileID: 1313120955}
   minimumRotationAngle: 3
   minimumRange: 5
