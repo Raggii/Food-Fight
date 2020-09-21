@@ -2639,9 +2639,10 @@ GameObject:
   - component: {fileID: 1313120964}
   - component: {fileID: 1313120963}
   - component: {fileID: 1313120958}
+  - component: {fileID: 1313120965}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2855,6 +2856,21 @@ CircleCollider2D:
   m_Offset: {x: -0.0025882525, y: -0.09898089}
   serializedVersion: 2
   m_Radius: 0.04864643
+--- !u!114 &1313120965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1313120955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64f768f5eb8ce7a41b84e33704d58bc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  destroyOnDeath: 1
+  currentHealth: 100
 --- !u!1001 &1336057791
 PrefabInstance:
   m_ObjectHideFlags: 0
