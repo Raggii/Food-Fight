@@ -1,5 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.Collections;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class TreeLevels : MonoBehaviour
@@ -9,6 +13,8 @@ public class TreeLevels : MonoBehaviour
     public Transform startPosition;
     public int maxHeight;
     public int maxBranchLength;
+    public int amountOfUpRooms;
+
 
     [Header("InComp")]
     private int roomMovementUp = 6;
@@ -17,6 +23,8 @@ public class TreeLevels : MonoBehaviour
     private int currentRoom;
     private int nextLeft;
     private int nextRight;
+    private int previousUp = 0;
+    private int pastLeft = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -24,12 +32,12 @@ public class TreeLevels : MonoBehaviour
 
         // Inital 4x4 Room at given starting location
         // instantiate that
-        Instantiate(rooms[0], transform.position, Quaternion.identity);
+        Instantiate(rooms[10], transform.position, Quaternion.identity);
         nextLeft = UnityEngine.Random.Range(1, maxBranchLength);
         nextRight = UnityEngine.Random.Range(1, maxBranchLength);
     }
 
-    int upRoomSelect(int currentLeft, int currentRight) 
+    List<int> upRoomSelect(int currentLeft, int currentRight) 
     {
         //THis gives the amount we have to start from the left side to start making up doors
         int maxUpLeft;
@@ -53,21 +61,45 @@ public class TreeLevels : MonoBehaviour
 
 
         }
+        List<int> upRooms = new List<int>(amountOfUpRooms + 1);
+        for (int i = 0; i < amountOfUpRooms; i++) {
 
-        int roomWithUp = UnityEngine.Random.Range(maxUpLeft, maxUpRight + 1 + maxUpLeft);
-        return roomWithUp;
+            int roomWithUp = UnityEngine.Random.Range(maxUpLeft, maxUpRight + 1 + maxUpLeft);
+
+            upRooms.Add(roomWithUp);
+        }
+        return upRooms;
 
     }
 
 
+
     // This will handel all of the room selections depending on a whole bunch of inputs
-    private int roomSelect(int currentPos, int size, int upRoom) 
+    private int roomSelect(int currentPos, int size, int upRooms, int downDoor) 
     {
-        if (upRoom == currentPos)
+
+        if (upRooms == currentPos)
         {
-            return 1;
+            if (upRooms == downDoor)
+            {
+
+                //return val with up and down in same room
+                // 5,7,9,11
+                return 10;
+            }
+            else {
+                //return room that doent have a down but must have an up
+                // 1,2,8,10
+                return 10;
+            }
+            
         }
-        else if(currentPos == 0)
+        else if (currentPos == downDoor) {
+
+            return 10;
+        
+        }
+        else if (currentPos == 0)
         {
             return 1;
         }
@@ -75,12 +107,20 @@ public class TreeLevels : MonoBehaviour
         {
             return 2;
         }
-        else 
+        else
         {
             return 0;
-        
+
         }
 
+
+    }
+
+
+    int downDoorChecker(int currentLeftAmout) 
+    {
+
+        return (currentLeftAmout - pastLeft) + previousUp;
 
     }
 
@@ -114,10 +154,13 @@ public class TreeLevels : MonoBehaviour
         {
             currentRightAmount += 1;
         }
-        int upAmount = upRoomSelect(currentLeftAmout, currentRightAmount);
-
+        List<int> upAmount = upRoomSelect(currentLeftAmout, currentRightAmount);
+        int downDoor = downDoorChecker(currentLeftAmout);
+        //Tuple<int, int> = boundarysForUp(currentLeftAmout, currentRightAmount)
         for (int i = 0; i < currentLeftAmout + currentRightAmount; i++) {
-            currentRoom = roomSelect(i, currentLeftAmout + currentRightAmount - 1, upAmount);
+
+            currentRoom = roomSelect(i, currentLeftAmout + currentRightAmount - 1, upAmount[0], downDoor);
+            previousUp = upAmount[0];
 
             Instantiate(rooms[currentRoom], transform.position, Quaternion.identity);
 
@@ -126,6 +169,7 @@ public class TreeLevels : MonoBehaviour
 
         }
         transform.position = changePos;
+        pastLeft = currentLeftAmout;
     }
 
     // Update is called once per frame

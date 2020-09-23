@@ -717,9 +717,18 @@ MonoBehaviour:
   - {fileID: 6623430175451606100, guid: 7ec82038624096f4f8bd4f38e97e1957, type: 3}
   - {fileID: 2668677095310417831, guid: 2a8388c78e910c247bbe7b3f19965509, type: 3}
   - {fileID: 7003968528382660177, guid: 1fbd04df977a99148af801aef63f0570, type: 3}
+  - {fileID: 2142375773828167934, guid: 9b93e97f05e057d4fb3111703c5f5f56, type: 3}
+  - {fileID: 6798289097578815587, guid: 8b615fd3b7b2151418acb88194494e9a, type: 3}
+  - {fileID: 6931799849946936414, guid: f66eb94aa5dad23489c7e756d0e2ebcf, type: 3}
+  - {fileID: 2994157004235708304, guid: 44d9d8b71b2ac7444a8dd1ae0cef5a4a, type: 3}
+  - {fileID: 1786419951889260750, guid: 8a7209882792cdd40972644899ae72c6, type: 3}
+  - {fileID: 1229690949273491418, guid: 57cd887bc92e1e548b8ebb71ca2acc83, type: 3}
+  - {fileID: 6475337831198019545, guid: 64c319f83a916ae4db0e9e6f7177c97d, type: 3}
+  - {fileID: 806036877582064696, guid: 057a5c0942e21cd4f94e85f78fde0097, type: 3}
   startPosition: {fileID: 2057952149}
   maxHeight: 6
   maxBranchLength: 7
+  amountOfUpRooms: 1
 --- !u!4 &4465890176894036123 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6475337831198019546, guid: 64c319f83a916ae4db0e9e6f7177c97d,
