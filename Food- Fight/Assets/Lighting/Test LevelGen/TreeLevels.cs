@@ -77,42 +77,87 @@ public class TreeLevels : MonoBehaviour
     // This will handel all of the room selections depending on a whole bunch of inputs
     private int roomSelect(int currentPos, int size, int upRooms, int downDoor) 
     {
-
-        if (upRooms == currentPos)
+        //left side
+        if (currentPos == 0)
         {
-            if (upRooms == downDoor)
+
+            // left side and up
+            if (currentPos == upRooms)
+            {
+                // Left side and up/down
+                if (currentPos == downDoor)
+                {
+                    return 9;// left up down
+
+                }
+                return 1;// left side up 
+
+            }
+            else if (currentPos == downDoor)
+            {
+                return 4;// left up down
+
+            }
+            else
             {
 
-                //return val with up and down in same room
-                // 5,7,9,11
-                return 10;
+                return 12;// only left side
             }
-            else {
-                //return room that doent have a down but must have an up
-                // 1,2,8,10
-                return 10;
-            }
-            
-        }
-        else if (currentPos == downDoor) {
 
-            return 10;
-        
         }
-        else if (currentPos == 0)
-        {
-            return 1;
-        }
+        // right side
         else if (currentPos == size)
         {
-            return 2;
+            // Right side and up
+            if (currentPos == upRooms)
+            {
+                // Right side and up/down
+                if (currentPos == downDoor)
+                {
+                    return 7;// Right up down
+
+                }
+                return 2;// Right side up 
+
+            }
+            else if (currentPos == downDoor)
+            {
+                return 3;// left up down
+
+            }
+            else
+            {
+
+                return 11;// only left side
+            }
+
         }
-        else
+        // Up rooms This and down use math
+        else if (currentPos == upRooms)
         {
-            return 0;
+            //cant have first or down in this
+            // up and down
+            if (currentPos == downDoor)
+            { //5,6,9
+                return 9;
+
+            }
+            // only up not down 1,2,8
+            return 8;
 
         }
+        //downRooms
+        else if (currentPos == downDoor)
+        {
+            // no up left or right so easy
+            //3,4,6,10
+            return 6;
 
+        }
+        else {
+
+            return 0;
+        }
 
     }
 
@@ -128,14 +173,14 @@ public class TreeLevels : MonoBehaviour
     private void treeGeneration(bool upDirection) 
     {
         //Checks for direction
-        int direction;
+        /*int direction;
         if (upDirection) {
             direction = 1;
         } else {
             direction = -1;
-        }
+        }*/
         //Move up by 1 Keep Original but could change
-        Vector2 changePos = new Vector2(transform.position.x, (transform.position.y + roomMovementUp) * direction);
+        Vector2 changePos = new Vector2(transform.position.x, (transform.position.y + roomMovementUp));
         transform.position = changePos;
         // Move Left By random up to max
         int currentLeftAmout = nextLeft;
@@ -176,10 +221,22 @@ public class TreeLevels : MonoBehaviour
     void Update()
     {
 
-        if (counter < maxHeight) 
+        if (counter < maxHeight)
         {
             treeGeneration(true);
             counter += 1;
+        } else if (counter == maxHeight) { 
+
+            int currentLeftAmout = 0;
+            int downDoorLoaction = downDoorChecker(currentLeftAmout);
+
+            Vector2 changePos = new Vector2(transform.position.x + (roomMovementLeft * downDoorLoaction) , (transform.position.y + roomMovementUp));
+            transform.position = changePos;
+
+            Instantiate(rooms[13], transform.position, Quaternion.identity);
+            counter += 1;
         }
+
+
     }
 }
