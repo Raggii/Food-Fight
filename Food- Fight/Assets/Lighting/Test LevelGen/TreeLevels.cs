@@ -225,7 +225,9 @@ public class TreeLevels : MonoBehaviour
         {
             treeGeneration(true);
             counter += 1;
-        } else if (counter == maxHeight) { 
+        }
+        // this adds extra room to the top of the maze
+        else if (counter == maxHeight) { 
 
             int currentLeftAmout = 0;
             int downDoorLoaction = downDoorChecker(currentLeftAmout);
