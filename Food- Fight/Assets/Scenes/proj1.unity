@@ -409,6 +409,80 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55cb9e8af572003489ec3dd705423fae, type: 3}
+--- !u!1001 &444064531
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3322023674367977117, guid: ec72f44f924dda74db9e6c040ae18bb6,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -57.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 3322023674367977117, guid: ec72f44f924dda74db9e6c040ae18bb6,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -7.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 3322023674367977117, guid: ec72f44f924dda74db9e6c040ae18bb6,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3322023674367977117, guid: ec72f44f924dda74db9e6c040ae18bb6,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3322023674367977117, guid: ec72f44f924dda74db9e6c040ae18bb6,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3322023674367977117, guid: ec72f44f924dda74db9e6c040ae18bb6,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3322023674367977117, guid: ec72f44f924dda74db9e6c040ae18bb6,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3322023674367977117, guid: ec72f44f924dda74db9e6c040ae18bb6,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3322023674367977117, guid: ec72f44f924dda74db9e6c040ae18bb6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3322023674367977117, guid: ec72f44f924dda74db9e6c040ae18bb6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3322023674367977117, guid: ec72f44f924dda74db9e6c040ae18bb6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3322023674367977121, guid: ec72f44f924dda74db9e6c040ae18bb6,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1313120955}
+    - target: {fileID: 3322023674367977126, guid: ec72f44f924dda74db9e6c040ae18bb6,
+        type: 3}
+      propertyPath: m_Name
+      value: JoeKiller
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ec72f44f924dda74db9e6c040ae18bb6, type: 3}
 --- !u!1 &467283029
 GameObject:
   m_ObjectHideFlags: 0
@@ -3229,6 +3303,7 @@ MonoBehaviour:
   minimumRotationAngle: 3
   minimumRange: 5
   rotationDelta: 5
+  shoot: 1
   projectile: {fileID: 5306443215574338473, guid: dd26eb8a8e28b6547ac6f7c694a9d5ea,
     type: 3}
 --- !u!1 &1428578477
@@ -4361,6 +4436,7 @@ MonoBehaviour:
   minimumRotationAngle: 3
   minimumRange: 5
   rotationDelta: 5
+  shoot: 0
   projectile: {fileID: 5306443215574338473, guid: dd26eb8a8e28b6547ac6f7c694a9d5ea,
     type: 3}
 --- !u!1001 &2101788263

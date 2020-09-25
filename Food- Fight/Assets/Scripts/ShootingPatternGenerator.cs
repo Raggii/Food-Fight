@@ -10,6 +10,7 @@ public class ShootingPatternGenerator : MonoBehaviour
     public float firingStarRadius = 5f;
     public float spawnAngleOffset = 0f;
     public float shootsTimeDelta;
+    public bool continiousUpdating = false;
 
     [Header("Projectile Data")]
     public GameObject projectile;
@@ -77,7 +78,7 @@ public class ShootingPatternGenerator : MonoBehaviour
 
     private void BuildAmmunitions()
     {        
-        if (HasGeneralConstantsChanged())
+        if (HasGeneralConstantsChanged() || continiousUpdating)
         {
             CalculateOriginSpawnPoints();
         }

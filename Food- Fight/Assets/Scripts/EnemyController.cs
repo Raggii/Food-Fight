@@ -9,6 +9,8 @@ public class EnemyController : MonoBehaviour
     public float minimumRotationAngle;
     public float minimumRange;
     public float rotationDelta;
+
+    public bool shoot = false;
     public GameObject projectile;
 
     private float lastFireTime = 0f;
@@ -36,7 +38,10 @@ public class EnemyController : MonoBehaviour
             if (minimumRotationAngle <= Mathf.Abs(angle - prevAngle))
             {
                 RotateObject(90 - angle);
-                Shoot();
+                if (shoot)
+                {
+                    Shoot();
+                }
             }
         }
     }
