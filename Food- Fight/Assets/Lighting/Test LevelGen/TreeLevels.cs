@@ -226,13 +226,13 @@ public class TreeLevels : MonoBehaviour
             treeGeneration(true);
             counter += 1;
         }
-        // this adds extra room to the top of the maze
-        else if (counter == maxHeight) { 
+        else if (counter == maxHeight)
+        { // this adds extra room to the top of the maze
 
             int currentLeftAmout = 0;
             int downDoorLoaction = downDoorChecker(currentLeftAmout);
 
-            Vector2 changePos = new Vector2(transform.position.x + (roomMovementLeft * downDoorLoaction) , (transform.position.y + roomMovementUp));
+            Vector2 changePos = new Vector2(transform.position.x + (roomMovementLeft * downDoorLoaction), (transform.position.y + roomMovementUp));
             transform.position = changePos;
 
             Instantiate(rooms[13], transform.position, Quaternion.identity);

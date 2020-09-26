@@ -44,7 +44,7 @@ public class AstarNode
 public class Astar : MonoBehaviour
 {
 
-    private float MINIMUM_POINT_DISTANCE = 1.0f; //The minimum distance a path point can lie from an object
+    private float MINIMUM_REPULSION_DISTANCE = 1.0f; //The minimum distance a path point can lie from an object
     private float REPULSION_FACTOR = 0.3f;
     private float MAXIMUM_REPULSION_DISTANCE = 5.0f;
 
@@ -271,12 +271,13 @@ public class Astar : MonoBehaviour
 
     private void RepelPointsFromObstacles(List<Vector2> points)
     {
-        foreach (object ob in obs)
+        foreach (GameObject ob in obs)
         {
             for (int i = 0; i < points.Count(); i++)
             {
                 float mag = points[i].magnitude;
-                points[i] = points[i] * Mathf.Min(Mathf.Max((MINIMUM_POINT_DISTANCE * MINIMUM_POINT_DISTANCE * REPULSION_FACTOR)/(points[i].x*points[i].x+points[i].y*points[i].y), mag*MINIMUM_POINT_DISTANCE), mag*MINIMUM_POINT_DISTANCE);
+                Vector3 = ob.
+                points[i] = points[i] * Mathf.Min(Mathf.Max((MINIMUM_POINT_DISTANCE * MINIMUM_POINT_DISTANCE * REPULSION_FACTOR)/(points[i].x*points[i].x+points[i].y*points[i].y), mag* MINIMUM_REPULSION_DISTANCE), mag*MAXIMUM_REPULSION_DISTANCE);
                 if (DEBUG)
                 {
                     Debug.DrawLine(transform.position, points[i], Color.red);
