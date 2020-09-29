@@ -170,6 +170,11 @@ public class TreeLevels : MonoBehaviour
 
     }
 
+    int testtest(int currentLeftAmout)
+    {
+        return (currentLeftAmout - pastLeft);
+    }
+
     List<int> newDoorDownChecker(int currentLeftAmout, List<int> upAmount) // gets previous up from the global
     {
         List<int> returnDownDoors = new List<int>(upAmount.Count() + 1);
@@ -178,7 +183,6 @@ public class TreeLevels : MonoBehaviour
             returnDownDoors.Add((currentLeftAmout - pastLeft) + upAmount[i]);
             
         }
-        Debug.Log(returnDownDoors[0]);
 
         return returnDownDoors;
     }
@@ -210,6 +214,8 @@ public class TreeLevels : MonoBehaviour
         List<int> upAmount = upRoomSelect(currentLeftAmout, currentRightAmount);
         int downDoor = downDoorChecker(currentLeftAmout);
         List<int> newDoorDown = newDoorDownChecker(currentLeftAmout, upAmount);
+
+
         int counter = 0;
         for (int i = 0; i < currentLeftAmout + currentRightAmount; i++) {
 
@@ -220,7 +226,7 @@ public class TreeLevels : MonoBehaviour
 
                 if (counter < amountOfUpRooms - 1)
                 {
-                    previousUp = upAmount[counter];
+                    previousUp = upAmount[counter] ;
                     counter++;
                 }         
             }
