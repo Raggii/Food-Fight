@@ -579,7 +579,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 4
-  acceleration: 15
+  acceleration: 40
   decclaration: 20
   speedThreshold: 0.15
   animator: {fileID: 1004887698}
@@ -728,6 +728,6 @@ MonoBehaviour:
   - {fileID: 5243314168970973807, guid: 6725aaa523cc7314cb1f39d2ba32765d, type: 3}
   - {fileID: 5962376876578894879, guid: 0231800325129b44a9427f3976b626b9, type: 3}
   startPosition: {fileID: 2057952149}
-  maxHeight: 6
-  maxBranchLength: 5
-  amountOfUpRooms: 1
+  maxHeight: 12
+  maxBranchLength: 6
+  amountOfUpRooms: 2

@@ -68,6 +68,7 @@ public class TreeLevels : MonoBehaviour
 
             upRooms.Add(roomWithUp);
         }
+        upRooms.Sort();
         return upRooms;
 
     }
@@ -139,7 +140,7 @@ public class TreeLevels : MonoBehaviour
             // up and down
             if (currentPos == downDoor)
             { //5,6,9
-                return 9;
+                return 10;
 
             }
             // only up not down 1,2,8
@@ -169,16 +170,23 @@ public class TreeLevels : MonoBehaviour
 
     }
 
-    //Should also return room numbers that have a chance at going upwards
-    private void treeGeneration(bool upDirection) 
+    List<int> newDoorDownChecker(int currentLeftAmout, List<int> upAmount) // gets previous up from the global
     {
-        //Checks for direction
-        /*int direction;
-        if (upDirection) {
-            direction = 1;
-        } else {
-            direction = -1;
-        }*/
+        List<int> returnDownDoors = new List<int>(upAmount.Count() + 1);
+        for (int i = 0; i < upAmount.Count(); i++) {
+
+            returnDownDoors.Add((currentLeftAmout - pastLeft) + upAmount[i]);
+            
+        }
+        Debug.Log(returnDownDoors[0]);
+
+        return returnDownDoors;
+    }
+
+    //Should also return room numbers that have a chance at going upwards
+    private void treeGeneration() 
+    {
+
         //Move up by 1 Keep Original but could change
         Vector2 changePos = new Vector2(transform.position.x, (transform.position.y + roomMovementUp));
         transform.position = changePos;
@@ -201,11 +209,21 @@ public class TreeLevels : MonoBehaviour
         }
         List<int> upAmount = upRoomSelect(currentLeftAmout, currentRightAmount);
         int downDoor = downDoorChecker(currentLeftAmout);
-        //Tuple<int, int> = boundarysForUp(currentLeftAmout, currentRightAmount)
+        List<int> newDoorDown = newDoorDownChecker(currentLeftAmout, upAmount);
+        int counter = 0;
         for (int i = 0; i < currentLeftAmout + currentRightAmount; i++) {
 
-            currentRoom = roomSelect(i, currentLeftAmout + currentRightAmount - 1, upAmount[0], downDoor);
-            previousUp = upAmount[0];
+            currentRoom = roomSelect(i, currentLeftAmout + currentRightAmount - 1, upAmount[counter], newDoorDown[0]);
+            
+
+            if (upAmount[counter] == i) {
+
+                if (counter < amountOfUpRooms - 1)
+                {
+                    previousUp = upAmount[counter];
+                    counter++;
+                }         
+            }
 
             Instantiate(rooms[currentRoom], transform.position, Quaternion.identity);
 
@@ -223,7 +241,7 @@ public class TreeLevels : MonoBehaviour
 
         if (counter < maxHeight)
         {
-            treeGeneration(true);
+            treeGeneration();
             counter += 1;
         }
         else if (counter == maxHeight)

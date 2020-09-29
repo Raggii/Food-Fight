@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -298,3 +298,4 @@ public class Astar : MonoBehaviour
         Debug.DrawLine(new Vector3(start.x, start.y, 0), new Vector3(end.x, end.y, 0), Color.green);
     }
 }
+*/
