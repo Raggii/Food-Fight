@@ -1,4 +1,4 @@
-﻿
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,8 +9,10 @@ public class ShootingPatternGenerator : MonoBehaviour
     public int numberOfProjectiles = 4;
     public float firingStarRadius = 5f;
     public float spawnAngleOffset = 0f;
+    public float inBetweenShotsDelay;
     public float shootsTimeDelta;
     public bool continiousUpdating = false;
+    public bool dynamicOffset = false;
 
     [Header("Projectile Data")]
     public GameObject projectile;
@@ -26,15 +28,16 @@ public class ShootingPatternGenerator : MonoBehaviour
     private float nextShotTime = 0f;
     private float[] prevGeneralConstants = new float[3] {0, 0, 0};
     private int i = 0;
+    private float prevOffsetAngle;
+    private bool readyToFire = true;
     private List<Vector3> spawnPoints = new List<Vector3>();
 
 
     void FixedUpdate()
     {
-        if (Time.time >= nextShotTime)
+        if (readyToFire && Time.time >= nextShotTime)
         {
-            BuildAmmunitions();
-            nextShotTime = Time.time + shootsTimeDelta;
+            StartCoroutine(BuildAmmunitions());
         }
     }
 
@@ -76,8 +79,10 @@ public class ShootingPatternGenerator : MonoBehaviour
     }
 
 
-    private void BuildAmmunitions()
-    {        
+    private IEnumerator BuildAmmunitions()
+    {
+        readyToFire = false;
+
         if (HasGeneralConstantsChanged() || continiousUpdating)
         {
             CalculateOriginSpawnPoints();
@@ -107,8 +112,18 @@ public class ShootingPatternGenerator : MonoBehaviour
                 newProj.SetActive(true);
                 Destroy(newProj, timeToLive);
             }
+            if (inBetweenShotsDelay>0) {
+                yield return new WaitForSeconds(inBetweenShotsDelay);
+            }
         }
-        
+        readyToFire = true;
+        nextShotTime = Time.time + shootsTimeDelta;
+
+        if (dynamicOffset)
+        {
+            spawnAngleOffset += spawnAngleOffset;
+            spawnAngleOffset = spawnAngleOffset % 360;
+        }
     }
 
     private void OnDrawGizmosSelected()

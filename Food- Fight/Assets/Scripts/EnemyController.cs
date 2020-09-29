@@ -24,12 +24,17 @@ public class EnemyController : MonoBehaviour
 
     public bool InRange()
     {
-        return Mathf.Abs(Vector2.Distance(player.transform.position, transform.position)) <= minimumRange;
+
+         return Mathf.Abs(Vector2.Distance(player.transform.position, transform.position)) <= minimumRange;
+
     }
 
     void FixedUpdate()
     {
-        if (InRange())
+        if (player == null)
+        {
+            Shoot();
+        } else if (InRange())
         {
             float angle = Mathf.Atan2(player.transform.position.x - transform.position.x, player.transform.position.y - transform.position.y) * Mathf.Rad2Deg;
 

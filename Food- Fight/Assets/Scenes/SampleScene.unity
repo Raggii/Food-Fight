@@ -441,10 +441,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3322023674367977121, guid: ec72f44f924dda74db9e6c040ae18bb6,
+        type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3322023674367977126, guid: ec72f44f924dda74db9e6c040ae18bb6,
         type: 3}
       propertyPath: m_Name
       value: JoeKiller
+      objectReference: {fileID: 0}
+    - target: {fileID: 3322023674367977126, guid: ec72f44f924dda74db9e6c040ae18bb6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec72f44f924dda74db9e6c040ae18bb6, type: 3}
@@ -463,12 +473,12 @@ PrefabInstance:
     - target: {fileID: 5665936413376848281, guid: bd28347c40582f842ad5eb2d09c39b00,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.42
+      value: 6.85
       objectReference: {fileID: 0}
     - target: {fileID: 5665936413376848281, guid: bd28347c40582f842ad5eb2d09c39b00,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.95
+      value: 0.46
       objectReference: {fileID: 0}
     - target: {fileID: 5665936413376848281, guid: bd28347c40582f842ad5eb2d09c39b00,
         type: 3}
