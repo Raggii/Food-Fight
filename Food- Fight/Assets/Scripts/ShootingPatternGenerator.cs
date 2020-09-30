@@ -11,7 +11,7 @@ public class ShootingPatternGenerator : MonoBehaviour
     public float spawnAngleOffset = 0f;
     public float inBetweenShotsDelay;
     public float shootsTimeDelta;
-    public bool continiousUpdating = false;
+    public bool objectRotatesIndepedentlyAlongZ = false;
     public bool dynamicOffset = false;
 
     [Header("Projectile Data")]
@@ -28,7 +28,6 @@ public class ShootingPatternGenerator : MonoBehaviour
     private float nextShotTime = 0f;
     private float[] prevGeneralConstants = new float[3] {0, 0, 0};
     private int i = 0;
-    private float prevOffsetAngle;
     private bool readyToFire = true;
     private List<Vector3> spawnPoints = new List<Vector3>();
 
@@ -83,7 +82,7 @@ public class ShootingPatternGenerator : MonoBehaviour
     {
         readyToFire = false;
 
-        if (HasGeneralConstantsChanged() || continiousUpdating)
+        if (HasGeneralConstantsChanged() || objectRotatesIndepedentlyAlongZ)
         {
             CalculateOriginSpawnPoints();
         }

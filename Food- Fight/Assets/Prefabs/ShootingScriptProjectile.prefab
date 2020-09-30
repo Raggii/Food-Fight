@@ -167,5 +167,5 @@ MonoBehaviour:
   effectValue: 25
   timeToLive: 2
   isDamage: 1
-  destoryOnImpact: 1
+  destoryOnImpact: 0
   rb: {fileID: 3542062906605963733}
