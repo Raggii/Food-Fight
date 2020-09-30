@@ -24,6 +24,7 @@ public class TreeLevels : MonoBehaviour
     private int nextLeft;
     private int nextRight;
     private int previousUp = 0;
+    private List<int> previousUps = new List<int>(1);
     private int pastLeft = 0;
 
     // Start is called before the first frame update
@@ -170,17 +171,23 @@ public class TreeLevels : MonoBehaviour
 
     }
 
-    int testtest(int currentLeftAmout)
+    /*int testtest(int currentLeftAmout)
     {
         return (currentLeftAmout - pastLeft);
-    }
+    }*/
 
-    List<int> newDoorDownChecker(int currentLeftAmout, List<int> upAmount) // gets previous up from the global
+    List<int> newDoorDownChecker(int currentLeftAmout) // gets previous up from the global
     {
-        List<int> returnDownDoors = new List<int>(upAmount.Count() + 1);
-        for (int i = 0; i < upAmount.Count(); i++) {
+        List<int> returnDownDoors = new List<int>(previousUps.Count() + 1);
+        if (previousUps.Count() == 0) {
+            Debug.Log("Here");
+/*            returnDownDoors.Add(0);*/
+            return returnDownDoors;
+        }
+        
+        for (int i = 0; i < previousUps.Count(); i++) {
 
-            returnDownDoors.Add((currentLeftAmout - pastLeft) + upAmount[i]);
+            returnDownDoors.Add((currentLeftAmout - pastLeft) + previousUps[i]);
             
         }
 
@@ -213,23 +220,35 @@ public class TreeLevels : MonoBehaviour
         }
         List<int> upAmount = upRoomSelect(currentLeftAmout, currentRightAmount);
         int downDoor = downDoorChecker(currentLeftAmout);
-        List<int> newDoorDown = newDoorDownChecker(currentLeftAmout, upAmount);
+        List<int> newDoorDown = newDoorDownChecker(currentLeftAmout);
 
+        if (newDoorDown.Count() == 0) {
+            newDoorDown.Add(downDoor);
 
+        }
         int counter = 0;
+        int sndCounter = 0;
         for (int i = 0; i < currentLeftAmout + currentRightAmount; i++) {
 
-            currentRoom = roomSelect(i, currentLeftAmout + currentRightAmount - 1, upAmount[counter], newDoorDown[0]);
-            
-
+            currentRoom = roomSelect(i, currentLeftAmout + currentRightAmount - 1, upAmount[counter], newDoorDown[sndCounter]);
             if (upAmount[counter] == i) {
 
                 if (counter < amountOfUpRooms - 1)
                 {
-                    previousUp = upAmount[counter] ;
+                    previousUp = upAmount[counter];
                     counter++;
                 }         
             }
+            //testing
+            if (newDoorDown[sndCounter] == i)
+            {
+
+                if (counter < newDoorDown.Count() - 1)
+                {
+                    sndCounter++;
+                }
+            }
+
 
             Instantiate(rooms[currentRoom], transform.position, Quaternion.identity);
 
@@ -237,6 +256,7 @@ public class TreeLevels : MonoBehaviour
             transform.position = slightChange;
 
         }
+        previousUps = upAmount;
         transform.position = changePos;
         pastLeft = currentLeftAmout;
     }
