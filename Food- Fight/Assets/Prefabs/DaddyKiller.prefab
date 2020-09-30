@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3709548332045739713}
   - component: {fileID: 5021131129037635045}
   - component: {fileID: 8436269251575008125}
+  - component: {fileID: 5103360839759300694}
   m_Layer: 0
   m_Name: DaddyKiller
   m_TagString: Damagable
@@ -47,16 +48,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ae907a769f604942b83b64bc5398ef0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfProjectiles: 4
+  numberOfProjectiles: 5
   firingStarRadius: 1
   spawnAngleOffset: 45
+  inBetweenShotsDelay: 0
   shootsTimeDelta: 2.5
+  numberBulletsLimit: 0
+  objectRotatesIndepedentlyAlongZ: 0
+  dynamicOffset: 0
+  reverseOrderFiring: 0
+  loopFiring: 1
+  limitBullets: 0
   projectile: {fileID: 3542062906605963731, guid: cb5902ced54850a45bf6dca2ae672f22,
     type: 3}
   timeToLive: 10
-  upwardsVelocity: 2
-  sideVelocity: 1
-  pullVelcoity: 1.5
+  upwardsVelocity: 1
+  sideVelocity: 0
+  pullVelcoity: 0
 --- !u!50 &3709548332045739713
 Rigidbody2D:
   serializedVersion: 4
@@ -119,6 +127,19 @@ MonoBehaviour:
   maxHealth: 100
   destroyOnDeath: 1
   currentHealth: 100
+--- !u!114 &5103360839759300694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5665936413376848280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10f2a74fa56fa0e46b25903ce0f76369, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gen: {fileID: 5665936413376848282}
 --- !u!1 &5665936414982081365
 GameObject:
   m_ObjectHideFlags: 0
