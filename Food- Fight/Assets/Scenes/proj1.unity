@@ -3106,8 +3106,8 @@ MonoBehaviour:
   maxHealth: 100
   destroyOnDeath: 0
   screenShakeOnHit: 1
-  shakeMagnitude: 600
-  shakeDuration: 12312312
+  shakeMagnitude: 0.12
+  shakeDuration: 0.09
   camShake: {fileID: 1212304136}
 --- !u!1001 &1336057791
 PrefabInstance:
