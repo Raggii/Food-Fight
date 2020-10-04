@@ -2989,7 +2989,7 @@ MonoBehaviour:
   projectileVelocity: 5
   rateOfFire: 10
   isSemi: 0
-  playShotSFX: 0
+  playShotSFX: 1
 --- !u!212 &1313120961
 SpriteRenderer:
   m_ObjectHideFlags: 0
