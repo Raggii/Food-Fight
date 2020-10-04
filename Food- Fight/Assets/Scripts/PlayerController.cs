@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     public float projectileVelocity;
     public float rateOfFire = 10; // proj per second. Default ak47 rate of fire.
     public bool isSemi;
-    
+
     private float lastFireTime = 0f;
     private float waitTime = 0f;
 

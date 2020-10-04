@@ -6,9 +6,13 @@ public class HealthManager : MonoBehaviour
     [Header("\"Static\" Values")]
     public float maxHealth = 100f;
     public bool destroyOnDeath = false;
-    
-    [Header("Dynamic Values (for debugging)")]
-    public float currentHealth = 100f;
+    public bool screenShakeOnHit = false;
+    public float shakeMagnitude = 0.4f;
+    public float shakeDuration = 0.15f;
+
+    public CamShake camShake;
+
+    private float currentHealth = 100f;
 
     public void Awake()
     {
@@ -42,6 +46,12 @@ public class HealthManager : MonoBehaviour
 
     public bool Damage(float damage)
     {
+
+        if(screenShakeOnHit)
+        {
+            StartCoroutine(camShake.Shake(0.15f, 0.4f));
+        }
+
         if (currentHealth - damage < 0)
         {
             currentHealth = 0;
