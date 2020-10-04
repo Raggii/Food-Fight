@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public float projectileVelocity;
     public float rateOfFire = 10; // proj per second. Default ak47 rate of fire.
     public bool isSemi;
+    public bool playShotSFX = false;
 
     private float lastFireTime = 0f;
     private float waitTime = 0f;
@@ -69,7 +70,10 @@ public class PlayerController : MonoBehaviour
     {
         if (CanFire())
         {
-            PlaySound();
+            if (playShotSFX)
+            {
+                PlaySound();
+            }
 
             int project = UnityEngine.Random.Range(0, projectile.Length);
             GameObject newProj = Instantiate(projectile[project], firePos.transform.position, firePos.transform.rotation);

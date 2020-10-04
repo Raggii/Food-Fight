@@ -756,7 +756,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &600474886
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2989,6 +2989,7 @@ MonoBehaviour:
   projectileVelocity: 5
   rateOfFire: 10
   isSemi: 0
+  playShotSFX: 0
 --- !u!212 &1313120961
 SpriteRenderer:
   m_ObjectHideFlags: 0
