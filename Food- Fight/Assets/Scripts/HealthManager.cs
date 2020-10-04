@@ -49,7 +49,7 @@ public class HealthManager : MonoBehaviour
 
         if(screenShakeOnHit)
         {
-            StartCoroutine(camShake.Shake(0.15f, 0.4f));
+            StartCoroutine(camShake.Shake(shakeDuration, shakeMagnitude));
         }
 
         if (currentHealth - damage < 0)
