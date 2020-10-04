@@ -1,16 +1,7 @@
 fileFormatVersion: 2
-guid: faa51577fb5cc8640aaf569de684f960
+guid: a576898da35c09d4dbc4a118b2b5012b
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: 4824328389704425691
-    second: Heart 1_0
-  - first:
-      213: -2752216940372235313
-    second: Heart 1_1
-  - first:
-      213: 6375093254594437473
-    second: Heart 1_2
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -49,7 +40,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -106,70 +97,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: Heart 1_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 14
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bd02a2c2c1573f240800000000000000
-      internalID: 4824328389704425691
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Heart 1_1
-      rect:
-        serializedVersion: 2
-        x: 14
-        y: 0
-        width: 14
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fcbec4c46492ec9d0800000000000000
-      internalID: -2752216940372235313
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Heart 1_2
-      rect:
-        serializedVersion: 2
-        x: 28
-        y: 0
-        width: 14
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1612712d981e87850800000000000000
-      internalID: 6375093254594437473
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
