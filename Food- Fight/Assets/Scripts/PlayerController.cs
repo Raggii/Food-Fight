@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public GameObject[] projectile;
     public GameObject firePos;
     public GameObject centerAxis;
+    public AudioSource gunshot;
     public Rigidbody2D playerRB;
     public float recoilVelocity;
     public float projectileVelocity;
@@ -55,10 +56,21 @@ public class PlayerController : MonoBehaviour
         playerRB.velocity = firePos.transform.up * -recoilVelocity;
     }
 
+
+    private void PlaySound()
+    {
+
+        AudioSource Shot = Instantiate(gunshot, transform.position, transform.rotation);
+        Shot.gameObject.SetActive(true);
+        Destroy(Shot, Shot.clip.length);
+    }
+
     private void Fire()
     {
         if (CanFire())
         {
+            PlaySound();
+
             int project = UnityEngine.Random.Range(0, projectile.Length);
             GameObject newProj = Instantiate(projectile[project], firePos.transform.position, firePos.transform.rotation);
             newProj.SetActive(true);
