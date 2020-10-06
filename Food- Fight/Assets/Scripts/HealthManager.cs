@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class HealthManager : MonoBehaviour
 {
@@ -13,6 +14,14 @@ public class HealthManager : MonoBehaviour
     public CamShake camShake;
 
     private float currentHealth = 100f;
+
+    [Header("Health Bar")]
+    public int amountOfHealth;
+    public int numOfHearts; // Get script from here
+
+    public Image[] hearts;
+    public Sprite fullHeart;
+    public Sprite emptyHeart;
 
     public void Awake()
     {
@@ -58,6 +67,7 @@ public class HealthManager : MonoBehaviour
         } else
         {
             currentHealth -= damage;
+            amountOfHealth -= 1;
         }
 
         return IsDead();
@@ -72,5 +82,44 @@ public class HealthManager : MonoBehaviour
             currentHealth += heal;
         }
     }
-    
+
+    //Health update stuff i guess;
+    void Update()
+    {
+
+        if (amountOfHealth > numOfHearts)
+        {
+
+            amountOfHealth = numOfHearts;
+
+
+        }
+
+        for (int i = 0; i < hearts.Length; i++)
+        {
+            if (i < amountOfHealth)
+            {
+
+                hearts[i].sprite = fullHeart;
+            }
+            else
+            {
+
+                hearts[i].sprite = emptyHeart;
+            }
+            if (i < numOfHearts)
+            {
+
+                hearts[i].enabled = true;
+            }
+            else
+            {
+                hearts[i].enabled = false;
+
+            }
+        }
+
+
+    }
+
 }
