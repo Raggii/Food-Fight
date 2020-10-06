@@ -72,7 +72,7 @@ public class HealthManager : MonoBehaviour
 
         return IsDead();
     }
-    
+
     public void Heal(float heal)
     {
         if (currentHealth + heal > maxHealth)
