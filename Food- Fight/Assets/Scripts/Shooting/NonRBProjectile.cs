@@ -26,9 +26,11 @@ public class NonRBProjectile : MonoBehaviour
     private int i = 0;
 
 
+
     void Start()
     {
         currPos = transform.position;
+        this.gameObject.SetActive(true);
     }
 
 
@@ -74,7 +76,7 @@ public class NonRBProjectile : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawLine(transform.position, directionObj.transform.position);
+        //Gizmos.DrawLine(transform.position, directionObj.transform.position);
     }
 
     void Update()
