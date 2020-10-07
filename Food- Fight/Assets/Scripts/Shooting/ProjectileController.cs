@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NonRBProjectile : MonoBehaviour
+public class ProjectileController : MonoBehaviour
 {
 
     public float stepResolution;
@@ -17,14 +17,37 @@ public class NonRBProjectile : MonoBehaviour
     private float stepSize = 0f;
     private bool hasHit = false;
 
-    private Vector2 currPos = new Vector2();
+    private Vector2 currPos = new Vector2(0, 0);
     private Vector2 nextPos = new Vector2();
     private Vector2 origin = new Vector2();
 
     private float minDistance = float.PositiveInfinity;
     private int minDistanceIndex = 0;
     private int i = 0;
+    private float upwardsVelocity;
+    private float sideVelocity;
+    private float pullVelocity;
+    private Transform parent;
+    private bool hasValues;
 
+    public void SetValues(float upwardsVelocity, float sideVelocity, float pullVelocity, Transform parent)
+    {
+        this.upwardsVelocity = upwardsVelocity;
+        this.sideVelocity = sideVelocity;
+        this.pullVelocity = pullVelocity;
+        this.parent = parent;
+        this.hasValues = true;
+    }
+
+    void CalculateVelocity()
+    {
+        if (hasValues && parent != null)
+        {
+            velocity = (transform.position - parent.position).normalized * upwardsVelocity + 
+                Vector3.Cross((parent.transform.position - transform.position), transform.forward).normalized * sideVelocity +
+                (transform.position - parent.position).normalized * -pullVelocity;
+        }
+    }
 
 
     void Start()
@@ -74,18 +97,20 @@ public class NonRBProjectile : MonoBehaviour
     }
 
 
-    private void OnDrawGizmos()
+    void FixedUpdate()
     {
-        //Gizmos.DrawLine(transform.position, directionObj.transform.position);
-    }
 
-    void Update()
-    {
         stepSize = 1f / stepResolution;
         for (step=0; step<1f; step += stepSize)
         {
             if (!hasHit)
             {
+                if (hasValues)
+                {
+                    CalculateVelocity();
+                    hasValues = false;
+                }
+
                 nextPos = currPos + velocity * stepSize * Time.deltaTime;
                 Collider2D[] results = Physics2D.OverlapCircleAll(currPos, collider.radius);
 
@@ -95,21 +120,25 @@ public class NonRBProjectile : MonoBehaviour
                     MinDistanceHit(results);
                     HitEvent(results[minDistanceIndex]);
                 }
-                /*   
-                if (!hasHit)
-                {      
-                    RaycastHit2D hit = Physics2D.Raycast(currPos, (currPos-nextPos).normalized, stepSize);  
-                    if (hit.collider != null)
-                    {
-                            hasHit = true;
-                            HitEvent(hit);
-                        
-                    }
-                }
-               */
+
                 currPos = nextPos;
                 transform.position = currPos;
             }
         }
     }
 }
+
+
+
+/*   
+if (!hasHit)
+{      
+    RaycastHit2D hit = Physics2D.Raycast(currPos, (currPos-nextPos).normalized, stepSize);  
+    if (hit.collider != null)
+    {
+            hasHit = true;
+            HitEvent(hit);
+
+    }
+}
+*/

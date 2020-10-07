@@ -62,7 +62,7 @@ MonoBehaviour:
   projectile: {fileID: 3542062906605963731, guid: cb5902ced54850a45bf6dca2ae672f22,
     type: 3}
   timeToLive: 10
-  upwardsVelocity: 1
+  upwardsVelocity: 0.25
   sideVelocity: 0
   pullVelcoity: 0
 --- !u!50 &3709548332045739713
@@ -126,7 +126,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   destroyOnDeath: 1
-  currentHealth: 100
+  screenShakeOnHit: 0
+  shakeMagnitude: 0.4
+  shakeDuration: 0.15
+  camShake: {fileID: 0}
+  amountOfHealth: 0
+  numOfHearts: 0
+  hearts: []
+  fullHeart: {fileID: 0}
+  emptyHeart: {fileID: 0}
 --- !u!114 &5103360839759300694
 MonoBehaviour:
   m_ObjectHideFlags: 0

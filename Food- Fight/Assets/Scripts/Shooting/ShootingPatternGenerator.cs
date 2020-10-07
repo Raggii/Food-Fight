@@ -112,22 +112,17 @@ public class ShootingPatternGenerator : MonoBehaviour
         }
 
         GameObject newProj = Instantiate(projectile, bulletPoint, rot);
-        Rigidbody2D newProjRB = newProj.GetComponent<Rigidbody2D>();
+        //Rigidbody2D newProjRB = newProj.GetComponent<Rigidbody2D>();
+        
 
-        if (newProjRB == null)
-        {
-            Destroy(newProj);
-        }
-        else
-        {
-            newProj.GetComponent<ShootingPatternProjectileController>().SetValues(
-                upwardsVelocity, sideVelocity, pullVelcoity, this.transform);
+        newProj.GetComponent<ProjectileController>().SetValues(
+            upwardsVelocity, sideVelocity, pullVelcoity, this.transform);
 
-            // Using this to visualise the fire rate... 
-            Debug.DrawLine(newProj.transform.position, transform.position);
-            newProj.SetActive(true);
-            Destroy(newProj, timeToLive);
-        }
+        // Using this to visualise the fire rate... 
+        Debug.DrawLine(newProj.transform.position, transform.position);
+        newProj.SetActive(true);
+        Destroy(newProj, timeToLive);
+        
     }
 
     public int GetNumberOfBullets()
