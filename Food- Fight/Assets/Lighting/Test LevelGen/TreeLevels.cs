@@ -179,18 +179,14 @@ public class TreeLevels : MonoBehaviour
     List<int> newDoorDownChecker(int currentLeftAmout) // gets previous up from the global
     {
         List<int> returnDownDoors = new List<int>(previousUps.Count() + 1);
-        if (previousUps.Count() == 0) {
-            Debug.Log("Here");
-/*            returnDownDoors.Add(0);*/
-            return returnDownDoors;
+        if (previousUps.Count() <= 0) {
+            previousUps.Add(0);
         }
         
         for (int i = 0; i < previousUps.Count(); i++) {
 
-            returnDownDoors.Add((currentLeftAmout - pastLeft) + previousUps[i]);
-            
+            returnDownDoors.Add(Mathf.Max((currentLeftAmout - pastLeft) + previousUps[i], 0));
         }
-
         return returnDownDoors;
     }
 
@@ -221,6 +217,9 @@ public class TreeLevels : MonoBehaviour
         List<int> upAmount = upRoomSelect(currentLeftAmout, currentRightAmount);
         int downDoor = downDoorChecker(currentLeftAmout);
         List<int> newDoorDown = newDoorDownChecker(currentLeftAmout);
+        
+        // This solves the level generation down door problem, figure out how and why??
+        newDoorDown.Add(0);
 
         if (newDoorDown.Count() == 0) {
             newDoorDown.Add(downDoor);
@@ -230,25 +229,26 @@ public class TreeLevels : MonoBehaviour
         int sndCounter = 0;
         for (int i = 0; i < currentLeftAmout + currentRightAmount; i++) {
 
+            
             currentRoom = roomSelect(i, currentLeftAmout + currentRightAmount - 1, upAmount[counter], newDoorDown[sndCounter]);
+            
             if (upAmount[counter] == i) {
 
                 if (counter < amountOfUpRooms - 1)
                 {
                     previousUp = upAmount[counter];
                     counter++;
-                }         
+                }
             }
+            
             //testing
             if (newDoorDown[sndCounter] == i)
             {
-
-                if (counter < newDoorDown.Count() - 1)
+                if (sndCounter < newDoorDown.Count()-1)
                 {
-                    sndCounter++;
+                    sndCounter += 1;
                 }
             }
-
 
             Instantiate(rooms[currentRoom], transform.position, Quaternion.identity);
 
@@ -256,7 +256,15 @@ public class TreeLevels : MonoBehaviour
             transform.position = slightChange;
 
         }
-        previousUps = upAmount;
+
+        //previousUps = upAmount;
+
+        previousUps.Clear();
+        for (int i = 0; i<upAmount.Count(); i++)
+        {
+            previousUps.Add(upAmount[i]);
+        }
+
         transform.position = changePos;
         pastLeft = currentLeftAmout;
     }
@@ -267,8 +275,10 @@ public class TreeLevels : MonoBehaviour
 
         if (counter < maxHeight)
         {
+            Debug.Log("" + counter);
             treeGeneration();
             counter += 1;
+
         }
         else if (counter == maxHeight)
         { // this adds extra room to the top of the maze

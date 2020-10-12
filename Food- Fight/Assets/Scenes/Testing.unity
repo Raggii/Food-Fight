@@ -951,11 +951,13 @@ MonoBehaviour:
   - {fileID: 2957862315170052704, guid: 95020825f4a8bf9498a93ef059ed4da1, type: 3}
   firePos: {fileID: 481570192}
   centerAxis: {fileID: 642312015}
+  gunshot: {fileID: 0}
   playerRB: {fileID: 1004887703}
   recoilVelocity: 0
   projectileVelocity: 5
   rateOfFire: 10
   isSemi: 1
+  playShotSFX: 0
 --- !u!61 &1004887702
 BoxCollider2D:
   m_ObjectHideFlags: 0
