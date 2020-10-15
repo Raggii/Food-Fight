@@ -33,7 +33,7 @@ public class TreeLevels : MonoBehaviour
 
         // Inital 4x4 Room at given starting location
         // instantiate that
-        Instantiate(rooms[10], transform.position, Quaternion.identity);
+        Instantiate(rooms[14], transform.position, Quaternion.identity);
         nextLeft = UnityEngine.Random.Range(1, maxBranchLength);
         nextRight = UnityEngine.Random.Range(1, maxBranchLength);
     }
