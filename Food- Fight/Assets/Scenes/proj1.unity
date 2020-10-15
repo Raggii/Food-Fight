@@ -3359,11 +3359,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 4
-  acceleration: 15
-  decclaration: 20
+  acceleration: 2
+  decclaration: 2
   speedThreshold: 0.3
-  animator: {fileID: 1313120962}
+  stepResolution: 50
   rb: {fileID: 1313120958}
+  animator: {fileID: 1313120962}
 --- !u!61 &1313120957
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3419,7 +3420,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1313120955}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -52.911, y: -5.942, z: 0}
+  m_LocalPosition: {x: -50.07, y: -5.942, z: 0}
   m_LocalScale: {x: 2.7, y: 2.7, z: 1}
   m_Children:
   - {fileID: 600474887}
@@ -3456,7 +3457,7 @@ MonoBehaviour:
   projectileVelocity: 5
   rateOfFire: 10
   isSemi: 0
-  playShotSFX: 1
+  playShotSFX: 0
 --- !u!212 &1313120961
 SpriteRenderer:
   m_ObjectHideFlags: 0

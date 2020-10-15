@@ -99,7 +99,6 @@ public class ProjectileController : MonoBehaviour
 
     void FixedUpdate()
     {
-
         stepSize = 1f / stepResolution;
         for (step=0; step<1f; step += stepSize)
         {
