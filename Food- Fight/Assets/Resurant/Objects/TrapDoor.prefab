@@ -37,7 +37,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 1, y: -3}
-  m_SizeDelta: {x: 800, y: 470}
+  m_SizeDelta: {x: 810, y: 470}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1698841559335542832
 CanvasRenderer:
@@ -231,6 +231,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: 1
   lvlName: 1
+  fader: {fileID: 3044131296523507658}
+  transTime: 1
 --- !u!1 &6680578920758557557
 GameObject:
   m_ObjectHideFlags: 0
