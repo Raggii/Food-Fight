@@ -6,38 +6,17 @@ using UnityEngine.SceneManagement;
 public class changeSceen : MonoBehaviour
 {
 
-    public int index;
-    public string lvlName;
-    public Animator fader;
-
-    public float transTime;
+    public int levelIndex;
 
     void OnTriggerEnter2D(Collider2D other)
     {
 
         if (other.CompareTag("Player"))
         {
-            loadNewLevel();
+            SceneManager.LoadScene(levelIndex);
 
         }
     
     }
 
-    public void loadNewLevel() 
-    {
-        StartCoroutine(LoadLevel(index));
-        //SceneManager.LoadScene(lvlName);
-    }
-
-    IEnumerator LoadLevel(int levelIndex)
-    {
-        // play animation
-        fader.SetTrigger("Start");
-
-        yield return new WaitForSeconds(transTime);
-
-        SceneManager.LoadScene(levelIndex);
-        //wait for animation
-    
-    }
 }
