@@ -11,10 +11,9 @@ public class MovementMotor : MonoBehaviour
     public float decclaration = 40f;
     public float speedThreshold = 0.3f;
     public int stepResolution = 20;
-
+    public float recoilDuration = 0.1f;
 
     [Header("Components")]
-    public Rigidbody2D rb;
     public Animator animator;
 
     private Vector2 dir = new Vector2(0, 0);            // direction
@@ -23,6 +22,8 @@ public class MovementMotor : MonoBehaviour
     private float currentPause = 0f;
     private float stepSize = 0f;
     private float step = 0;
+    private Vector2 recoil;
+    private float recoilTimeLeft;
 
     private Vector2 currPos;
     private Vector2 nextPos;
@@ -57,7 +58,7 @@ public class MovementMotor : MonoBehaviour
         currentPause = Time.time + 0.1f;
         currentVelocity = new Vector2(0, 0);
         dir = new Vector2(0, 0);
-        rb.velocity = new Vector2(0, 0);
+        //rb.velocity = new Vector2(0, 0);
     }
 
     public float GetNewVelocity(float direction, float currentVelocity, float deltaTime)
@@ -88,6 +89,13 @@ public class MovementMotor : MonoBehaviour
      return newVelocity;
     }
     
+    public void Recoil(Vector2 recoil)
+    {
+        this.recoil = recoil;
+        recoilTimeLeft = recoilDuration;
+        return;
+    }
+
 
     void FixedUpdate()
     {
@@ -99,7 +107,13 @@ public class MovementMotor : MonoBehaviour
             currentVelocity.x = GetNewVelocity(dir.x, currentVelocity.x, Time.deltaTime);
             currentVelocity.y = GetNewVelocity(dir.y, currentVelocity.y, Time.deltaTime);
 
-            currPos += (currentVelocity * stepSize *Time.deltaTime);
+            currPos += (currentVelocity * stepSize * Time.deltaTime );
+
+            if (recoilTimeLeft > 0)
+            {
+                currPos += (recoil * stepSize * Time.deltaTime);
+            }
+
             transform.position = currPos;
         }        
     }

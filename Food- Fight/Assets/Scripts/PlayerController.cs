@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     public GameObject firePos;
     public GameObject centerAxis;
     public AudioSource gunshot;
-    public Rigidbody2D playerRB;
+    public MovementMotor motor;
     public float recoilVelocity;
     public float projectileVelocity;
     public float rateOfFire = 10; // proj per second. Default ak47 rate of fire.
@@ -30,13 +30,17 @@ public class PlayerController : MonoBehaviour
     {
         UpdateFirePosDirection();
 
-        if (Input.GetKeyDown(KeyCode.Mouse0) && isSemi) {
-            Fire();
-        }
-
-        if (Input.GetKey(KeyCode.Mouse0) && !isSemi)
+        if (isSemi)
         {
-            Fire();
+            if (Input.GetKeyDown(KeyCode.Mouse0) && isSemi)
+            {
+                Fire();
+            }
+        } else {
+            if (Input.GetKey(KeyCode.Mouse0))
+            {
+                Fire();
+            }
         }
     }
 
@@ -49,12 +53,6 @@ public class PlayerController : MonoBehaviour
     public bool CanFire()
     {
         return Time.time > waitTime + lastFireTime;
-    }
-
-    private void Recoil()
-    {
-        GetComponent<MovementMotor>().InstantStop();
-        playerRB.velocity = firePos.transform.up * -recoilVelocity;
     }
 
 
@@ -79,7 +77,7 @@ public class PlayerController : MonoBehaviour
             GameObject newProj = Instantiate(projectile[project], firePos.transform.position, firePos.transform.rotation);
             newProj.SetActive(true);
             newProj.GetComponent<Rigidbody2D>().velocity = projectileVelocity * newProj.transform.up;
-            Recoil();
+            motor.Recoil(firePos.transform.up * recoilVelocity);
             lastFireTime = Time.time;
         }
     }
