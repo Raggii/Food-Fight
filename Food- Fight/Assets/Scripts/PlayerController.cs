@@ -58,7 +58,6 @@ public class PlayerController : MonoBehaviour
 
     private void PlaySound()
     {
-
         AudioSource Shot = Instantiate(gunshot, transform.position, transform.rotation);
         Shot.gameObject.SetActive(true);
         Destroy(Shot, Shot.clip.length);
@@ -70,14 +69,14 @@ public class PlayerController : MonoBehaviour
         {
             if (playShotSFX)
             {
-                PlaySound();
+                PlaySound(); 
             }
 
             int project = UnityEngine.Random.Range(0, projectile.Length);
             GameObject newProj = Instantiate(projectile[project], firePos.transform.position, firePos.transform.rotation);
             newProj.SetActive(true);
             newProj.GetComponent<Rigidbody2D>().velocity = projectileVelocity * newProj.transform.up;
-            motor.Recoil(firePos.transform.up * recoilVelocity);
+
             lastFireTime = Time.time;
         }
     }

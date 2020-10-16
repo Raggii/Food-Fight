@@ -11,7 +11,7 @@ public class ProjectileController : MonoBehaviour
     public float radiusDelta;
     public float effectValue;
     public bool isDamage;
-    public GameObject directionObj;
+    //public GameObject directionObj;
 
     private float step = 0;
     private float stepSize = 0f;

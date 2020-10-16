@@ -88,13 +88,6 @@ public class MovementMotor : MonoBehaviour
 
      return newVelocity;
     }
-    
-    public void Recoil(Vector2 recoil)
-    {
-        this.recoil = recoil;
-        recoilTimeLeft = recoilDuration;
-        return;
-    }
 
 
     void FixedUpdate()
@@ -108,11 +101,6 @@ public class MovementMotor : MonoBehaviour
             currentVelocity.y = GetNewVelocity(dir.y, currentVelocity.y, Time.deltaTime);
 
             currPos += (currentVelocity * stepSize * Time.deltaTime );
-
-            if (recoilTimeLeft > 0)
-            {
-                currPos += (recoil * stepSize * Time.deltaTime);
-            }
 
             transform.position = currPos;
         }        

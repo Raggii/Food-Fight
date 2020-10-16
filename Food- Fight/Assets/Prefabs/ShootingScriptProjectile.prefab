@@ -182,10 +182,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fda7a829767397b409bd311b670020dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stepResolution: 0.1
+  stepResolution: 25
   velocity: {x: 0, y: 0}
   collider: {fileID: 3542062906605963732}
   radiusDelta: 0.1
   effectValue: 20
   isDamage: 1
-  directionObj: {fileID: 0}
