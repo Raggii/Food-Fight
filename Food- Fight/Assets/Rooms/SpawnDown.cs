@@ -13,6 +13,6 @@ public class SpawnDown : MonoBehaviour
             return;
         }
         int rand = Random.Range(0, objects.Length);
-        Instantiate(objects[rand], transform.position, transform.rotation * Quaternion.Euler(0f, 0f, 90f));
+        Instantiate(objects[rand], transform.position, transform.rotation * Quaternion.Euler(0f, 0f, 0f));
     }
 }

@@ -89,7 +89,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objects:
-  - {fileID: 4338991056587454279, guid: d960f4e268861f8439d41f8a1edfe79d, type: 3}
+  - {fileID: 5149013822743258208, guid: 8310887f8ea2c6c44b20dae8f5ce5d83, type: 3}
 --- !u!1 &3355001353824341401
 GameObject:
   m_ObjectHideFlags: 0
@@ -910,7 +910,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5243314168970973800}
   m_Layer: 0
-  m_Name: RestLeftSide
+  m_Name: RestSideRight
   m_TagString: Untagged
   m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0

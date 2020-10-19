@@ -1058,7 +1058,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2679822164389810150}
-  - component: {fileID: 2679822164389810151}
+  - component: {fileID: 42022150784967225}
   m_Layer: 0
   m_Name: spawnPoint (24)
   m_TagString: Untagged
@@ -1080,7 +1080,7 @@ Transform:
   m_Father: {fileID: 1786419951889260749}
   m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
---- !u!114 &2679822164389810151
+--- !u!114 &42022150784967225
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1089,11 +1089,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2679822164389810169}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15c55b098677edc44adf916e37c6fa33, type: 3}
+  m_Script: {fileID: 11500000, guid: 0627981c0ae73214690d4c49bc0ddea7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   objects:
-  - {fileID: 4338991056587454279, guid: d960f4e268861f8439d41f8a1edfe79d, type: 3}
+  - {fileID: 2482823282159928000, guid: de7e058ffe766bd4bad1d6a2a0ded0d4, type: 3}
 --- !u!1 &3695930885939572339
 GameObject:
   m_ObjectHideFlags: 0
@@ -1103,7 +1103,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3695930885939572336}
-  - component: {fileID: 3695930885939572337}
+  - component: {fileID: 3861526839913706007}
   m_Layer: 0
   m_Name: spawnPoint (25)
   m_TagString: Untagged
@@ -1125,7 +1125,7 @@ Transform:
   m_Father: {fileID: 1786419951889260749}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
---- !u!114 &3695930885939572337
+--- !u!114 &3861526839913706007
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1134,11 +1134,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 3695930885939572339}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01c901dc7b40a7b449636c366c8667ee, type: 3}
+  m_Script: {fileID: 11500000, guid: 0627981c0ae73214690d4c49bc0ddea7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   objects:
-  - {fileID: 4338991056587454279, guid: d960f4e268861f8439d41f8a1edfe79d, type: 3}
+  - {fileID: 5149013822743258208, guid: 8310887f8ea2c6c44b20dae8f5ce5d83, type: 3}
 --- !u!1 &3695930886147940381
 GameObject:
   m_ObjectHideFlags: 0

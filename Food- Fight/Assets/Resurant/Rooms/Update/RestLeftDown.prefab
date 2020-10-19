@@ -54,7 +54,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1381286288606127687}
-  - component: {fileID: 1381286288606127688}
+  - component: {fileID: 2581808180695723451}
   m_Layer: 0
   m_Name: spawnPoint (25)
   m_TagString: Untagged
@@ -76,7 +76,7 @@ Transform:
   m_Father: {fileID: 2142375773828167935}
   m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
---- !u!114 &1381286288606127688
+--- !u!114 &2581808180695723451
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -85,11 +85,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1381286288606127686}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15c55b098677edc44adf916e37c6fa33, type: 3}
+  m_Script: {fileID: 11500000, guid: 0627981c0ae73214690d4c49bc0ddea7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   objects:
-  - {fileID: 4338991056587454279, guid: d960f4e268861f8439d41f8a1edfe79d, type: 3}
+  - {fileID: 2482823282159928000, guid: de7e058ffe766bd4bad1d6a2a0ded0d4, type: 3}
 --- !u!1 &1381286289196739825
 GameObject:
   m_ObjectHideFlags: 0
@@ -189,7 +189,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1381286289403283179}
-  - component: {fileID: 1381286289403283180}
+  - component: {fileID: 5673277376073762391}
   m_Layer: 0
   m_Name: spawnPoint (25)
   m_TagString: Untagged
@@ -211,7 +211,7 @@ Transform:
   m_Father: {fileID: 2142375773828167935}
   m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
---- !u!114 &1381286289403283180
+--- !u!114 &5673277376073762391
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -220,11 +220,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1381286289403283178}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01c901dc7b40a7b449636c366c8667ee, type: 3}
+  m_Script: {fileID: 11500000, guid: 0627981c0ae73214690d4c49bc0ddea7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   objects:
-  - {fileID: 4338991056587454279, guid: d960f4e268861f8439d41f8a1edfe79d, type: 3}
+  - {fileID: 5149013822743258208, guid: 8310887f8ea2c6c44b20dae8f5ce5d83, type: 3}
 --- !u!1 &1381286289801122564
 GameObject:
   m_ObjectHideFlags: 0

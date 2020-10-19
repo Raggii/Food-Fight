@@ -12,8 +12,6 @@ GameObject:
   - component: {fileID: 5686513938691117517}
   - component: {fileID: 1541519794094315423}
   - component: {fileID: 8976807461382557153}
-  - component: {fileID: 7067763586192397756}
-  - component: {fileID: 450757957408218709}
   m_Layer: 0
   m_Name: DoorUp
   m_TagString: Untagged
@@ -74,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: 5ec243e2069c4c24d869fd5ca78419c4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 28557388161e9e54db2be10383f2de48, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,7 +96,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.23595446, y: 0.054866478}
+  m_Offset: {x: -0.22446874, y: 0.055882536}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -109,7 +107,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.16809106, y: 0.21026704}
+  m_Size: {x: 0.1910625, y: 0.20823492}
   m_EdgeRadius: 0
 --- !u!61 &8976807461382557153
 BoxCollider2D:
@@ -137,35 +135,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.18173009, y: 0.21026696}
   m_EdgeRadius: 0
---- !u!58 &7067763586192397756
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4338991056587454279}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.2256819, y: 0.04043647}
-  serializedVersion: 2
-  m_Radius: 0.086617626
---- !u!58 &450757957408218709
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4338991056587454279}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.21502016, y: 0.04345415}
-  serializedVersion: 2
-  m_Radius: 0.08957988
