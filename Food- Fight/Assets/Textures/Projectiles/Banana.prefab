@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 8471573353361612122}
   - component: {fileID: 4409012327952554443}
   - component: {fileID: 7973306719451542543}
-  - component: {fileID: -4611702118147366120}
   - component: {fileID: 5063498742104742862}
+  - component: {fileID: 9001730371346679368}
   m_Layer: 0
   m_Name: Banana
   m_TagString: Untagged
@@ -105,8 +105,26 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &-4611702118147366120
-BoxCollider2D:
+--- !u!114 &5063498742104742862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 103641593523461195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fda7a829767397b409bd311b670020dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stepResolution: 25
+  velocity: {x: 0, y: 0}
+  collider: {fileID: 9001730371346679368}
+  radiusDelta: 0.1
+  effectValue: 1
+  isDamage: 1
+--- !u!58 &9001730371346679368
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -119,30 +137,5 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.07, y: 0.07}
-    newSize: {x: 0.07, y: 0.07}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.07, y: 0.07}
-  m_EdgeRadius: 0
---- !u!114 &5063498742104742862
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 103641593523461195}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56f18e6acf72ec64da915976bf929f09, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  effectValue: 25
-  isDamage: 1
-  timeToLive: 2
+  m_Radius: 0.035

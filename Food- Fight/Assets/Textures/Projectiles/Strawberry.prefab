@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 7022761947228942528}
   - component: {fileID: 3011565126392263761}
   - component: {fileID: 8809656509389232533}
-  - component: {fileID: 2169116602449850880}
   - component: {fileID: 7604996545486267648}
+  - component: {fileID: 1512362552493626401}
   m_Layer: 0
   m_Name: Strawberry
   m_TagString: Untagged
@@ -105,8 +105,26 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &2169116602449850880
-BoxCollider2D:
+--- !u!114 &7604996545486267648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1555143362566517201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fda7a829767397b409bd311b670020dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stepResolution: 25
+  velocity: {x: 0, y: 0}
+  collider: {fileID: 1512362552493626401}
+  radiusDelta: 0.1
+  effectValue: 1
+  isDamage: 1
+--- !u!58 &1512362552493626401
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -119,30 +137,5 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.07, y: 0.07}
-    newSize: {x: 0.07, y: 0.07}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.07, y: 0.07}
-  m_EdgeRadius: 0
---- !u!114 &7604996545486267648
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1555143362566517201}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56f18e6acf72ec64da915976bf929f09, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  effectValue: 25
-  isDamage: 1
-  timeToLive: 2
+  m_Radius: 0.035
