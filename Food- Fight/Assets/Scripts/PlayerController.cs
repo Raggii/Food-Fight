@@ -75,7 +75,15 @@ public class PlayerController : MonoBehaviour
             int project = UnityEngine.Random.Range(0, projectile.Length);
             GameObject newProj = Instantiate(projectile[project], firePos.transform.position, firePos.transform.rotation);
             newProj.SetActive(true);
-            newProj.GetComponent<Rigidbody2D>().velocity = projectileVelocity * newProj.transform.up;
+            if (newProj != null)
+            {
+                ProjectileController PController = newProj.GetComponent<ProjectileController>();
+                if (PController != null)
+                {
+                    PController.SetValues(firePos.transform.up * projectileVelocity);
+                }                
+            }
+            
 
             lastFireTime = Time.time;
         }

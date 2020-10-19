@@ -118,7 +118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stepResolution: 25
-  velocity: {x: -4, y: 0}
+  velocity: {x: 0, y: 0}
   collider: {fileID: 8291433214587343930}
   radiusDelta: 0.1
   effectValue: 1

@@ -28,6 +28,7 @@ public class ProjectileController : MonoBehaviour
     private float sideVelocity;
     private float pullVelocity;
     private Transform parent;
+
     private bool hasValues;
 
     public void SetValues(float upwardsVelocity, float sideVelocity, float pullVelocity, Transform parent)
@@ -39,6 +40,11 @@ public class ProjectileController : MonoBehaviour
         this.hasValues = true;
     }
 
+    public void SetValues(Vector2 velocity)
+    {
+        this.velocity = velocity;
+    }
+
     void CalculateVelocity()
     {
         if (hasValues && parent != null)
@@ -46,11 +52,11 @@ public class ProjectileController : MonoBehaviour
             velocity = (transform.position - parent.position).normalized * upwardsVelocity + 
                 Vector3.Cross((parent.transform.position - transform.position), transform.forward).normalized * sideVelocity +
                 (transform.position - parent.position).normalized * -pullVelocity;
-        }
+        } 
     }
 
 
-    void Start()
+    void Awake()
     {
         currPos = transform.position;
         this.gameObject.SetActive(true);
@@ -126,18 +132,3 @@ public class ProjectileController : MonoBehaviour
         }
     }
 }
-
-
-
-/*   
-if (!hasHit)
-{      
-    RaycastHit2D hit = Physics2D.Raycast(currPos, (currPos-nextPos).normalized, stepSize);  
-    if (hit.collider != null)
-    {
-            hasHit = true;
-            HitEvent(hit);
-
-    }
-}
-*/
