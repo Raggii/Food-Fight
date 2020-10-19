@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 3322023674367977121}
   m_Layer: 0
   m_Name: JoeKiller
-  m_TagString: Untagged
+  m_TagString: Damagable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -156,7 +156,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   destroyOnDeath: 1
-  currentHealth: 100
+  screenShakeOnHit: 0
+  shakeMagnitude: 0.4
+  shakeDuration: 0.15
+  camShake: {fileID: 0}
+  amountOfHealth: 0
+  numOfHearts: 0
+  hearts: []
+  fullHeart: {fileID: 0}
+  emptyHeart: {fileID: 0}
 --- !u!114 &3322023674367977120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,8 +180,14 @@ MonoBehaviour:
   numberOfProjectiles: 1
   firingStarRadius: 0.5
   spawnAngleOffset: -90
+  inBetweenShotsDelay: 0
   shootsTimeDelta: 1.5
-  continiousUpdating: 1
+  numberBulletsLimit: 0
+  objectRotatesIndepedentlyAlongZ: 0
+  dynamicOffset: 0
+  reverseOrderFiring: 0
+  loopFiring: 1
+  limitBullets: 0
   projectile: {fileID: 3542062906605963731, guid: cb5902ced54850a45bf6dca2ae672f22,
     type: 3}
   timeToLive: 2
