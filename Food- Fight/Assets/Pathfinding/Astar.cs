@@ -1,4 +1,4 @@
-﻿/*using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,11 +44,11 @@ public class AstarNode
 public class Astar : MonoBehaviour
 {
 
-    private float MINIMUM_REPULSION_DISTANCE = 1.0f; //The minimum distance a path point can lie from an object
-    private float REPULSION_FACTOR = 0.3f;
-    private float MAXIMUM_REPULSION_DISTANCE = 5.0f;
+    private float MAXIMUM_REPULSION_DISTANCE = 1.0f; //The maximum distance in which repulsion can take effect
 
     private bool DEBUG = true;
+
+    
 
     private struct sSpline
     {
@@ -275,9 +275,14 @@ public class Astar : MonoBehaviour
         {
             for (int i = 0; i < points.Count(); i++)
             {
-                float mag = points[i].magnitude;
-                Vector3 = ob.
-                points[i] = points[i] * Mathf.Min(Mathf.Max((MINIMUM_POINT_DISTANCE * MINIMUM_POINT_DISTANCE * REPULSION_FACTOR)/(points[i].x*points[i].x+points[i].y*points[i].y), mag* MINIMUM_REPULSION_DISTANCE), mag*MAXIMUM_REPULSION_DISTANCE);
+
+                Vector3 ob_centre = ob.transform.position;
+                if (Vector2.Distance(ob_centre, points[i]) <= MAXIMUM_REPULSION_DISTANCE) //~~~BALLS~~~ there is a sqaure root here. how can it be removed?
+                {
+                    float scale_factor = MAXIMUM_REPULSION_DISTANCE * MAXIMUM_REPULSION_DISTANCE / (Mathf.Pow(points[i].x - ob_centre.x, 2) + Mathf.Pow(points[i].y - ob_centre.y, 2));
+                    points[i] = new Vector2(scale_factor * (points[i].x - ob_centre.x) + ob_centre.x, scale_factor * (points[i].y - ob_centre.y) + ob_centre.y);
+                }
+
                 if (DEBUG)
                 {
                     Debug.DrawLine(transform.position, points[i], Color.red);
@@ -298,4 +303,3 @@ public class Astar : MonoBehaviour
         Debug.DrawLine(new Vector3(start.x, start.y, 0), new Vector3(end.x, end.y, 0), Color.green);
     }
 }
-*/
