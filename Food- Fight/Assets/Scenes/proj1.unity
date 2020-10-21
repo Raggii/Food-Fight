@@ -3409,7 +3409,7 @@ GameObject:
   - component: {fileID: 1313120965}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Damagable
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3520,7 +3520,7 @@ MonoBehaviour:
   firePos: {fileID: 1267564986}
   centerAxis: {fileID: 116786365}
   gunshot: {fileID: 600474886}
-  motor: {fileID: 0}
+  motor: {fileID: 1313120956}
   recoilVelocity: 0.5
   projectileVelocity: 5
   rateOfFire: 10
