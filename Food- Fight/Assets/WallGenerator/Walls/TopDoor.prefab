@@ -775,8 +775,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3519611688920111997}
   m_Layer: 0
-  m_Name: TopWall
-  m_TagString: Untagged
+  m_Name: TopDoor
+  m_TagString: Wall
   m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

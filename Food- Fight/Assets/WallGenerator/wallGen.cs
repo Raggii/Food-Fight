@@ -7,84 +7,91 @@ public class wallGen : MonoBehaviour
     //The 4 given walls to input for the generation
     public GameObject[] tops;
     public GameObject[] sides;
+    int count = 0;
 
+    //public LayerMask room;
 
-    // need 2 coord systems
-    /*
-     * 1 for where the middle of the room is
-     * another for where the walls go inside of the room
-     * 
-     */
-    int wallUpAmount = 3;
-    int wallSideAmount = 5;
-    Queue roomLocations = new Queue();
+    // Coords for wall positions
+    int[] wallTops = {3, -3, -3, 3};
+    int[] wallSides = {0, 5, -5, -5};
+
+    int[] moveRoomIndexesSide = {10, 0, -10, 0};
+    int[] moveRoomIndexesUp = {0, 6, 0, -6};
+    List<Vector2> roomLocations = new List<Vector2>();
 
     //goes around clockwise starting from the top spawning rooms
     void generateRoom()
     {
-        Vector2 newPos = new Vector2(transform.position.x, transform.position.y + wallUpAmount);
+        Vector2 newPos;
+        int rand;
+        Vector2 startingPosition = transform.position;
+        for (int i = 0; i < 4; i++) {
+
+            newPos = new Vector2(transform.position.x + wallSides[i], transform.position.y + wallTops[i]);
+            transform.position = newPos;
+            Collider2D roomDetection = Physics2D.OverlapCircle(transform.position, 1);
+            // also needs to have a collision checker here and if collides does not add it to the room and doesnt spawn anything
+            //Stopping it from spawing if there is a door works nicely just need the logic
+            if (roomDetection == null)
+            {
+                rand = Random.Range(0, 2);
+                if (i % 2 == 0)
+                {
+                    Instantiate(tops[rand], transform.position, Quaternion.identity);
+                }
+                else
+                {
+                    Instantiate(sides[rand], transform.position, Quaternion.identity);
+                }
+                if (rand == 0)
+                {
+                    //add door to queue
+                    //as both the doors are set to the first index.
+                    // need to get information from i, 0 = top, 1 = right ect
+                    // These are put into a set list
+                    Vector2 roomLocationNew = new Vector2(startingPosition.x + moveRoomIndexesSide[i], startingPosition.y + moveRoomIndexesUp[i]);
+                    roomLocations.Insert(0, roomLocationNew); //
+                }
+            }
+        }
+        // reset back position
+        newPos = new Vector2(transform.position.x + wallSides[1], transform.position.y);
         transform.position = newPos;
-        int rand = Random.Range(0, tops.Length);
-        Instantiate(tops[rand], transform.position, Quaternion.identity);
-
-        Vector2 newPos1 = new Vector2(transform.position.x + wallSideAmount, transform.position.y - wallUpAmount);
-        transform.position = newPos1;
-        int rand1 = Random.Range(0, sides.Length);
-        Instantiate(sides[rand1], transform.position, Quaternion.identity);
-
-        Vector2 newPos2 = new Vector2(transform.position.x - wallSideAmount, transform.position.y - wallUpAmount);
-        transform.position = newPos2;
-        int rand2 = Random.Range(0, tops.Length);
-        Instantiate(tops[rand2], transform.position, Quaternion.identity);
-
-        Vector2 newPos3 = new Vector2(transform.position.x - wallSideAmount, transform.position.y + wallUpAmount);
-        transform.position = newPos3;
-        int rand3 = Random.Range(0, sides.Length);
-        Instantiate(sides[rand3], transform.position, Quaternion.identity);
-
-        Vector2 newPos4 = new Vector2(transform.position.x + wallSideAmount, transform.position.y);
-        transform.position = newPos4;
-
-        // then know which doors where made
-        //Then enqueue a new position
-        //Then change the position
-        Vector2 tempHolder;// = new Vector2(transform.position.x + wallSideAmount, transform.position.y);
-        if (rand == 0) {
-            Debug.Log("Top");
-            tempHolder = new Vector2(transform.position.x + wallSideAmount, transform.position.y);
-            roomLocations.Enqueue(tempHolder);
-        }
-        if (rand1 == 0)
-        {
-            Debug.Log("Right");
-        }
-        if (rand2 == 0)
-        {
-            Debug.Log("Down");
-        }
-        if (rand3 == 0)
-        {
-            Debug.Log("Left");
-        }
+        
 
     }
     void changeToNewRoom() {
 
-        //Vector2 tempHolder = roomLocations.Dequeue;
+        Vector2 tempHolder = roomLocations[0];// as Vector2;
+        roomLocations.RemoveAt(0);
+        transform.position = tempHolder;
 
     }
 
-    // Start is called before the first frame update
     void Start()
     {
+        // first room needs to garentee at least 2 rooms in it somehow
         generateRoom();
-        //changeToNewRoom();
-        //generateRoom();
+        changeToNewRoom();
     }
 
-    // Update is called once per frame
+
     void Update()
     {
+        // need to have some variable which changes the probabilty of new rooms spawing.
+        // if it spawns until a point changes chance to 0 then finishes the rest of the rooms with
+        // just emptys that could work well
+        // so say a givin constant for how many branching rooms is decided and it loops that many times adding rooms
+        // Then stops adding
         
+        while (count < 10) {//roomLocations.Count != 0) {
+
+            generateRoom();
+            changeToNewRoom();
+            count++;
+
+
+        }
+
     }
 }
