@@ -7,7 +7,9 @@ public class wallGen : MonoBehaviour
     //The 4 given walls to input for the generation
     public GameObject[] tops;
     public GameObject[] sides;
+    public int maxCount = 3;
     int count = 0;
+    bool genRooms = true;
 
     //public LayerMask room;
 
@@ -15,12 +17,12 @@ public class wallGen : MonoBehaviour
     int[] wallTops = {3, -3, -3, 3};
     int[] wallSides = {0, 5, -5, -5};
 
-    int[] moveRoomIndexesSide = {10, 0, -10, 0};
-    int[] moveRoomIndexesUp = {0, 6, 0, -6};
+    int[] moveRoomIndexesSide = {0, 10, 0, -10};
+    int[] moveRoomIndexesUp = {6, 0, -6, 0};
     List<Vector2> roomLocations = new List<Vector2>();
 
     //goes around clockwise starting from the top spawning rooms
-    void generateRoom()
+    void generateRoom(bool generateRooms)
     {
         Vector2 newPos;
         int rand;
@@ -34,7 +36,14 @@ public class wallGen : MonoBehaviour
             //Stopping it from spawing if there is a door works nicely just need the logic
             if (roomDetection == null)
             {
-                rand = Random.Range(0, 2);
+                if (generateRooms)
+                {
+                    rand = Random.Range(0, 2);
+                }
+                else 
+                {
+                    rand = 1;
+                }
                 if (i % 2 == 0)
                 {
                     Instantiate(tops[rand], transform.position, Quaternion.identity);
@@ -71,7 +80,7 @@ public class wallGen : MonoBehaviour
     void Start()
     {
         // first room needs to garentee at least 2 rooms in it somehow
-        generateRoom();
+        generateRoom(true);
         changeToNewRoom();
     }
 
@@ -84,9 +93,14 @@ public class wallGen : MonoBehaviour
         // so say a givin constant for how many branching rooms is decided and it loops that many times adding rooms
         // Then stops adding
         
-        while (count < 10) {//roomLocations.Count != 0) {
+        while (roomLocations.Count != 0) {//roomLocations.Count != 0) {
 
-            generateRoom();
+
+
+            if (count == maxCount) {
+                genRooms = false;
+            }
+            generateRoom(genRooms);
             changeToNewRoom();
             count++;
 

@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 735629390}
   m_Layer: 0
   m_Name: wallGeneration
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -170,6 +170,7 @@ MonoBehaviour:
   sides:
   - {fileID: 3936385199051779859, guid: 74e067c975e4a3a4c89b7c424dafc401, type: 3}
   - {fileID: 4616772706533403245, guid: 0408992db62317c429148356ece17548, type: 3}
+  maxCount: 50
 --- !u!1 &998962990
 GameObject:
   m_ObjectHideFlags: 0
