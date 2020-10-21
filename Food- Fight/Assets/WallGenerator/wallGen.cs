@@ -21,6 +21,8 @@ public class wallGen : MonoBehaviour
     int[] moveRoomIndexesUp = {6, 0, -6, 0};
     List<Vector2> roomLocations = new List<Vector2>();
 
+    private List<Vector3> os = new List<Vector3>();
+
     //goes around clockwise starting from the top spawning rooms
     void generateRoom(bool generateRooms)
     {
@@ -31,7 +33,8 @@ public class wallGen : MonoBehaviour
 
             newPos = new Vector2(transform.position.x + wallSides[i], transform.position.y + wallTops[i]);
             transform.position = newPos;
-            Collider2D roomDetection = Physics2D.OverlapCircle(transform.position, 1);
+            Collider2D roomDetection = Physics2D.OverlapCircle(transform.position, 1f);
+            os.Add(transform.position);
             // also needs to have a collision checker here and if collides does not add it to the room and doesnt spawn anything
             //Stopping it from spawing if there is a door works nicely just need the logic
             if (roomDetection == null)
@@ -84,6 +87,15 @@ public class wallGen : MonoBehaviour
         changeToNewRoom();
     }
 
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        foreach (Vector3 p in os)
+        {
+            Gizmos.DrawWireSphere(p, 1f);
+        }
+    }
 
     void Update()
     {
