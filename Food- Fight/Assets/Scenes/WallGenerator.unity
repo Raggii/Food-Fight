@@ -170,7 +170,7 @@ MonoBehaviour:
   sides:
   - {fileID: 3936385199051779859, guid: 74e067c975e4a3a4c89b7c424dafc401, type: 3}
   - {fileID: 4616772706533403245, guid: 0408992db62317c429148356ece17548, type: 3}
-  maxCount: 50
+  maxCount: 1
 --- !u!1 &998962990
 GameObject:
   m_ObjectHideFlags: 0

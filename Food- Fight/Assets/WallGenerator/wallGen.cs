@@ -33,7 +33,7 @@ public class wallGen : MonoBehaviour
 
             newPos = new Vector2(transform.position.x + wallSides[i], transform.position.y + wallTops[i]);
             transform.position = newPos;
-            Collider2D roomDetection = Physics2D.OverlapCircle(transform.position, 1f);
+            Collider2D roomDetection = Physics2D.OverlapCircle(transform.position, .1f);
             os.Add(transform.position);
             // also needs to have a collision checker here and if collides does not add it to the room and doesnt spawn anything
             //Stopping it from spawing if there is a door works nicely just need the logic
