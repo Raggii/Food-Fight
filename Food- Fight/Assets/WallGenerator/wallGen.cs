@@ -10,6 +10,7 @@ public class wallGen : MonoBehaviour
     public int maxCount = 3;
     int count = 0;
     bool genRooms = true;
+    int roomCount = 0;
 
     //public LayerMask room;
 
@@ -20,6 +21,7 @@ public class wallGen : MonoBehaviour
     int[] moveRoomIndexesSide = {0, 10, 0, -10};
     int[] moveRoomIndexesUp = {6, 0, -6, 0};
     List<Vector2> roomLocations = new List<Vector2>();
+    List<Vector2> pastWallLocations = new List<Vector2>();
 
     private List<Vector3> os = new List<Vector3>();
 
@@ -33,17 +35,16 @@ public class wallGen : MonoBehaviour
 
             newPos = new Vector2(transform.position.x + wallSides[i], transform.position.y + wallTops[i]);
             transform.position = newPos;
-            Collider2D roomDetection = Physics2D.OverlapCircle(transform.position, .1f);
-            os.Add(transform.position);
             // also needs to have a collision checker here and if collides does not add it to the room and doesnt spawn anything
             //Stopping it from spawing if there is a door works nicely just need the logic
-            if (roomDetection == null)
+            if (pastWallLocations.IndexOf(newPos) == -1) // returns -1 if not found so room needs to go there
             {
+                pastWallLocations.Add(newPos);
                 if (generateRooms)
                 {
                     rand = Random.Range(0, 2);
                 }
-                else 
+                else
                 {
                     rand = 1;
                 }
@@ -63,9 +64,16 @@ public class wallGen : MonoBehaviour
                     // These are put into a set list
                     Vector2 roomLocationNew = new Vector2(startingPosition.x + moveRoomIndexesSide[i], startingPosition.y + moveRoomIndexesUp[i]);
                     roomLocations.Insert(0, roomLocationNew); //
+                    
                 }
             }
+            else {
+                //Debug.Log("Collision Detected");
+            
+            }
         }
+        Debug.Log("Room " + roomCount);
+        roomCount++;
         // reset back position
         newPos = new Vector2(transform.position.x + wallSides[1], transform.position.y);
         transform.position = newPos;
@@ -84,7 +92,6 @@ public class wallGen : MonoBehaviour
     {
         // first room needs to garentee at least 2 rooms in it somehow
         generateRoom(true);
-        changeToNewRoom();
     }
 
 
@@ -112,8 +119,8 @@ public class wallGen : MonoBehaviour
             if (count == maxCount) {
                 genRooms = false;
             }
-            generateRoom(genRooms);
             changeToNewRoom();
+            generateRoom(genRooms);
             count++;
 
 
