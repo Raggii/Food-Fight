@@ -2,17 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class powerUp : MonoBehaviour
+[CreateAssetMenu]
+public class powerUp : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public new string name;
+    public string description;
+
+    public Sprite spriteAsset;
+
+    // some how need to generalize the abilitys this gives the players
+
 }
