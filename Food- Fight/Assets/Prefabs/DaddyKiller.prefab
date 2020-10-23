@@ -129,6 +129,8 @@ MonoBehaviour:
   screenShakeOnHit: 0
   shakeMagnitude: 0.4
   shakeDuration: 0.15
+  deathDrop: {fileID: 1255316684659503144, guid: a559cf76244552d4e808e5386ec65c5b,
+    type: 3}
   camShake: {fileID: 0}
   amountOfHealth: 0
   numOfHearts: 0

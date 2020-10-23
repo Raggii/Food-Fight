@@ -308,11 +308,6 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1313120955}
-    - target: {fileID: 3322023674367977123, guid: ec72f44f924dda74db9e6c040ae18bb6,
-        type: 3}
-      propertyPath: maxHealth
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 3322023674367977126, guid: ec72f44f924dda74db9e6c040ae18bb6,
         type: 3}
       propertyPath: m_Name
@@ -1639,13 +1634,14 @@ GameObject:
   - component: {fileID: 1313120959}
   - component: {fileID: 1313120960}
   - component: {fileID: 1313120956}
+  - component: {fileID: 1313120965}
   - component: {fileID: 1313120961}
   - component: {fileID: 1313120962}
   - component: {fileID: 1313120957}
   - component: {fileID: 1313120964}
   - component: {fileID: 1313120963}
   - component: {fileID: 1313120958}
-  - component: {fileID: 1313120965}
+  - component: {fileID: 1313120966}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1760,7 +1756,7 @@ MonoBehaviour:
   centerAxis: {fileID: 116786365}
   gunshot: {fileID: 600474886}
   motor: {fileID: 1313120956}
-  recoilVelocity: 0.5
+  recoilVelocity: 0.1
   projectileVelocity: 5
   rateOfFire: 10
   isSemi: 1
@@ -1883,6 +1879,7 @@ MonoBehaviour:
   screenShakeOnHit: 1
   shakeMagnitude: 0.12
   shakeDuration: 0.09
+  deathDrop: {fileID: 0}
   camShake: {fileID: 1212304136}
   amountOfHealth: 5
   numOfHearts: 5
@@ -1894,6 +1891,19 @@ MonoBehaviour:
   - {fileID: 2026649627}
   fullHeart: {fileID: 21300000, guid: 54d19cc043df6ad45a1b69fd1fca30b3, type: 3}
   emptyHeart: {fileID: 21300000, guid: a576898da35c09d4dbc4a118b2b5012b, type: 3}
+--- !u!114 &1313120966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1313120955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85f05fe23f583194a8621dc7e7681dfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxWalletSize: 1500
 --- !u!1 &1352456041
 GameObject:
   m_ObjectHideFlags: 0
@@ -2709,6 +2719,7 @@ MonoBehaviour:
   screenShakeOnHit: 0
   shakeMagnitude: 0.4
   shakeDuration: 0.15
+  deathDrop: {fileID: 0}
   camShake: {fileID: 0}
   amountOfHealth: 0
   numOfHearts: 0
@@ -2775,3 +2786,72 @@ MonoBehaviour:
   shoot: 0
   projectile: {fileID: 5306443215574338473, guid: dd26eb8a8e28b6547ac6f7c694a9d5ea,
     type: 3}
+--- !u!1001 &1255316684209538312
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1255316684659503144, guid: a559cf76244552d4e808e5386ec65c5b,
+        type: 3}
+      propertyPath: m_Name
+      value: SmallCoin
+      objectReference: {fileID: 0}
+    - target: {fileID: 1255316684659503147, guid: a559cf76244552d4e808e5386ec65c5b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1255316684659503147, guid: a559cf76244552d4e808e5386ec65c5b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1255316684659503147, guid: a559cf76244552d4e808e5386ec65c5b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1255316684659503147, guid: a559cf76244552d4e808e5386ec65c5b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1255316684659503147, guid: a559cf76244552d4e808e5386ec65c5b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1255316684659503147, guid: a559cf76244552d4e808e5386ec65c5b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1255316684659503147, guid: a559cf76244552d4e808e5386ec65c5b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1255316684659503147, guid: a559cf76244552d4e808e5386ec65c5b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1255316684659503147, guid: a559cf76244552d4e808e5386ec65c5b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1255316684659503147, guid: a559cf76244552d4e808e5386ec65c5b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1255316684659503147, guid: a559cf76244552d4e808e5386ec65c5b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a559cf76244552d4e808e5386ec65c5b, type: 3}

@@ -154,11 +154,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64f768f5eb8ce7a41b84e33704d58bc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 3
   destroyOnDeath: 1
   screenShakeOnHit: 0
   shakeMagnitude: 0.4
   shakeDuration: 0.15
+  deathDrop: {fileID: 1255316684659503144, guid: a559cf76244552d4e808e5386ec65c5b,
+    type: 3}
   camShake: {fileID: 0}
   amountOfHealth: 0
   numOfHearts: 0

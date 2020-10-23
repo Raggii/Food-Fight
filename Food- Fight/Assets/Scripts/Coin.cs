@@ -18,11 +18,12 @@ public class Coin : MonoBehaviour
 
             } else if (wallet.CanDeposit(value)) {
 
+                pickedUp = true;
                 wallet.Deposit(value);
+                Debug.Log("Added " + value + " coins to your wallet!!");
                 Destroy(this.gameObject, 0.1f);
 
-            } else
-            {
+            } else {
                 Debug.Log("Wallet is full! Cannot add more!!!");
             }
         }

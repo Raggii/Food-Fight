@@ -19,14 +19,15 @@ public class MovementMotor : MonoBehaviour
     private Vector2 dir = new Vector2(0, 0);            // direction
     private Vector2 currentVelocity = new Vector2(0, 0);
     private Vector2 previousVelocity = new Vector2(0, 0);
-    private float currentPause = 0f;
-    private float stepSize = 0f;
-    private float step = 0;
-    private Vector2 recoil;
-    private float recoilTimeLeft;
+    private Vector2 recoil = new Vector2(0, 0);
 
     private Vector2 currPos;
     private Vector2 nextPos;
+
+    private float currentPause = 0f;
+    private float stepSize = 0f;
+    private float step = 0;
+    private float recoilTimeLeft;
 
     public void Update()
     {
@@ -53,15 +54,12 @@ public class MovementMotor : MonoBehaviour
         }
     }
 
-    public void InstantStop()
+    public void Push(Vector2 pushVector)
     {
-        currentPause = Time.time + 0.1f;
-        currentVelocity = new Vector2(0, 0);
-        dir = new Vector2(0, 0);
-        //rb.velocity = new Vector2(0, 0);
+        recoil = pushVector;
     }
 
-    public float GetNewVelocity(float direction, float currentVelocity, float deltaTime)
+    public float GetNewVelocity(float direction, float currentVelocity, float deltaTime, float recoil_val, bool is_x_axis=false)
     {
         float newVelocity = currentVelocity;
         if (currentVelocity != direction * maxSpeed)
@@ -86,6 +84,41 @@ public class MovementMotor : MonoBehaviour
             }
         }
 
+        
+/*
+ *      Recoil sends you into the void at Mach 18. Triggers float precision warning...
+ *      Figure out a way to decrease the recoil overtime, as the max value hard cap of
+ *      the speed slows you down immediatly and doesn't work...
+ *      Good luck...
+ * 
+        if (Mathf.Abs(recoil_val) > 0)
+        {
+            newVelocity += recoil_val;
+            float newRecoil = 0;
+            if (is_x_axis)
+            {
+                if (Mathf.Abs(recoil.x) <= speedThreshold)
+                {
+                    newRecoil = 0f;
+                } else
+                {
+                    newRecoil = recoil.x + decclaration * deltaTime * -Mathf.Sign(recoil.x);
+                }
+                recoil.x = newRecoil;
+            } else {
+                if (Mathf.Abs(recoil.y) <= speedThreshold)
+                {
+                    newRecoil = 0f;
+                }
+                else
+                {
+                    newRecoil = recoil.y + decclaration * deltaTime * -Mathf.Sign(recoil.x);
+                }
+                recoil.y = newRecoil;
+            }
+        }
+*/
+
      return newVelocity;
     }
 
@@ -97,8 +130,8 @@ public class MovementMotor : MonoBehaviour
 
         for (step = 0; step < 1f; step += stepSize)
         {
-            currentVelocity.x = GetNewVelocity(dir.x, currentVelocity.x, Time.deltaTime);
-            currentVelocity.y = GetNewVelocity(dir.y, currentVelocity.y, Time.deltaTime);
+            currentVelocity.x = GetNewVelocity(dir.x, currentVelocity.x, Time.deltaTime, recoil.x, true);
+            currentVelocity.y = GetNewVelocity(dir.y, currentVelocity.y, Time.deltaTime, recoil.y);
 
             currPos += (currentVelocity * stepSize * Time.deltaTime );
 

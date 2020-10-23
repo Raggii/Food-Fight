@@ -9,11 +9,14 @@ public class PlayerController : MonoBehaviour
     public GameObject[] projectile;
     public GameObject firePos;
     public GameObject centerAxis;
+
     public AudioSource gunshot;
     public MovementMotor motor;
+
     public float recoilVelocity;
     public float projectileVelocity;
     public float rateOfFire = 10; // proj per second. Default ak47 rate of fire.
+
     public bool isSemi;
     public bool playShotSFX = false;
 
@@ -56,6 +59,12 @@ public class PlayerController : MonoBehaviour
     }
 
 
+    private void Recoil(Vector2 fireDir)
+    {
+        motor.Push(-fireDir * recoilVelocity);
+    }
+
+
     private void PlaySound()
     {
         AudioSource Shot = Instantiate(gunshot, transform.position, transform.rotation);
@@ -74,16 +83,22 @@ public class PlayerController : MonoBehaviour
 
             int project = UnityEngine.Random.Range(0, projectile.Length);
             GameObject newProj = Instantiate(projectile[project], firePos.transform.position, firePos.transform.rotation);
-            newProj.SetActive(true);
             if (newProj != null)
             {
                 ProjectileController PController = newProj.GetComponent<ProjectileController>();
                 if (PController != null)
                 {
                     PController.SetValues(firePos.transform.up * projectileVelocity);
-                }                
+                } else
+                {
+                    Destroy(newProj);
+                }
+
+                Recoil(firePos.transform.up);
+
+                newProj.SetActive(true);
             }
-            
+
 
             lastFireTime = Time.time;
         }
