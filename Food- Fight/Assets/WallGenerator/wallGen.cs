@@ -72,7 +72,6 @@ public class wallGen : MonoBehaviour
             
             }
         }
-        Debug.Log("Room " + roomCount);
         roomCount++;
         // reset back position
         newPos = new Vector2(transform.position.x + wallSides[1], transform.position.y);
