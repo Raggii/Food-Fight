@@ -10,6 +10,7 @@ public class HealthManager : MonoBehaviour
     public bool screenShakeOnHit = false;
     public float shakeMagnitude = 0.4f;
     public float shakeDuration = 0.15f;
+    public GameObject deathDrop;
 
     public CamShake camShake;
 
@@ -44,6 +45,10 @@ public class HealthManager : MonoBehaviour
     {
         if (IsDead() && destroyOnDeath)
         {
+            if (deathDrop != null)
+            {
+                Instantiate(deathDrop, transform.position, Quaternion.identity);
+            }
             Destroy(this.gameObject);
         }
     }
