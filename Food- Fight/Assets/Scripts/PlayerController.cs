@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public AudioSource gunshot;
     public MovementMotor motor;
 
+
     public float recoilVelocity;
     public float projectileVelocity;
     public float rateOfFire = 10; // proj per second. Default ak47 rate of fire.
@@ -20,6 +21,7 @@ public class PlayerController : MonoBehaviour
     public bool isSemi;
     public bool playShotSFX = false;
 
+    private bool isActive = true;
     private float lastFireTime = 0f;
     private float waitTime = 0f;
 
@@ -31,6 +33,12 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (!isActive)
+        {
+            return;
+        }
+
         UpdateFirePosDirection();
 
         if (isSemi)
@@ -62,6 +70,20 @@ public class PlayerController : MonoBehaviour
     private void Recoil(Vector2 fireDir)
     {
         motor.Push(-fireDir * recoilVelocity);
+    }
+
+
+    public void DeactivatePlayerControls()
+    {
+        isActive = false;
+        motor.enabled = false;
+    }
+
+
+    public void ActivatePlayerControls()
+    {
+        isActive = true;
+        motor.enabled = true;
     }
 
 
