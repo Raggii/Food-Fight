@@ -554,6 +554,7 @@ MonoBehaviour:
   screenShakeOnHit: 1
   shakeMagnitude: 0.12
   shakeDuration: 0.09
+  deathDrop: {fileID: 0}
   camShake: {fileID: 0}
   amountOfHealth: 5
   numOfHearts: 5
