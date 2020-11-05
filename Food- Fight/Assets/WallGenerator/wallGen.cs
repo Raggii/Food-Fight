@@ -20,8 +20,8 @@ public class wallGen : MonoBehaviour
 
     int[] moveRoomIndexesSide = {0, 10, 0, -10};
     int[] moveRoomIndexesUp = {6, 0, -6, 0};
-    List<Vector2> roomLocations = new List<Vector2>();
-    List<Vector2> pastWallLocations = new List<Vector2>();
+    List<Vector2> roomLocations = new List<Vector2>(); // Queue format
+    List<Vector2> pastWallLocations = new List<Vector2>(); // 
 
     private List<Vector3> os = new List<Vector3>();
 
@@ -87,21 +87,17 @@ public class wallGen : MonoBehaviour
 
     }
 
+
+
+
+
+
     void Start()
     {
         // first room needs to garentee at least 2 rooms in it somehow
         generateRoom(true);
     }
 
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        foreach (Vector3 p in os)
-        {
-            Gizmos.DrawWireSphere(p, 1f);
-        }
-    }
 
     void Update()
     {
