@@ -23,13 +23,13 @@ public class XPLevelController : MonoBehaviour
 
     public void DecreaseXpLevel(int amount)
     {
-        currentXpLevel = Mathf.Max(0, );
+        currentXpLevel = Mathf.Max(0, currentXpLevel-amount);
     }
 
 
     public void IncreaseXpLevel(int amount)
     {
-
+        currentXpLevel = Mathf.Min(maxXpLevel, currentXpLevel + amount);
     }
 
 }
