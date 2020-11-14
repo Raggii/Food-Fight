@@ -29,6 +29,8 @@ public class ProjectileController : MonoBehaviour
     private float pullVelocity;
     private Transform parent;
 
+    private XPLevelController xpControl;
+
     private bool hasValues;
 
     public void SetValues(float upwardsVelocity, float sideVelocity, float pullVelocity, Transform parent)
@@ -44,6 +46,13 @@ public class ProjectileController : MonoBehaviour
     {
         this.velocity = velocity;
     }
+
+
+    public void SetPlayerXpController(XPLevelController xpControl)
+    {
+        this.xpControl = xpControl;
+    }
+
 
     void CalculateVelocity()
     {
@@ -75,7 +84,7 @@ public class ProjectileController : MonoBehaviour
             else
             {
                 healthMangCollider.Heal(effectValue);
-            }
+            }            
         }
 
         Destroy(this.gameObject);
