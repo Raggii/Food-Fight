@@ -215,6 +215,7 @@ public class Astar : MonoBehaviour
                         if (node.g + pos.Item3 < n.g)
                         {
                             n.g = node.g + pos.Item3;
+                            n.from = node;
                             n.update();
                         }
                         oflag = true;
@@ -289,6 +290,27 @@ public class Astar : MonoBehaviour
                 }
             }
         }
+    }
+
+    /// <summary>
+    /// Checks if a point lies within an expanded envelope surrounding a axis-aligned box.
+    /// </summary>
+    /// <returns></returns>
+    bool PointInExpandedQuad(Vector2 point, Vector2 quad0, Vector2 quad1, float expansion)
+    {
+        // The expanded envelope consists of a square in which each side is moved away from it's corresponding side by distance expansion
+        if ((point.x > quad0.x - expansion) && (point.x < quad1.x + expansion) && (point.y < quad0.y + expansion) && (point.y > quad1.y - expansion))
+        {
+            return true;
+        } else
+        {
+            return false;
+        }
+    }
+
+    Vector2 RepelToBoundry()
+    {
+
     }
 
     Tuple<int, int> tileV2(Vector3 v, float s)
