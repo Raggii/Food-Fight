@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class ShootingPatternGenerator : MonoBehaviour
 {
+
+    public AttackAction currAttack;
+
     // public variables
     [Header("General")]
     public int numberOfProjectiles = 4;
     public float firingStarRadius = 5f;
     public float spawnAngleOffset = 0f;
     public float inBetweenShotsDelay;
-    public float shootsTimeDelta;
+    public float shotsTimeDelta;
     public int numberBulletsLimit;
 
     [Header("Switches")]
@@ -37,10 +40,55 @@ public class ShootingPatternGenerator : MonoBehaviour
     private bool readyToFire = true;
     private List<Vector3> spawnPoints = new List<Vector3>();
     private List<Vector3> reversedSpawnPoints = new List<Vector3>();
+    private string prevAttackName = "";
+
+    void SetAttack()
+    {
+        if (currAttack is null)
+        {
+            return;
+        }
+
+
+        if (prevAttackName != currAttack.name)
+        {
+            prevAttackName = currAttack.name;
+
+            // General
+            numberOfProjectiles = currAttack.numProjs;
+            firingStarRadius = currAttack.fireRadius;
+            spawnAngleOffset = currAttack.spawnAngleOffset;
+            inBetweenShotsDelay = currAttack.inBetweenShootsDelta;
+            shotsTimeDelta = currAttack.timeDeltaShots;
+            numberBulletsLimit = currAttack.bulletLimit;
+
+            
+            // Switches
+            objectRotatesIndepedentlyAlongZ = currAttack.objectRotatesIndepedentlyAlongZ;
+            dynamicOffset = currAttack.dynamicOffset;
+            reverseOrderFiring = currAttack.reverseOrderFiring;
+            loopFiring = currAttack.loopFiring;
+            limitBullets = currAttack.limitBullets;
+
+
+            // Projectile Data
+            projectile = currAttack.projectile;
+            timeToLive = currAttack.timeToLive;
+
+
+            // Forces and Velocities
+            upwardsVelocity = currAttack.upwardsVelocity;
+            sideVelocity = currAttack.sideVelocity;
+            pullVelcoity = currAttack.pullVelcoity;
+
+        }
+    }
+
 
 
     void FixedUpdate()
     {
+        SetAttack();
         if (loopFiring)
         {
             Shoot();
@@ -163,7 +211,7 @@ public class ShootingPatternGenerator : MonoBehaviour
         }
 
         readyToFire = true;
-        nextShotTime = Time.time + shootsTimeDelta;
+        nextShotTime = Time.time + shotsTimeDelta;
 
         if (dynamicOffset)
         {

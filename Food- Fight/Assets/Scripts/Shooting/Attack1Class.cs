@@ -13,7 +13,7 @@
         gen.firingStarRadius = 1f;
         gen.spawnAngleOffset = 90f;
         gen.inBetweenShotsDelay = 0.1f;
-        gen.shootsTimeDelta = 0.5f;
+        gen.shotsTimeDelta = 0.5f;
         gen.numberBulletsLimit = 5;
 
         gen.objectRotatesIndepedentlyAlongZ = false;

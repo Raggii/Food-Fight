@@ -758,6 +758,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1313120955}
+  maxSpeed: 20
+  acceleration: 30
+  decclaration: 40
+  speedThreshold: 0.3
+  stepResolution: 20
+  recoilDuration: 0.1
 --- !u!81 &878879970
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1613,6 +1619,11 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 5103360839759300694, guid: bd28347c40582f842ad5eb2d09c39b00,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5665936413376848280, guid: bd28347c40582f842ad5eb2d09c39b00,
         type: 3}
       propertyPath: m_Name
@@ -1672,6 +1683,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7496963365963367476, guid: bd28347c40582f842ad5eb2d09c39b00,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd28347c40582f842ad5eb2d09c39b00, type: 3}

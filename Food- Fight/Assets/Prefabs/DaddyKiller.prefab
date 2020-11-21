@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5021131129037635045}
   - component: {fileID: 8436269251575008125}
   - component: {fileID: 5103360839759300694}
+  - component: {fileID: 7496963365963367476}
   m_Layer: 0
   m_Name: DaddyKiller
   m_TagString: Damagable
@@ -48,11 +49,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ae907a769f604942b83b64bc5398ef0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currAttack: {fileID: 0}
   numberOfProjectiles: 5
   firingStarRadius: 1
   spawnAngleOffset: 45
   inBetweenShotsDelay: 0
-  shootsTimeDelta: 2.5
+  shotsTimeDelta: 0
   numberBulletsLimit: 0
   objectRotatesIndepedentlyAlongZ: 0
   dynamicOffset: 0
@@ -131,7 +133,6 @@ MonoBehaviour:
   shakeDuration: 0.15
   deathDrop: {fileID: 1255316684659503144, guid: a559cf76244552d4e808e5386ec65c5b,
     type: 3}
-  camShake: {fileID: 0}
   amountOfHealth: 0
   numOfHearts: 0
   hearts: []
@@ -144,12 +145,27 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5665936413376848280}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 10f2a74fa56fa0e46b25903ce0f76369, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   gen: {fileID: 5665936413376848282}
+--- !u!114 &7496963365963367476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5665936413376848280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d373f8c89621eb408cef696c13d099e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projGen: {fileID: 5665936413376848282}
+  combos:
+  - {fileID: 11400000, guid: 41ead5fff0f61d4409dbe5f2d5cd6582, type: 2}
 --- !u!1 &5665936414982081365
 GameObject:
   m_ObjectHideFlags: 0
