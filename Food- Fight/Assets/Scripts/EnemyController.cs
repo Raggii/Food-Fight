@@ -65,7 +65,10 @@ public class EnemyController : MonoBehaviour
     {
         GameObject newProj = Instantiate(projectile, transform.position + transform.right * 1, transform.rotation);
         ProjectileController projCon = newProj.GetComponent<ProjectileController>();
-        projCon.SetValues( (Vector2) (player.transform.position - transform.position).normalized * 10);
+        if (player)
+        {
+            projCon.SetValues((Vector2)(player.transform.position - transform.position).normalized * 10);
+        }
         newProj.SetActive(true);
         lastFireTime = Time.time;
     }

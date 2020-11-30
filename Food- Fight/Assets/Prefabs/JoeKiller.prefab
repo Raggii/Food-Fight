@@ -132,6 +132,7 @@ MonoBehaviour:
   minimumRange: 5
   rotationDelta: 5
   shoot: 0
+  waitTime: 0.5
   projectile: {fileID: 3468605670539618969, guid: 8b3a56624ab37074595fad9bedfe87ae,
     type: 3}
 --- !u!1 &5303044387392622376
@@ -160,7 +161,7 @@ Transform:
   m_GameObject: {fileID: 5303044387392622376}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.5764, y: 2.5764, z: 2.5764}
   m_Children: []
   m_Father: {fileID: 3322023674367977117}
   m_RootOrder: 0
