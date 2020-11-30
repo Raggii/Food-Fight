@@ -11,10 +11,10 @@ public class EnemyController : MonoBehaviour
     public float rotationDelta;
 
     public bool shoot = false;
+    public float waitTime = 0.5f;
     public GameObject projectile;
 
     private float lastFireTime = 0f;
-    private float waitTime = 0.5f;
     private float prevAngle = 0f;
 
     public void Start()
@@ -31,9 +31,14 @@ public class EnemyController : MonoBehaviour
 
     void FixedUpdate()
     {
+        shoot = CanFire();
+
         if (player == null)
         {
-            Shoot();
+            if (shoot)
+            {
+                Shoot();
+            }
         } else if (InRange())
         {
             float angle = Mathf.Atan2(player.transform.position.x - transform.position.x, player.transform.position.y - transform.position.y) * Mathf.Rad2Deg;
@@ -58,13 +63,11 @@ public class EnemyController : MonoBehaviour
 
     public void Shoot()
     {
-        if (CanFire())
-        {
-            GameObject newProj = Instantiate(projectile, transform.position + transform.right * 1, transform.rotation);
-            newProj.SetActive(true);
-            newProj.GetComponent<Rigidbody2D>().velocity = newProj.transform.right * 10;
-            lastFireTime = Time.time;
-        }
+        GameObject newProj = Instantiate(projectile, transform.position + transform.right * 1, transform.rotation);
+        ProjectileController projCon = newProj.GetComponent<ProjectileController>();
+        projCon.SetValues( (Vector2) (player.transform.position - transform.position).normalized * 10);
+        newProj.SetActive(true);
+        lastFireTime = Time.time;
     }
 
     public void RotateObject(float newAngle)

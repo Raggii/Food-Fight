@@ -310,7 +310,7 @@ public class Astar : MonoBehaviour
 
     Vector2 RepelToBoundry()
     {
-
+        return new Vector2(0,0); // Pieter I added this cause it complains!!!
     }
 
     Tuple<int, int> tileV2(Vector3 v, float s)

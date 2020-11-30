@@ -291,15 +291,25 @@ PrefabInstance:
       propertyPath: sideVelocity
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3322023674367977120, guid: ec72f44f924dda74db9e6c040ae18bb6,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3322023674367977121, guid: ec72f44f924dda74db9e6c040ae18bb6,
         type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 1313120955}
+    - target: {fileID: 3322023674367977121, guid: ec72f44f924dda74db9e6c040ae18bb6,
+        type: 3}
+      propertyPath: shoot
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3322023674367977126, guid: ec72f44f924dda74db9e6c040ae18bb6,
         type: 3}
       propertyPath: m_Name
-      value: JoeKiller
+      value: ForkEnemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec72f44f924dda74db9e6c040ae18bb6, type: 3}
