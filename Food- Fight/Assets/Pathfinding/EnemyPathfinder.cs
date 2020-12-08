@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Pathfinder
 {
     public class Obstacle
-    {/* This needs fixing!!!
+    {*//* This needs fixing!!!
 
         public GameObject obstacleObject;
 
@@ -54,7 +54,7 @@ namespace Pathfinder
 
             return closest;
         }
-    */
+    *//*
     }
 
     public class EnemyPathfinder : MonoBehaviour
@@ -74,3 +74,4 @@ namespace Pathfinder
 }
 
 
+*/
