@@ -42,7 +42,7 @@ public class ShootingPatternGenerator : MonoBehaviour
     private List<Vector3> reversedSpawnPoints = new List<Vector3>();
     private string prevAttackName = "";
 
-    void SetAttack()
+    public void SetAttack(AttackAction currAttack)
     {
         if (currAttack is null)
         {
@@ -88,7 +88,6 @@ public class ShootingPatternGenerator : MonoBehaviour
 
     void FixedUpdate()
     {
-        SetAttack();
         if (loopFiring)
         {
             Shoot();

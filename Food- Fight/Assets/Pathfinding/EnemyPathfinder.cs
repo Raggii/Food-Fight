@@ -6,7 +6,8 @@ using UnityEngine;
 namespace Pathfinder
 {
     public class Obstacle
-    {
+    {/* This needs fixing!!!
+
         public GameObject obstacleObject;
 
         private List<Vector2> corners = new List<Vector2>(4);
@@ -24,7 +25,7 @@ namespace Pathfinder
             
             foreach (Vector2 corner in corners)
             {
-                if (/*####*/)
+                if (/*####*//*)
                 {
                     sameSideCorners.Add(corner)
                 }
@@ -43,7 +44,7 @@ namespace Pathfinder
             float best;
             foreach(Vector2 corner in sameSideCorners)
             {
-                dot = /*####*/;
+                dot = /*####*//*;
                 if (dot > best)
                 {
                     best = dot;
@@ -53,6 +54,7 @@ namespace Pathfinder
 
             return closest;
         }
+    */
     }
 
     public class EnemyPathfinder : MonoBehaviour

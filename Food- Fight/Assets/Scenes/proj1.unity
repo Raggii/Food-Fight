@@ -291,15 +291,25 @@ PrefabInstance:
       propertyPath: sideVelocity
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3322023674367977120, guid: ec72f44f924dda74db9e6c040ae18bb6,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3322023674367977121, guid: ec72f44f924dda74db9e6c040ae18bb6,
         type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 1313120955}
+    - target: {fileID: 3322023674367977121, guid: ec72f44f924dda74db9e6c040ae18bb6,
+        type: 3}
+      propertyPath: shoot
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3322023674367977126, guid: ec72f44f924dda74db9e6c040ae18bb6,
         type: 3}
       propertyPath: m_Name
-      value: JoeKiller
+      value: ForkEnemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec72f44f924dda74db9e6c040ae18bb6, type: 3}
@@ -1382,6 +1392,7 @@ MonoBehaviour:
   minimumRange: 5
   rotationDelta: 5
   shoot: 1
+  waitTime: 0
   projectile: {fileID: 5306443215574338473, guid: dd26eb8a8e28b6547ac6f7c694a9d5ea,
     type: 3}
 --- !u!1 &1428578477
@@ -1833,6 +1844,7 @@ MonoBehaviour:
   minimumRange: 5
   rotationDelta: 5
   shoot: 0
+  waitTime: 0
   projectile: {fileID: 5306443215574338473, guid: dd26eb8a8e28b6547ac6f7c694a9d5ea,
     type: 3}
 --- !u!1001 &6647140487997942021
@@ -1919,7 +1931,7 @@ PrefabInstance:
     - target: {fileID: 7340593275787942784, guid: c05d7e9636bcd9e4e87eec0cbae6a38a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -50.07
+      value: -51.66
       objectReference: {fileID: 0}
     - target: {fileID: 7340593275787942784, guid: c05d7e9636bcd9e4e87eec0cbae6a38a,
         type: 3}
@@ -1970,6 +1982,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7340593275787942785, guid: c05d7e9636bcd9e4e87eec0cbae6a38a,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7340593275787942785, guid: c05d7e9636bcd9e4e87eec0cbae6a38a,
+        type: 3}
+      propertyPath: m_LinearDrag
+      value: 1000000
       objectReference: {fileID: 0}
     - target: {fileID: 7340593275787942788, guid: c05d7e9636bcd9e4e87eec0cbae6a38a,
         type: 3}

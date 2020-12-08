@@ -12,6 +12,12 @@ public class AttackManager : MonoBehaviour
     private int j = 0;
     private bool isRunning = false;
 
+
+    private void Start()
+    {
+       projGen.enabled = false;
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -25,6 +31,7 @@ public class AttackManager : MonoBehaviour
 
     private IEnumerator Attack()
     {
+        projGen.enabled = true;
         if (projGen is null == false)
         {
             for (i = 0; i < combos.Count; i++)
@@ -36,7 +43,7 @@ public class AttackManager : MonoBehaviour
                     {
                         if (projGen is null == false)
                         {
-                            projGen.currAttack = combos[i].attacks[j];
+                            projGen.SetAttack(combos[i].attacks[j]);
                             projGen.Shoot();
                             yield return new WaitForSeconds(combos[i].attacks[j].delay);
                         }
@@ -46,6 +53,7 @@ public class AttackManager : MonoBehaviour
 
             }
         }
+        projGen.enabled = false;
         isRunning = false;
 
     }
