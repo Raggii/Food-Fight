@@ -5,13 +5,15 @@ using UnityEngine;
 public class ProjectileController : MonoBehaviour
 {
 
+    public string Name;
     public float stepResolution;
     public Vector2 velocity = new Vector2();
     public new CircleCollider2D collider;
     public float radiusDelta;
     public float effectValue;
     public bool isDamage;
-    //public GameObject directionObj;
+    public List<Sprite> sprites = new List<Sprite>();
+
 
     private float step = 0;
     private float stepSize = 0f;
@@ -21,6 +23,8 @@ public class ProjectileController : MonoBehaviour
     private Vector2 nextPos = new Vector2();
     private Vector2 origin = new Vector2();
 
+    private SpriteRenderer spriteRen;
+
     private float minDistance = float.PositiveInfinity;
     private int minDistanceIndex = 0;
     private int i = 0;
@@ -28,9 +32,7 @@ public class ProjectileController : MonoBehaviour
     private float sideVelocity;
     private float pullVelocity;
     private Transform parent;
-
     private XPLevelController xpControl;
-
     private bool hasValues;
 
     public void SetValues(float upwardsVelocity, float sideVelocity, float pullVelocity, Transform parent)
@@ -65,6 +67,17 @@ public class ProjectileController : MonoBehaviour
     }
 
 
+    private void Start()
+    {
+        spriteRen = GetComponent<SpriteRenderer>();
+        if (spriteRen && sprites.Count > 0)
+        {
+            int index = Random.Range(0, sprites.Count);
+            spriteRen.sprite = sprites[index];
+        }
+    }
+
+
     void Awake()
     {
         currPos = transform.position;
@@ -84,10 +97,27 @@ public class ProjectileController : MonoBehaviour
             else
             {
                 healthMangCollider.Heal(effectValue);
-            }            
-        }
+            }
+            KillSelf();
 
+        } else if (true )
+        {
+            KillSelf();
+        }
+    }
+
+
+    public void KillSelf()
+    {
         Destroy(this.gameObject);
+    }
+
+
+    public void KillSelf(string parent)
+    {
+        if (Name == parent) {
+            Destroy(this.gameObject);
+        }
     }
 
 

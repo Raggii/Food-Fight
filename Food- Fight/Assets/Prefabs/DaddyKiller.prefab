@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 3709548332045739713}
   - component: {fileID: 5021131129037635045}
   - component: {fileID: 8436269251575008125}
-  - component: {fileID: 5103360839759300694}
   - component: {fileID: 7496963365963367476}
   m_Layer: 0
   m_Name: DaddyKiller
@@ -138,19 +137,6 @@ MonoBehaviour:
   hearts: []
   fullHeart: {fileID: 0}
   emptyHeart: {fileID: 0}
---- !u!114 &5103360839759300694
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5665936413376848280}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10f2a74fa56fa0e46b25903ce0f76369, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gen: {fileID: 5665936413376848282}
 --- !u!114 &7496963365963367476
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -16,10 +16,10 @@ MonoBehaviour:
   delay: 3
   numProjs: 10
   fireRadius: 1
-  spawnAngleOffset: -54
+  spawnAngleOffset: -71
   inBetweenShootsDelta: 0.1
   timeDeltaShots: 0.5
-  bulletLimit: 5
+  bulletLimit: 4
   objectRotatesIndepedentlyAlongZ: 0
   dynamicOffset: 0
   reverseOrderFiring: 1

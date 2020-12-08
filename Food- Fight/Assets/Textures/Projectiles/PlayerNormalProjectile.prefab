@@ -10,11 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6776177455515967286}
   - component: {fileID: 1636837672446892967}
-  - component: {fileID: 4989463221860988515}
   - component: {fileID: 2426413175991774051}
   - component: {fileID: 8291433214587343930}
   m_Layer: 0
-  m_Name: Apple
+  m_Name: PlayerNormalProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -84,27 +83,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &4989463221860988515
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3091992792435088935}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!114 &2426413175991774051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,6 +101,15 @@ MonoBehaviour:
   radiusDelta: 0.1
   effectValue: 1
   isDamage: 1
+  sprites:
+  - {fileID: 21300000, guid: 7523aa1910d9d494593ee77ffbc8768b, type: 3}
+  - {fileID: 21300000, guid: 008d5454d26634d408e186380d4563be, type: 3}
+  - {fileID: 21300000, guid: e5c8abb73a45b5f4a81f7a4b20332021, type: 3}
+  - {fileID: 21300000, guid: 65d2d83c4615ab04a9bbe4c28eb726d1, type: 3}
+  - {fileID: 21300000, guid: 6eb18f58bd3dac84fb6319a57c2f6f81, type: 3}
+  - {fileID: 21300000, guid: 9a36ebe9bdcd37f4bbb8868124f58a12, type: 3}
+  - {fileID: 21300000, guid: 9c80ae2fa6dd4f44592a880fba47a205, type: 3}
+  - {fileID: 21300000, guid: 9b6e9e8a2c0062c41ad708591968b7df, type: 3}
 --- !u!58 &8291433214587343930
 CircleCollider2D:
   m_ObjectHideFlags: 0

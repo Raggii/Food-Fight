@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 627134d52ad7b844e971dc065de26428, type: 3}
   m_Name: AidrainCombo
   m_EditorClassIdentifier: 
-  name: 
+  name: AidrianMain
   delay: 1.5
   attacks:
   - {fileID: 11400000, guid: 24e34d6f7fa18c641bbdf9efbbaad462, type: 2}

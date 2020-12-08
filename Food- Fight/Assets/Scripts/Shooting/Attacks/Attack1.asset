@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Attack1
   m_EditorClassIdentifier: 
   name: Attack1
-  delay: 3
+  delay: 4
   numProjs: 10
   fireRadius: 1
   spawnAngleOffset: 90
