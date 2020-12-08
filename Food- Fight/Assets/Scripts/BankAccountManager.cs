@@ -5,34 +5,46 @@ using UnityEngine;
 public class BankAccountManager : MonoBehaviour
 {
 
-    public int maxWalletSize = 1500;
-    private int walletCurrency = 0;
+    public int maxWalletBalance = 1500;
+    private int walletBalance = 0;
 
 
     public void Withdraw(int val)
     {
         if (CanWithdraw(val))
         {
-            walletCurrency -= val;
+            walletBalance -= val;
         }
     }
 
 
     public bool CanWithdraw(int val)
     {
-        return walletCurrency - val >= 0;
+        return walletBalance - val >= 0;
+    }
+
+
+    public int getBalance()
+    {
+        return walletBalance;
+    }
+
+
+    public int getMaxBalance()
+    {
+        return maxWalletBalance;
     }
 
 
     public void Deposit(int val)
     {
         if (CanDeposit(val)) {
-            walletCurrency = Mathf.Min(walletCurrency + val, maxWalletSize);
+            walletBalance = Mathf.Min(walletBalance + val, maxWalletBalance);
         }
     }
 
     public bool CanDeposit(int value)
     {
-        return value + walletCurrency <= maxWalletSize;
+        return value + walletBalance <= maxWalletBalance;
     }
 }

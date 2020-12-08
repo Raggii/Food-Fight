@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -9,9 +10,11 @@ public class PlayerController : MonoBehaviour
     public GameObject[] projectile;
     public GameObject firePos;
     public GameObject centerAxis;
+    public Slider moneyBar;
 
     public AudioSource gunshot;
     public MovementMotor motor;
+    public BankAccountManager account;
 
 
     public float recoilVelocity;
@@ -28,7 +31,10 @@ public class PlayerController : MonoBehaviour
     public void Awake()
     {
         waitTime = 1 / rateOfFire;
-    }
+        if (account) {
+            moneyBar.maxValue = account.getMaxBalance();
+            }
+        }
 
     // Update is called once per frame
     void Update()
@@ -53,6 +59,12 @@ public class PlayerController : MonoBehaviour
                 Fire();
             }
         }
+
+        if (account)
+        {
+            moneyBar.value = account.getBalance();
+        }
+
     }
 
     private void UpdateFirePosDirection()
