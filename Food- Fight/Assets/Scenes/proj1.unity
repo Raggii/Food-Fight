@@ -301,10 +301,25 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1313120955}
-    - target: {fileID: 3322023674367977121, guid: ec72f44f924dda74db9e6c040ae18bb6,
+    - target: {fileID: 3322023674367977122, guid: ec72f44f924dda74db9e6c040ae18bb6,
         type: 3}
-      propertyPath: shoot
-      value: 1
+      propertyPath: m_Offset.y
+      value: 0.027770996
+      objectReference: {fileID: 0}
+    - target: {fileID: 3322023674367977122, guid: ec72f44f924dda74db9e6c040ae18bb6,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.7657471
+      objectReference: {fileID: 0}
+    - target: {fileID: 3322023674367977122, guid: ec72f44f924dda74db9e6c040ae18bb6,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: -0.06744385
+      objectReference: {fileID: 0}
+    - target: {fileID: 3322023674367977122, guid: ec72f44f924dda74db9e6c040ae18bb6,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.3848877
       objectReference: {fileID: 0}
     - target: {fileID: 3322023674367977126, guid: ec72f44f924dda74db9e6c040ae18bb6,
         type: 3}

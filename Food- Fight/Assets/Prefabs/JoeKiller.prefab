@@ -131,7 +131,7 @@ MonoBehaviour:
   minimumRotationAngle: 3
   minimumRange: 5
   rotationDelta: 5
-  shoot: 0
+  shoot: 1
   waitTime: 0.5
   projectile: {fileID: 3468605670539618969, guid: 8b3a56624ab37074595fad9bedfe87ae,
     type: 3}
