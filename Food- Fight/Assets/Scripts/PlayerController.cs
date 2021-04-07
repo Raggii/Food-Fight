@@ -115,8 +115,8 @@ public class PlayerController : MonoBehaviour
                 PlaySound(); 
             }
 
-            int project = UnityEngine.Random.Range(0, projectile.Length);
-            GameObject newProj = Instantiate(projectile[project], firePos.transform.position, firePos.transform.rotation);
+            int index = UnityEngine.Random.Range(0, projectile.Length);
+            GameObject newProj = Instantiate(projectile[index], firePos.transform.position, firePos.transform.rotation);
             if (newProj != null)
             {
                 ProjectileController PController = newProj.GetComponent<ProjectileController>();
