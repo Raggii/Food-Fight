@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ProjectileController : MonoBehaviour
 {
-
+    [Header("Parameters")]
     public string Name;
     public float stepResolution;
     public Vector2 velocity = new Vector2();
@@ -13,6 +13,9 @@ public class ProjectileController : MonoBehaviour
     public float effectValue;
     public bool isDamage;
     public List<Sprite> sprites = new List<Sprite>();
+
+
+    private const bool collideWithProjectiles = false; // To turn off and on collision between projectiles that use this script
 
 
     private float step = 0;
@@ -100,9 +103,17 @@ public class ProjectileController : MonoBehaviour
             }
             KillSelf();
 
-        } else if (true )
+        } else if ( hit.CompareTag("Projectiles"))
         {
+            if (collideWithProjectiles) {
+                Destroy(hit.gameObject);
+                KillSelf();
+            }
+        } else
+        {
+
             KillSelf();
+
         }
     }
 
@@ -110,14 +121,6 @@ public class ProjectileController : MonoBehaviour
     public void KillSelf()
     {
         Destroy(this.gameObject);
-    }
-
-
-    public void KillSelf(string parent)
-    {
-        if (Name == parent) {
-            Destroy(this.gameObject);
-        }
     }
 
 

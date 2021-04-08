@@ -10,12 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 3542062906605963734}
   - component: {fileID: 3542062906605963732}
-  - component: {fileID: 3542062906605963735}
   - component: {fileID: 1949671854878954014}
   - component: {fileID: 5403515860144505617}
   m_Layer: 0
   m_Name: ShootingScriptProjectile
-  m_TagString: EnemyProjectiles
+  m_TagString: Projectiles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -41,7 +40,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3542062906605963731}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -50,23 +49,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.06
---- !u!114 &3542062906605963735
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3542062906605963731}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b311e73311b040040bde8d139c186739, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  effectValue: 25
-  timeToLive: 2
-  isDamage: 1
-  destoryOnImpact: 1
-  rb: {fileID: 0}
 --- !u!114 &1949671854878954014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79,6 +61,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fda7a829767397b409bd311b670020dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Name: 
   stepResolution: 25
   velocity: {x: 0, y: 0}
   collider: {fileID: 3542062906605963732}

@@ -274,7 +274,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: ForkEnemy
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3322023674367977120, guid: ec72f44f924dda74db9e6c040ae18bb6, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ec72f44f924dda74db9e6c040ae18bb6, type: 3}
 --- !u!1 &467283029
 GameObject:

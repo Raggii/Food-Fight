@@ -6,7 +6,7 @@ TagManager:
   tags:
   - Damagable
   - Wall
-  - EnemyProjectiles
+  - Projectiles
   layers:
   - Default
   - TransparentFX
