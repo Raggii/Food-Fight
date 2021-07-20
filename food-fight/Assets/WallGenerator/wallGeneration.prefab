@@ -44,9 +44,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tops:
-  - {fileID: 3519611688920111998, guid: 443b952003a9d314fa8539441f5ff99c, type: 3}
-  - {fileID: 3549873726264285505, guid: 8e69d8fce66773f4cbb6d7fa0d293f4b, type: 3}
+  - {fileID: 1380595850132743242, guid: 443b952003a9d314fa8539441f5ff99c, type: 3}
+  - {fileID: 815069152043359335, guid: 8e69d8fce66773f4cbb6d7fa0d293f4b, type: 3}
   sides:
-  - {fileID: 3936385199051779859, guid: 74e067c975e4a3a4c89b7c424dafc401, type: 3}
-  - {fileID: 4616772706533403245, guid: 0408992db62317c429148356ece17548, type: 3}
+  - {fileID: 279091363079769890, guid: 74e067c975e4a3a4c89b7c424dafc401, type: 3}
+  - {fileID: 4807951788016588255, guid: 0408992db62317c429148356ece17548, type: 3}
   maxCount: 25
