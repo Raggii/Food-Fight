@@ -6,33 +6,19 @@ public class MoveCamera : MonoBehaviour
 {
     public GameObject player;
 
-    public float maxSpeed = 20f;
-    public float acceleration = 30f;
-    public float decclaration = 40f;
-    public float speedThreshold = 0.3f;
-    public int stepResolution = 20;
-    public float recoilDuration = 0.1f;
 
-    private Vector2 currPos;
-    private Vector2 nextPos;
-    private float stepSize = 0f;
-    private float step = 0;
 
-    private Vector2 dir = new Vector2(0, 0);
-    private Vector2 currentVelocity = new Vector2(0, 0);
-
+    // for this we need to make it transition slowly as well as disable all objects outside it.
     void Update()
     {
         if ((player.transform.position.x - transform.position.x) >= 5)
         {
-
             transform.Translate(transform.right * 10);
-            Vector2 checker = transform.position;
-            while ((transform.position.x - checker.x) >= 10) {
 
-                //transform.setPosition GetNewVelocityForCamera(dir.x, currentVelocity.x, Time.deltaTime, true);
+            //Using current camera position we can always disable all objects outside of its bounds
+            // camera size is 10x6 grid size
 
-            }
+
 
         }
         else if ((player.transform.position.x - transform.position.x) <= -5)
@@ -48,50 +34,23 @@ public class MoveCamera : MonoBehaviour
         }
     }
 
-    void changeCameraPosition()
-    {
-        currPos = transform.position;
-        stepSize = 1f / stepResolution;
-
-        
-        currentVelocity.y = GetNewVelocityForCamera(dir.y, currentVelocity.y, Time.deltaTime);
-
-        currPos += (currentVelocity * stepSize * Time.deltaTime);
-
-        transform.position = currPos;
-
-    }
-
-    public float GetNewVelocityForCamera(float direction, float currentVelocity, float deltaTime, bool is_x_axis = false)
-    {
-        float newVelocity = currentVelocity;
-        if (currentVelocity != direction * maxSpeed)
+    /*    void detectionDisable() 
         {
+            Vector2 topLeft = new Vector2(transform.position.x - 5, transform.position.y + 3);
+            Vector2 bottomRight = new Vector2(transform.position.x + 5, transform.position.y - 3);
+            Collider2D[] detection = OverlapAreaAll(topLeft, bottomRight,  layerMask, -Mathf.Infinity, Mathf.Infinity);
 
-            if (direction == 0)
-            {
-                newVelocity = currentVelocity + decclaration * deltaTime * -Mathf.Sign(currentVelocity);
+            for (int i = 0; i < detection.Count; i++) {
 
-                if (Mathf.Abs(newVelocity) <= speedThreshold)
-                {
-                    newVelocity = 0f;
-                }
+                //Need to enable all objects here
+                // So somehow after making the wall we have to disable everything else
 
+                //SetActive() -- useful tag   tr.gameObject.SetActive(true);
+                //https://answers.unity.com/questions/532746/finding-gameobjects-within-a-radius.html
             }
-            else
-            {
-                newVelocity = currentVelocity + acceleration * deltaTime * Mathf.Sign(direction);
 
-                if (Mathf.Abs(newVelocity) > maxSpeed)
-                {
-                    newVelocity = Mathf.Sign(direction) * maxSpeed;
-                }
 
-            }
-        }
-
-        return newVelocity;
-    }
+        }*/
 
 
 }
