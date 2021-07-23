@@ -93,6 +93,35 @@ public class wallGen : MonoBehaviour
     {
         // first room needs to garentee at least 2 rooms in it somehow
         generateRoom(true);
+        while (roomLocations.Count != 0)
+        {//roomLocations.Count != 0) {
+
+
+
+            if (count == maxCount)
+            {
+                genRooms = false;
+            }
+            changeToNewRoom();
+            generateRoom(genRooms);
+            count++;
+
+
+        }
+
+/*        var gameObjects = UnityEngine.Object.FindObjectsOfType<GameObject>();
+        for (int i = 0; i < 500; i++)
+        { // this suks
+
+            if (gameObjects[i].tag != "MainCamera")
+            {
+                gameObjects[i].SetActive(false);
+            }
+
+
+        }*/
+
+
     }
 
 
@@ -104,41 +133,6 @@ public class wallGen : MonoBehaviour
         // so say a givin constant for how many branching rooms is decided and it loops that many times adding rooms
         // Then stops adding
 
-        int counter = 0;
-
-
-        while (roomLocations.Count != 0) {//roomLocations.Count != 0) {
-
-
-
-            if (count == maxCount) {
-                genRooms = false;
-            }
-            changeToNewRoom();
-            generateRoom(genRooms);
-            count++;
-
-
-        }
-        if (counter == 0) {
-
-           /* counter += 1;
-            // Disable everything NIOCE
-
-            var gameObjects = UnityEngine.Object.FindObjectsOfType<GameObject>();
-            for(int i = 0; i < 500; i++) { // this suks
-
-                // CHeck for player
-                //Check for the camera
-                //Check for the objects
-
-                gameObjects[i].SetActive(false);
-
-            }*/
-
-
-
-        }
 
     }
 }
