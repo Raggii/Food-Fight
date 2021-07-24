@@ -1174,12 +1174,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 674286751}
-  maxSpeed: 20
-  acceleration: 30
-  decclaration: 40
-  speedThreshold: 0.3
-  stepResolution: 20
-  recoilDuration: 0.1
 --- !u!81 &1640404582
 AudioListener:
   m_ObjectHideFlags: 0

@@ -40,7 +40,7 @@ public class MoveCamera : MonoBehaviour
         //Vector2 topLeft = new Vector2(transform.position.x - 5, transform.position.y + 3);
         //Vector2 bottomRight = new Vector2(transform.position.x + 5, transform.position.y - 3);
         //var detection = Physics2D.OverlapAreaAll(topLeft, bottomRight, 1, -Mathf.Infinity, Mathf.Infinity);
-        var gameObjects = UnityEngine.Object.FindObjectsOfType<GameObject>();
+       /* var gameObjects = UnityEngine.Object.FindObjectsOfType<GameObject>();
         Plane[] getCameraOutline = GeometryUtility.CalculateFrustumPlanes(camera); // gives veiw thrustrum so 6 thingos
         //Doesnt like this line for some reason
 
@@ -54,7 +54,7 @@ public class MoveCamera : MonoBehaviour
             }
             //detection[i].gameObject.SetActive(true);
 
-        }
+        }*/
 
 
 
