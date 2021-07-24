@@ -113,18 +113,18 @@ public class wallGen : MonoBehaviour
 
         }
 
-/*        gameObjects[] gameObjectList = UnityEngine.Object.FindObjectsOfType<GameObject>();
+        GameObject[] gameObjectList = UnityEngine.Object.FindObjectsOfType<GameObject>();
         for (int i = 0; i < gameObjectList.Length; i++)
         {
+            Debug.Log(i);
+/*            if (gameObjectList[i].tag != "MainCamera")
+            {*/
+                /*colliderToDisable = gameObjectList[i].GetComponent<Renderer>();
+                colliderToDisable.enabled = false;*/
+            //}
 
-            if (gameObjectList[i].tag != "MainCamera")
-            {
-                colliderToDisable = gameObjectList[i].GetComponent<Renderer>();
-                colliderToDisable.enabled = false;
-            }
 
-
-        }*/
+        }
 
 
     }
@@ -132,11 +132,7 @@ public class wallGen : MonoBehaviour
 
     void Update()
     {
-        // need to have some variable which changes the probabilty of new rooms spawing.
-        // if it spawns until a point changes chance to 0 then finishes the rest of the rooms with
-        // just emptys that could work well
-        // so say a givin constant for how many branching rooms is decided and it loops that many times adding rooms
-        // Then stops adding
+
 
 
     }
