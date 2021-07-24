@@ -6,6 +6,8 @@ public class MoveCamera : MonoBehaviour
 {
     public GameObject player;
 
+    public Renderer colliderToDisable;
+
 
     // for this we need to make it transition slowly as well as disable all objects outside it.
     void Update()
@@ -37,24 +39,19 @@ public class MoveCamera : MonoBehaviour
 
     void detectionEnable()
     {
-        //Vector2 topLeft = new Vector2(transform.position.x - 5, transform.position.y + 3);
-        //Vector2 bottomRight = new Vector2(transform.position.x + 5, transform.position.y - 3);
-        //var detection = Physics2D.OverlapAreaAll(topLeft, bottomRight, 1, -Mathf.Infinity, Mathf.Infinity);
-       /* var gameObjects = UnityEngine.Object.FindObjectsOfType<GameObject>();
-        Plane[] getCameraOutline = GeometryUtility.CalculateFrustumPlanes(camera); // gives veiw thrustrum so 6 thingos
+
+        Vector2 topLeft = new Vector2(transform.position.x - 5, transform.position.y + 3);
+        Vector2 bottomRight = new Vector2(transform.position.x + 5, transform.position.y - 3);
+
+        Collider2D[] detection = Physics2D.OverlapAreaAll(topLeft, bottomRight, 1, -Mathf.Infinity, Mathf.Infinity);
         //Doesnt like this line for some reason
 
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < detection.Length; i++)
         {
+            colliderToDisable = detection[i].gameObject.GetComponent<Renderer>();
+            colliderToDisable.enabled = true;
 
-            if (GeometryUtility.TestPlanesAABB(getCameraOutline, gameObjects[i].Collider2D.bounds)) {
-
-                Debug.Log("Somethin");
-
-            }
-            //detection[i].gameObject.SetActive(true);
-
-        }*/
+        }
 
 
 

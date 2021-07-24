@@ -25,6 +25,10 @@ public class wallGen : MonoBehaviour
 
     private List<Vector3> os = new List<Vector3>();
 
+    //For disabling everything
+    public Renderer colliderToDisable;
+
+
     //goes around clockwise starting from the top spawning rooms
     void generateRoom(bool generateRooms)
     {
@@ -109,13 +113,14 @@ public class wallGen : MonoBehaviour
 
         }
 
-/*        var gameObjects = UnityEngine.Object.FindObjectsOfType<GameObject>();
-        for (int i = 0; i < 500; i++)
-        { // this suks
+/*        gameObjects[] gameObjectList = UnityEngine.Object.FindObjectsOfType<GameObject>();
+        for (int i = 0; i < gameObjectList.Length; i++)
+        {
 
-            if (gameObjects[i].tag != "MainCamera")
+            if (gameObjectList[i].tag != "MainCamera")
             {
-                gameObjects[i].SetActive(false);
+                colliderToDisable = gameObjectList[i].GetComponent<Renderer>();
+                colliderToDisable.enabled = false;
             }
 
 
