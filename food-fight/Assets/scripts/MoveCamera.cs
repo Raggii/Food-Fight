@@ -6,13 +6,19 @@ public class MoveCamera : MonoBehaviour
 {
     public GameObject player;
 
-    public Renderer colliderToDisable;
-
+    private Renderer colliderToDisable;
+    int firstTimeCount = 0;
 
     // for this we need to make it transition slowly as well as disable all objects outside it.
     void Update()
     {
-        //detectionEnable();
+
+        if (firstTimeCount == 0) {
+
+            detectionEnable();
+            firstTimeCount += 1;
+        }
+
         if ((player.transform.position.x - transform.position.x) >= 5)
         {
             transform.Translate(transform.right * 10);
@@ -36,6 +42,10 @@ public class MoveCamera : MonoBehaviour
             detectionEnable();
         }
     }
+
+    
+
+
 
     void detectionEnable()
     {

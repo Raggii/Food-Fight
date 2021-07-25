@@ -11,7 +11,7 @@ public class wallGen : MonoBehaviour
     int count = 0;
     bool genRooms = true;
     int roomCount = 0;
-
+    int countChecker = 0;
     //public LayerMask room;
 
     // Coords for wall positions
@@ -25,8 +25,6 @@ public class wallGen : MonoBehaviour
 
     private List<Vector3> os = new List<Vector3>();
 
-    //For disabling everything
-    public Renderer colliderToDisable;
 
 
     //goes around clockwise starting from the top spawning rooms
@@ -113,26 +111,36 @@ public class wallGen : MonoBehaviour
 
         }
 
-        GameObject[] gameObjectList = UnityEngine.Object.FindObjectsOfType<GameObject>();
-        for (int i = 0; i < gameObjectList.Length; i++)
-        {
-            Debug.Log(i);
-/*            if (gameObjectList[i].tag != "MainCamera")
-            {*/
-                /*colliderToDisable = gameObjectList[i].GetComponent<Renderer>();
-                colliderToDisable.enabled = false;*/
-            //}
-
-
-        }
-
+        //diable everything at start
+        // Get all objects
+        // Disable render property
+        
 
     }
 
 
     void Update()
     {
+        //This disables all renderer objects
+        // There is many objects that do not have renderers so we need to compensate for this
+        if (countChecker == 0) {
 
+            GameObject[] allColliders = FindObjectsOfType<GameObject>();
+            for (int i = 0; i < allColliders.Length; i++)
+            {
+                if (allColliders[i].GetComponent<Renderer>() != null)
+                {
+                    if (allColliders[i].tag != "Player")
+                    {
+                        Renderer renderObject = allColliders[i].GetComponent<Renderer>();
+                        //Debug.Log(renderObject);
+                        renderObject.enabled = false;
+                    }
+                }
+            }
+            countChecker += 1;
+
+        }
 
 
     }
