@@ -5,55 +5,58 @@ using UnityEngine;
 public class MoveCamera : MonoBehaviour
 {
     public GameObject player;
+    public float transitionDelay = 3;
+
+    private float startTime = 0;
+    private Vector3 target;
+    private bool transitioning = false;
 
     private Renderer colliderToDisable;
     bool firstTimeCount = false;
 
+    private void Start()
+    {
+    }
+
     // for this we need to make it transition slowly as well as disable all objects outside it.
-    void Update()
+    void FixedUpdate()
     {
         //Loading sceen for first time
         if (!firstTimeCount) {
-
-            detectionEnable();
+            DetectionEnable();
             firstTimeCount = true;
+            target = transform.position;
         }
 
+        UpdateCamPos();
+
         //Checking players current room position
+
+
+        if (transitioning) return;
+
         if ((player.transform.position.x - transform.position.x) >= 5)
         {
-
-            //Testing Area//
-            float speed = 1;
-            Vector3 endMarker = new Vector3(transform.position.x + 10, transform.position.y, transform.position.z);
-            
-            cameraMovement(endMarker, speed);
-
-
-            //transform.Translate(transform.right * 10);
-            detectionEnable();
+            target = new Vector3(transform.position.x + 10, transform.position.y, transform.position.z);
         }
         else if ((player.transform.position.x - transform.position.x) <= -5)
         {
-            transform.Translate(transform.right * -10);
-            detectionEnable();
+            target = new Vector3(transform.position.x - 10, transform.position.y, transform.position.z);
         }
-        else if ((player.transform.position.y - transform.position.y) >= 3) {
-            transform.Translate(transform.up * 6);
-            detectionEnable();
+        else if ((player.transform.position.y - transform.position.y) >= 3)
+        {
+
+            target = new Vector3(transform.position.x, transform.position.y + 6, transform.position.z);
         }
         else if ((player.transform.position.y - transform.position.y) <= -3)
         {
-            transform.Translate(transform.up * -6);
-            detectionEnable();
+            target = new Vector3(transform.position.x, transform.position.y - 6, transform.position.z);
         }
+        
     }
 
-    
 
-
-
-    void detectionEnable()
+    void DetectionEnable()
     {
         Vector2 topLeft = new Vector2(transform.position.x - 5, transform.position.y + 3);
         Vector2 bottomRight = new Vector2(transform.position.x + 5, transform.position.y - 3);
@@ -65,23 +68,20 @@ public class MoveCamera : MonoBehaviour
         }
     }
 
-
-
-    void cameraMovement(Vector3 target, float speed) {
-
-
-        while ((target - transform.position).magnitude > 0.005f)
+    private void UpdateCamPos()
+    {
+        DetectionEnable();
+        if ((transform.position - target).magnitude > 0.05f)
         {
-            float speeder = (target - transform.position).magnitude / speed * Time.deltaTime;
-            
-            transform.position = Vector3.MoveTowards(transform.position, target, speeder);
+            transitioning = true;
+            transform.position = Vector3.Lerp(transform.position, target, Mathf.Min((Time.time - startTime), totalDelay) / totalDelay);
 
-            yield return new WaitForSeconds(1);
-
-
+        } else {
+            startTime = Time.time;
+            transform.position = target;
+            transitioning = false;
         }
     }
-
 
 }
 
