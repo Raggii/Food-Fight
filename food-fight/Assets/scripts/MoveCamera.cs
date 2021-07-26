@@ -74,7 +74,7 @@ public class MoveCamera : MonoBehaviour
         if ((transform.position - target).magnitude > 0.05f)
         {
             transitioning = true;
-            transform.position = Vector3.Lerp(transform.position, target, Mathf.Min((Time.time - startTime), totalDelay) / totalDelay);
+            transform.position = Vector3.Lerp(transform.position, target, Mathf.Min((Time.time - startTime), transitionDelay) / transitionDelay);
 
         } else {
             startTime = Time.time;
