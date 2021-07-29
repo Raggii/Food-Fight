@@ -8,9 +8,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/scenes/startScreen.unity
     guid: 22fe65bc9812f9c499ea3acdcab9dcca
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/scenes/WallGenerator.unity
     guid: 9b75fd232c1880347990950651efd8c1
