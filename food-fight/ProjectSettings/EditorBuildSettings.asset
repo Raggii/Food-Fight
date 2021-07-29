@@ -12,11 +12,6 @@ EditorBuildSettings:
     path: 
     guid: 00000000000000000000000000000000
   - enabled: 1
-<<<<<<< Updated upstream
     path: Assets/scenes/WallGenerator.unity
     guid: 9b75fd232c1880347990950651efd8c1
-=======
-    path: Assets/scenes/proj1.unity
-    guid: 33e8110681d888045bd63752a1891bde
->>>>>>> Stashed changes
   m_configObjects: {}
