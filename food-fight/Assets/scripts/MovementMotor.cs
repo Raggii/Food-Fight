@@ -24,7 +24,6 @@ public class MovementMotor : MonoBehaviour
     private Vector2 currPos;
     private Vector2 nextPos;
 
-    private float currentPause = 0f;
     private float stepSize = 0f;
     private float step = 0;
     private float recoilTimeLeft;

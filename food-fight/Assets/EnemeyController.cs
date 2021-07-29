@@ -8,10 +8,12 @@ public class EnemeyController : MonoBehaviour
     public GameObject player;
     public Vector3 offset = new Vector3(0.0001f, 0.0001f, 0);
     public float trackingThresholdDistance = 0.00005f;
-    public float speed = 10f;
+    public float playerHiddenSpeed = 2f;
+    public float playerVisibileSpeed = 5f;
 
     private Vector3 currentDir = new Vector3(0, 0, 0);
     private RaycastHit2D playerHit;
+    private float speed = 0;
 
     private Vector3 movementDirection = new Vector3(1, 0, 0);
     private Vector3 trackingStartLocation;
@@ -21,6 +23,7 @@ public class EnemeyController : MonoBehaviour
     private void OnEnable()
     {
         trackingStartLocation = transform.position;
+        lastKnownLocation = transform.position;
     }
 
     // Update is called once per frame
@@ -57,12 +60,13 @@ public class EnemeyController : MonoBehaviour
         if (player) {
             playerHit = Physics2D.Raycast(transform.position + offset, (player.transform.position - transform.position).normalized);
 
-            if (playerHit && playerHit.collider.gameObject.Equals(player)) {
+            if (playerHit && playerHit.collider.gameObject.Equals(player) ) {
                 lastKnownLocation = playerHit.point;
+                speed = playerVisibileSpeed;
 
             } else {
                 trackingStartLocation = transform.position;
-
+                speed = playerHiddenSpeed;
             }
         }
     }
