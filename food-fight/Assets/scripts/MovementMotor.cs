@@ -15,6 +15,7 @@ public class MovementMotor : MonoBehaviour
 
     [Header("Components")]
     public Animator animator;
+    public Joystick joystick;
 
     private Vector2 dir = new Vector2(0, 0);            // direction
     private Vector2 currentVelocity = new Vector2(0, 0);
@@ -30,8 +31,8 @@ public class MovementMotor : MonoBehaviour
 
     public void Update()
     {
-        dir.x = Input.GetAxisRaw("Horizontal");
-        dir.y = Input.GetAxisRaw("Vertical");
+        dir.x = Input.GetAxisRaw("Horizontal") + joystick.Horizontal;
+        dir.y = Input.GetAxisRaw("Vertical") + joystick.Vertical;
         AnimatorUpdate();
     }
 
