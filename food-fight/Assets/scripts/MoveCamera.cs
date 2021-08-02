@@ -38,6 +38,8 @@ public class MoveCamera : MonoBehaviour
         if ((player.transform.position.x - transform.position.x) >= 5)
         {
             target = new Vector3(transform.position.x + 10, transform.position.y, transform.position.z);
+
+
         }
         else if ((player.transform.position.x - transform.position.x) <= -5)
         {
