@@ -7,6 +7,7 @@ TagManager:
   - Damagable
   - Wall
   - Projectiles
+  - Door
   layers:
   - Default
   - TransparentFX

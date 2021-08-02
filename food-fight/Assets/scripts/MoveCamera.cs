@@ -58,13 +58,16 @@ public class MoveCamera : MonoBehaviour
 
     void DetectionEnable()
     {
-        Vector2 topLeft = new Vector2(transform.position.x - 5, transform.position.y + 3);
-        Vector2 bottomRight = new Vector2(transform.position.x + 5, transform.position.y - 3);
+        Vector2 topLeft = new Vector2(transform.position.x - 15, transform.position.y + 9);
+        Vector2 bottomRight = new Vector2(transform.position.x + 15, transform.position.y - 9);
         Collider2D[] detection = Physics2D.OverlapAreaAll(topLeft, bottomRight, 1, -Mathf.Infinity, Mathf.Infinity);
         for (int i = 0; i < detection.Length; i++)
         {
-            colliderToDisable = detection[i].gameObject.GetComponent<Renderer>();
-            colliderToDisable.enabled = true;
+            if (detection[i].tag != "Door")
+            {
+                colliderToDisable = detection[i].gameObject.GetComponent<Renderer>();
+                colliderToDisable.enabled = true;
+            }
         }
     }
 
