@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public GameObject firePos;
     public GameObject centerAxis;
     public Slider moneyBar;
+    public Joystick joystick;
 
     public AudioSource gunshot;
     public MovementMotor motor;
@@ -69,6 +70,7 @@ public class PlayerController : MonoBehaviour
 
     private void UpdateFirePosDirection()
     {
+        
         Vector3 clickLocation = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         centerAxis.transform.LookAt(clickLocation);
     }
