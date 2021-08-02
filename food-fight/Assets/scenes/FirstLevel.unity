@@ -1715,6 +1715,7 @@ GameObject:
   - component: {fileID: 1817500387}
   - component: {fileID: 1817500386}
   - component: {fileID: 1817500385}
+  - component: {fileID: 1817500389}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1731,8 +1732,8 @@ Camera:
   m_GameObject: {fileID: 1817500383}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.2784314, g: 0.2784314, b: 0.2784314, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1749,7 +1750,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 2.8117554
+  orthographic size: 2.4343677
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1814,6 +1815,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1817500389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1817500383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66a041b42bbb65c4ea9f115ba75a5c12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneWidth: 10
+  camera: {fileID: 1817500384}
 --- !u!1 &1831560207
 GameObject:
   m_ObjectHideFlags: 0
@@ -2206,6 +2221,7 @@ MonoBehaviour:
   firePos: {fileID: 999645386}
   centerAxis: {fileID: 876572159}
   moneyBar: {fileID: 0}
+  joystick: {fileID: 1325052367}
   gunshot: {fileID: 540560642}
   motor: {fileID: 2126118066}
   account: {fileID: 0}
