@@ -100,6 +100,13 @@ public class DoorChecker : MonoBehaviour
         
     }
 
+   /* Collider2D[] returnList(int topLeft, int topRight, int bottomLeft, int bottomRight) {
+
+        Collider2D[] detectionLeft = new ArrayList<Collider2D>();
+
+        return detectionLeft;
+    }*/
+
 
 
 }
