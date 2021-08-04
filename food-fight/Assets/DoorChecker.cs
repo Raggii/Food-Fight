@@ -25,34 +25,40 @@ public class DoorChecker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*if (cameraInput.transform != currentCameraPos) { 
-            // Then the camera moved 
+        // Much more efficiant but still not useable without debug
+        // Implement distance of player to camera such that when he goes into the room when he gets within a range of the camera 
+        // It shuts all the doors until the emeines are dead.
+
+        if (currentCameraPos != cameraInput.transform) 
+        { 
+            
 
         
-        }*/
+        }
+
+
+
         if (doorsEnabled)
         {
-            Vector2 topLeft = new Vector2(cameraInput.transform.position.x - 5, cameraInput.transform.position.y + 3);
-            Vector2 bottomRight = new Vector2(cameraInput.transform.position.x + 5, cameraInput.transform.position.y - 3);
-            Collider2D[] detection = Physics2D.OverlapAreaAll(topLeft, bottomRight, 1, -Mathf.Infinity, Mathf.Infinity);
-            for (int i = 0; i < detection.Length; i++)
+            List<Collider2D> detection = doorList();
+            for (int i = 0; i < detection.Count; i++)
             {
                 if (detection[i].tag == "Door")
                 {
-                    detection[i].enabled = false;
+                    detection[i].isTrigger = true;
+                    
                 }
             }
         }
         else {
 
-            Vector2 topLeft = new Vector2(cameraInput.transform.position.x - 5, cameraInput.transform.position.y + 3);
-            Vector2 bottomRight = new Vector2(cameraInput.transform.position.x + 5, cameraInput.transform.position.y - 3);
-            Collider2D[] detection = Physics2D.OverlapAreaAll(topLeft, bottomRight, 1, -Mathf.Infinity, Mathf.Infinity);
-            for (int i = 0; i < detection.Length; i++)
+
+            List<Collider2D> detection = doorList();
+            for (int i = 0; i < detection.Count; i++)
             {
                 if (detection[i].tag == "Door")
                 {
-                    detection[i].enabled = true;
+                    detection[i].isTrigger = false;
                 }
             }
 
@@ -60,4 +66,40 @@ public class DoorChecker : MonoBehaviour
         }
 
     }
+
+    List<Collider2D> doorList()
+    {
+        List<Collider2D> returnList = new List<Collider2D>();
+        //Right Side box
+        Vector2 topLeftLeft = new Vector2(cameraInput.transform.position.x - 6, cameraInput.transform.position.y + .5f);
+        Vector2 bottomRightLeft = new Vector2(cameraInput.transform.position.x + -5, cameraInput.transform.position.y - .5f);
+        Collider2D[] detectionLeft = Physics2D.OverlapAreaAll(topLeftLeft, bottomRightLeft, 1, -Mathf.Infinity, Mathf.Infinity);
+
+        //Left Side Box
+        Vector2 topLeftRight = new Vector2(cameraInput.transform.position.x + 6, cameraInput.transform.position.y + .5f);
+        Vector2 bottomRightRight = new Vector2(cameraInput.transform.position.x + 5, cameraInput.transform.position.y - .5f);
+        Collider2D[] detectionRight = Physics2D.OverlapAreaAll(topLeftRight, bottomRightRight, 1, -Mathf.Infinity, Mathf.Infinity);
+
+        //Top Box
+        Vector2 topLeftTop = new Vector2(cameraInput.transform.position.x + 1, cameraInput.transform.position.y + 5);
+        Vector2 bottomRightTop = new Vector2(cameraInput.transform.position.x - 1, cameraInput.transform.position.y + 2.5f);
+        Collider2D[] detectionTop = Physics2D.OverlapAreaAll(topLeftTop, bottomRightTop, 1, -Mathf.Infinity, Mathf.Infinity);
+
+        //Bottom Box
+        Vector2 topLeftBottom = new Vector2(cameraInput.transform.position.x + 1, cameraInput.transform.position.y - 2.5f);
+        Vector2 bottomRightBottom = new Vector2(cameraInput.transform.position.x - 1, cameraInput.transform.position.y - 5);
+        Collider2D[] detectionBottom = Physics2D.OverlapAreaAll(topLeftBottom, bottomRightBottom, 1, -Mathf.Infinity, Mathf.Infinity);
+
+        returnList.AddRange(detectionLeft);
+        returnList.AddRange(detectionRight);
+        returnList.AddRange(detectionTop);
+        returnList.AddRange(detectionBottom);
+
+
+        return returnList;
+        
+    }
+
+
+
 }
