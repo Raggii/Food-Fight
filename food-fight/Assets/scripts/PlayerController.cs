@@ -46,19 +46,18 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        UpdateFirePosDirection();
+        int activeFingerIndex = GetNewActiveFingerIndex();
+        UpdateFirePosDirection(activeFingerIndex);
 
-        if (isSemi)
+
+        if (0 <= activeFingerIndex)
         {
-            if (Input.GetKeyDown(KeyCode.Mouse0) && isSemi)
-            {
+            if (isSemi) { 
                 Fire();
             }
-        } else {
-            if (Input.GetKey(KeyCode.Mouse0))
-            {
-                Fire();
-            }
+        } else
+        {
+            Fire();
         }
 
         if (account)
@@ -68,11 +67,27 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void UpdateFirePosDirection()
+    private int GetNewActiveFingerIndex()
+    {
+        for (int i = 0; i < Input.touchCount; i++)
+        {
+            if (Input.GetTouch(i).phase == TouchPhase.Began)
+            {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    private void UpdateFirePosDirection(int activeFingerIndex)
     {
         
-        Vector3 clickLocation = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        centerAxis.transform.LookAt(clickLocation);
+        if (activeFingerIndex >= 0)
+        {            
+
+            Vector3 clickLocation = Camera.main.ScreenToWorldPoint(Input.GetTouch(activeFingerIndex).position);
+            centerAxis.transform.LookAt(clickLocation);
+        }
     }
 
     public bool CanFire()
