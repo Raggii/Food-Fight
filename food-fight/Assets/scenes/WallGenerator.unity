@@ -788,14 +788,13 @@ MonoBehaviour:
   firePos: {fileID: 320205779}
   centerAxis: {fileID: 261861885}
   moneyBar: {fileID: 0}
-  joystick: {fileID: 0}
+  joystick: {fileID: 591911143}
   gunshot: {fileID: 1660720433}
   motor: {fileID: 674286759}
   account: {fileID: 0}
   recoilVelocity: 0.5
   projectileVelocity: 5
   rateOfFire: 10
-  isSemi: 1
   playShotSFX: 0
 --- !u!4 &674286761
 Transform:
@@ -813,7 +812,7 @@ Transform:
   - {fileID: 1849095269}
   - {fileID: 269911558}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &733984969
 GameObject:
@@ -1478,7 +1477,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1640404585
 MonoBehaviour:
@@ -1719,7 +1718,7 @@ RectTransform:
   - {fileID: 733984970}
   - {fileID: 1702376865}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

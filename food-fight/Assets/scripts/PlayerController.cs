@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     public float projectileVelocity;
     public float rateOfFire = 10; // proj per second. Default ak47 rate of fire.
 
-    public bool isSemi;
+    private bool readyToShoot = false;
     public bool playShotSFX = false;
 
     private bool isActive = true;
@@ -37,34 +37,38 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-    // Update is called once per frame
+
     void Update()
     {
 
-        if (!isActive)
+        if (isActive)
         {
-            return;
-        }
 
-        int activeFingerIndex = GetNewActiveFingerIndex();
-        UpdateFirePosDirection(activeFingerIndex);
+            int activeFingerIndex = GetNewActiveFingerIndex();
 
-
-        if (0 <= activeFingerIndex)
-        {
-            if (isSemi) { 
-                Fire();
+            if (0 <= activeFingerIndex) {
+                if (readyToShoot)
+                {
+                    UpdateFirePos(Input.GetTouch(activeFingerIndex).position);
+                    Fire();
+                    readyToShoot = false;
+                }
+            } else if (Input.GetKey(KeyCode.Mouse0)) {
+                if (readyToShoot)
+                {
+                    UpdateFirePos(Input.mousePosition);
+                    Fire();
+                    readyToShoot = false;
+                }
+            } else {
+                readyToShoot = true;
             }
-        } else
-        {
-            Fire();
-        }
 
-        if (account)
-        {
-            moneyBar.value = account.getBalance();
+            if (account)
+            {
+                moneyBar.value = account.getBalance();
+            }
         }
-
     }
 
     private int GetNewActiveFingerIndex()
@@ -76,18 +80,14 @@ public class PlayerController : MonoBehaviour
                 return i;
             }
         }
+
         return -1;
     }
 
-    private void UpdateFirePosDirection(int activeFingerIndex)
-    {
-        
-        if (activeFingerIndex >= 0)
-        {            
-
-            Vector3 clickLocation = Camera.main.ScreenToWorldPoint(Input.GetTouch(activeFingerIndex).position);
-            centerAxis.transform.LookAt(clickLocation);
-        }
+    private void UpdateFirePos(Vector3 pos)
+    {             
+        Vector3 clickLocation = Camera.main.ScreenToWorldPoint(pos);
+        centerAxis.transform.LookAt(clickLocation);
     }
 
     public bool CanFire()
