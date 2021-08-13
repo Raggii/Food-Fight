@@ -9,7 +9,7 @@ public class DoorChecker : MonoBehaviour
     public GameObject cameraInput;
 
     private Transform currentCameraPos;
-    public bool doorsEnabled = false;
+    public bool doorsEnabled = true;
     private int countOfEnemies;
 
     
@@ -30,10 +30,10 @@ public class DoorChecker : MonoBehaviour
         // It shuts all the doors until the emeines are dead.
 
         if (currentCameraPos != cameraInput.transform) 
-        { 
-            
+        {
+           
 
-        
+
         }
 
 
@@ -100,13 +100,12 @@ public class DoorChecker : MonoBehaviour
         
     }
 
-   /* Collider2D[] returnList(int topLeft, int topRight, int bottomLeft, int bottomRight) {
+    /* Collider2D[] returnList(int topLeft, int topRight, int bottomLeft, int bottomRight) {
 
-        Collider2D[] detectionLeft = new ArrayList<Collider2D>();
+         Collider2D[] detectionLeft = new ArrayList<Collider2D>();
 
-        return detectionLeft;
-    }*/
-
+         return detectionLeft;
+     }*/
 
 
 }
