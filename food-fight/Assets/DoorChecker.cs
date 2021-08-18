@@ -21,7 +21,7 @@ public class DoorChecker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //Debug.Log(enemyGameObjects.Count);
         //Check movement in all directions then when its finished scan the room
         //The adds all objects to a list where the are kept
         if ((cameraInput.transform.position.x - currentCameraPos.x) >= 9)
@@ -48,9 +48,6 @@ public class DoorChecker : MonoBehaviour
 
         }
 
-
-
-
         if (enemyGameObjects.Count == 0)
         {
 
@@ -61,6 +58,10 @@ public class DoorChecker : MonoBehaviour
             isDoorOpen = false;
 
         }
+
+        //Checker
+        // Checks if the enemys have 0 health or not 
+        checker();
 
 
 
@@ -122,13 +123,54 @@ public class DoorChecker : MonoBehaviour
 
     List<Collider2D> scanRoom()
     {
+        
         List<Collider2D> objectsInRoom = new List<Collider2D>();
         Vector2 TopSide = new Vector2(cameraInput.transform.position.x - 6, cameraInput.transform.position.y + 3);
         Vector2 BottomSide = new Vector2(cameraInput.transform.position.x + 6, cameraInput.transform.position.y - 3);
         Collider2D[] detectionLeft = Physics2D.OverlapAreaAll(TopSide, BottomSide, 1, -Mathf.Infinity, Mathf.Infinity);
-        objectsInRoom.AddRange(detectionLeft);
+        //objectsInRoom.AddRange(detectionLeft);
+        for (int i = 0; i < detectionLeft.Length; i++)
+        {
+            bool isInList = false;
+            for (int j = 0; j < objectsInRoom.Count; j++)
+            {
+                //Debug.Log("ADdded object");
+                if (detectionLeft[i].Equals(objectsInRoom[j]))
+                {
+                    isInList = true;
+                }
+            }
+            if (!isInList)
+            {
+                if (detectionLeft[i].tag == "Damagable")
+                {
+                    objectsInRoom.Add(detectionLeft[i]);
+                   
+                }
+            }
+
+
+        }
         currentCameraPos = new Vector3(cameraInput.transform.position.x, cameraInput.transform.position.y, 0);
         return objectsInRoom;
+        
+    }
+
+
+    void checker()
+    {
+
+        for (int i = 0; i < enemyGameObjects.Count; i++) {
+
+            HealthManager sn = enemyGameObjects[i].GetComponent<HealthManager>();
+            if (sn != null && sn.IsDead() )
+            {
+                enemyGameObjects.Remove(enemyGameObjects[i]);
+                i -= 1;
+            }
+
+        }
+    
     }
 
 

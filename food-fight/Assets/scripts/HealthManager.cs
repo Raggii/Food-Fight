@@ -13,7 +13,7 @@ public class HealthManager : MonoBehaviour
     public GameObject deathDrop;
 
     private CamShake camShake;
-    private float currentHealth = 100f;
+    float currentHealth = 100f;
 
     [Header("Health Bar")]
     public int amountOfHealth;
