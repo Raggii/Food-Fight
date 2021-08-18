@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     public AudioSource gunshot;
     public MovementMotor motor;
     public BankAccountManager account;
+    public Animator recoilAnimation;
 
 
     public float recoilVelocity;
@@ -27,6 +28,7 @@ public class PlayerController : MonoBehaviour
 
     private bool isActive = true;
     private float lastFireTime = 0f;
+    private Quaternion lastFireRotation;
     private float waitTime = 0f;
 
     public void Awake()
@@ -100,15 +102,15 @@ public class PlayerController : MonoBehaviour
 
     private void Recoil()
     {
-        float currentTime = Math.Min(Math.Max(Time.time - lastFireTime / waitTime, 0), 1);
-
-        if (currentTime > 0.5)
+        return;
+        if (lastFireTime == Time.time)
         {
-            centerAxis.transform.Rotate(new Vector3(0, 0, Mathf.Lerp(10, 0, currentTime)));
+            recoilAnimation.SetBool("isRecoiled", true);
         } else
         {
-            centerAxis.transform.Rotate(new Vector3(0, 0, Mathf.Lerp(0, 10, currentTime)));
+            recoilAnimation.SetBool("isRecoiled", false);
         }
+
     }
 
 
@@ -146,6 +148,14 @@ public class PlayerController : MonoBehaviour
             newProj.SetActive(true);
             Recoil();
             lastFireTime = Time.time;
+            lastFireRotation = transform.rotation;
         }
     }
+
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawLine(firePos.transform.position, firePos.transform.position + firePos.transform.up * 2);
+    }
+
 }
