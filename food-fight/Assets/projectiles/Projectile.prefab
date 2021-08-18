@@ -47,7 +47,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocity: 5
   decay: 0
+  damage: 1
   myCollider: {fileID: 3145182715367176696}
+  spriteRenderer: {fileID: 6679814288890832362}
+  sprites:
+  - {fileID: 21300000, guid: 9b6e9e8a2c0062c41ad708591968b7df, type: 3}
+  - {fileID: 21300000, guid: 7523aa1910d9d494593ee77ffbc8768b, type: 3}
+  - {fileID: 21300000, guid: 9a36ebe9bdcd37f4bbb8868124f58a12, type: 3}
+  - {fileID: 21300000, guid: 008d5454d26634d408e186380d4563be, type: 3}
   stepResolution: 50
 --- !u!58 &3145182715367176696
 CircleCollider2D:

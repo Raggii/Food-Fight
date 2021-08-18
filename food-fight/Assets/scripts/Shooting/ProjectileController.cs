@@ -8,15 +8,15 @@ public class ProjectileController : MonoBehaviour
     public float velocity = 5f;
     public float decay = 0f;
     public float damage = 1f;
-
     public CircleCollider2D myCollider;
+    public SpriteRenderer spriteRenderer;
+
+    [Header("Skins")]
+    public Sprite[] sprites;
 
     [Header("Bullet Movement Properties")]
     public float stepResolution = 50;
 
-
-
-    private Vector3 defaultDirection = Vector2.up;
     private float stepSize;
     private Vector3 currPos;
     private bool hasHit = false;
@@ -24,7 +24,10 @@ public class ProjectileController : MonoBehaviour
     public void Start()
     {
         currPos = transform.position;
-
+        if (sprites.Length > 0)
+        {
+            spriteRenderer.sprite = sprites[Random.Range(0, sprites.Length)];
+        }
     }
 
     private void SimplyDie(Collider2D col)
@@ -48,10 +51,10 @@ public class ProjectileController : MonoBehaviour
             if (!hasHit)
             {
                 Collider2D[] results = Physics2D.OverlapCircleAll(currPos, myCollider.radius);
+                
                 foreach (Collider2D col in results )
                 {
                     if (!col.Equals(myCollider) && !hasHit) {
-                        Debug.Log("ASd");
                         hasHit = true;
                         SimplyDie(col);
                     }

@@ -68,6 +68,8 @@ public class PlayerController : MonoBehaviour
             {
                 moneyBar.value = account.getBalance();
             }
+
+            Recoil();
         }
     }
 
@@ -96,9 +98,17 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    private void Recoil(Vector2 fireDir)
+    private void Recoil()
     {
-        motor.Push(-fireDir * recoilVelocity);
+        float currentTime = Math.Min(Math.Max(Time.time - lastFireTime / waitTime, 0), 1);
+
+        if (currentTime > 0.5)
+        {
+            centerAxis.transform.Rotate(new Vector3(0, 0, Mathf.Lerp(10, 0, currentTime)));
+        } else
+        {
+            centerAxis.transform.Rotate(new Vector3(0, 0, Mathf.Lerp(0, 10, currentTime)));
+        }
     }
 
 
@@ -132,8 +142,9 @@ public class PlayerController : MonoBehaviour
                 PlaySound(); 
             }
 
-            GameObject newProj = Instantiate(projectile, firePos.transform.position, firePos.transform.rotation);
+            GameObject newProj = Instantiate(projectile, firePos.transform.position + firePos.transform.up.normalized * 0.15f, firePos.transform.rotation);
             newProj.SetActive(true);
+            Recoil();
             lastFireTime = Time.time;
         }
     }
