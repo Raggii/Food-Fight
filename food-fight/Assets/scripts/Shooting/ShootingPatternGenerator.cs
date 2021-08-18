@@ -161,10 +161,6 @@ public class ShootingPatternGenerator : MonoBehaviour
         GameObject newProj = Instantiate(projectile, bulletPoint, rot);
         //Rigidbody2D newProjRB = newProj.GetComponent<Rigidbody2D>();
         
-
-        newProj.GetComponent<ProjectileController>().SetValues(
-            upwardsVelocity, sideVelocity, pullVelcoity, this.transform);
-
         // Using this to visualise the fire rate... 
         Debug.DrawLine(newProj.transform.position, transform.position);
         newProj.SetActive(true);

@@ -67,7 +67,7 @@ public class ForkController : MonoBehaviour
         ProjectileController projCon = newProj.GetComponent<ProjectileController>();
         if (player)
         {
-            projCon.SetValues((Vector2)(player.transform.position - transform.position).normalized * 10);
+            
         }
         newProj.SetActive(true);
         lastFireTime = Time.time;
