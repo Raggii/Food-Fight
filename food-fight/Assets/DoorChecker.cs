@@ -8,37 +8,63 @@ public class DoorChecker : MonoBehaviour
     //Should only call this when camera moves
     public GameObject cameraInput;
 
-    private Transform currentCameraPos;
-    public bool doorsEnabled = true;
-    private int countOfEnemies;
+    private Vector3 currentCameraPos;
+    public bool isDoorOpen = true;
+    public int countOfEnemies;
+    private List<Collider2D> enemyGameObjects = new List<Collider2D>();
 
-    
 
     private void Start()
     {
-        currentCameraPos = cameraInput.transform;
-
+        currentCameraPos = new Vector3(cameraInput.transform.position.x, cameraInput.transform.position.y,0);
     }
-
-
-
     // Update is called once per frame
     void Update()
     {
-        // Much more efficiant but still not useable without debug
-        // Implement distance of player to camera such that when he goes into the room when he gets within a range of the camera 
-        // It shuts all the doors until the emeines are dead.
-
-        if (currentCameraPos != cameraInput.transform) 
+        
+        //Check movement in all directions then when its finished scan the room
+        //The adds all objects to a list where the are kept
+        if ((cameraInput.transform.position.x - currentCameraPos.x) >= 9)
         {
-           
+            enemyGameObjects = scanRoom();
+            Debug.Log("Changed room");
+            
+        }
+        else if ((cameraInput.transform.position.x - currentCameraPos.x) <= - 9)
+        {
+            enemyGameObjects = scanRoom();
+            Debug.Log("Changed room");
+        }
+        else if ((cameraInput.transform.position.y - currentCameraPos.y) >= 4)
+        {
+            enemyGameObjects = scanRoom();
+            Debug.Log("Changed room");
 
+        }
+        else if ((cameraInput.transform.position.y - currentCameraPos.y) <= - 4)
+        {
+            enemyGameObjects = scanRoom();
+            Debug.Log("Changed room");
 
         }
 
 
 
-        if (doorsEnabled)
+
+        if (enemyGameObjects.Count == 0)
+        {
+
+            isDoorOpen = true;
+        }
+        else {
+
+            isDoorOpen = false;
+
+        }
+
+
+
+        if (isDoorOpen)
         {
             List<Collider2D> detection = doorList();
             for (int i = 0; i < detection.Count; i++)
@@ -46,13 +72,10 @@ public class DoorChecker : MonoBehaviour
                 if (detection[i].tag == "Door")
                 {
                     detection[i].isTrigger = true;
-                    
                 }
             }
         }
         else {
-
-
             List<Collider2D> detection = doorList();
             for (int i = 0; i < detection.Count; i++)
             {
@@ -61,10 +84,7 @@ public class DoorChecker : MonoBehaviour
                     detection[i].isTrigger = false;
                 }
             }
-
-
         }
-
     }
 
     List<Collider2D> doorList()
@@ -97,8 +117,20 @@ public class DoorChecker : MonoBehaviour
 
 
         return returnList;
-        
+
     }
+
+    List<Collider2D> scanRoom()
+    {
+        List<Collider2D> objectsInRoom = new List<Collider2D>();
+        Vector2 TopSide = new Vector2(cameraInput.transform.position.x - 6, cameraInput.transform.position.y + 3);
+        Vector2 BottomSide = new Vector2(cameraInput.transform.position.x + 6, cameraInput.transform.position.y - 3);
+        Collider2D[] detectionLeft = Physics2D.OverlapAreaAll(TopSide, BottomSide, 1, -Mathf.Infinity, Mathf.Infinity);
+        objectsInRoom.AddRange(detectionLeft);
+        currentCameraPos = new Vector3(cameraInput.transform.position.x, cameraInput.transform.position.y, 0);
+        return objectsInRoom;
+    }
+
 
     /* Collider2D[] returnList(int topLeft, int topRight, int bottomLeft, int bottomRight) {
 

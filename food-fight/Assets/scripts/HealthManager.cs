@@ -23,6 +23,8 @@ public class HealthManager : MonoBehaviour
     public Sprite fullHeart;
     public Sprite emptyHeart;
 
+
+
     public void Awake()
     {
         currentHealth = maxHealth; // This needs to be set like this unless we set maxHealth to static.
@@ -45,10 +47,14 @@ public class HealthManager : MonoBehaviour
     {
         if (IsDead() && destroyOnDeath)
         {
+            // This will stop all spawning
+            // i added this because map gen askes for colliders and it doesnt like not having any
+            deathDrop = null;
             if (deathDrop != null)
             {
                 Instantiate(deathDrop, transform.position, Quaternion.identity);
             }
+
             Destroy(this.gameObject);
         }
     }
