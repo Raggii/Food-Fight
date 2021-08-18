@@ -23,7 +23,12 @@ public class HealthManager : MonoBehaviour
     public Sprite fullHeart;
     public Sprite emptyHeart;
 
+    public bool getAmountOfHealth()
+    {
+        return amountOfHealth <= 0;
 
+
+    }
 
     public void Awake()
     {
