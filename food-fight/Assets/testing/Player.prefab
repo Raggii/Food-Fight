@@ -652,18 +652,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1bf7f948229b624ea0576b0412b8fa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile:
-  - {fileID: 3091992792435088935, guid: d48e93f4983238b4cb841ebba44b97c1, type: 3}
+  projectile: {fileID: 4258007809412090205, guid: f79d0729a11263d428ed286bce4d2c1b,
+    type: 3}
   firePos: {fileID: 7340593275826288773}
   centerAxis: {fileID: 7340593276984278402}
   moneyBar: {fileID: 3216039598365578391}
+  joystick: {fileID: 0}
   gunshot: {fileID: 7340593276501113913}
   motor: {fileID: 7340593275787942787}
   account: {fileID: 7340593275787942905}
   recoilVelocity: 0.1
   projectileVelocity: 5
   rateOfFire: 10
-  isSemi: 1
   playShotSFX: 0
 --- !u!114 &7340593275787942787
 MonoBehaviour:
@@ -684,6 +684,7 @@ MonoBehaviour:
   stepResolution: 50
   recoilDuration: 0.1
   animator: {fileID: 7340593275787942909}
+  joystick: {fileID: 0}
 --- !u!114 &7340593275787942906
 MonoBehaviour:
   m_ObjectHideFlags: 0
