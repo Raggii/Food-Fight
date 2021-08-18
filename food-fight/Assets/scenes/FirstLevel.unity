@@ -1750,7 +1750,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 2.4343677
+  orthographic size: 2.9595015
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2210,14 +2210,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1bf7f948229b624ea0576b0412b8fa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile:
-  - {fileID: 3091992792435088935, guid: d48e93f4983238b4cb841ebba44b97c1, type: 3}
-  - {fileID: 103641593523461195, guid: f4460bce771da124da56fbc0b84fa7b4, type: 3}
-  - {fileID: 2957862315170052704, guid: 95020825f4a8bf9498a93ef059ed4da1, type: 3}
-  - {fileID: 7375919155989089823, guid: 3472a41c4108d3148a6957d80d5891a6, type: 3}
-  - {fileID: 1555143362566517201, guid: 0a4deea4a8459994487108b3030aa9c0, type: 3}
-  - {fileID: 3167342185695279715, guid: de3e136be5a0b0d429dd4f2a2bd4182a, type: 3}
-  - {fileID: 3468605670539618969, guid: 8b3a56624ab37074595fad9bedfe87ae, type: 3}
+  projectile: {fileID: 4258007809412090205, guid: f79d0729a11263d428ed286bce4d2c1b,
+    type: 3}
   firePos: {fileID: 999645386}
   centerAxis: {fileID: 876572159}
   moneyBar: {fileID: 0}
@@ -2228,7 +2222,6 @@ MonoBehaviour:
   recoilVelocity: 0.5
   projectileVelocity: 5
   rateOfFire: 10
-  isSemi: 1
   playShotSFX: 0
 --- !u!4 &2126118068
 Transform:

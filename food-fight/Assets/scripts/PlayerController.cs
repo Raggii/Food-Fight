@@ -7,7 +7,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 
-    public GameObject[] projectile;
+    public GameObject projectile;
     public GameObject firePos;
     public GameObject centerAxis;
     public Slider moneyBar;
@@ -34,8 +34,8 @@ public class PlayerController : MonoBehaviour
         waitTime = 1 / rateOfFire;
         if (account) {
             moneyBar.maxValue = account.getMaxBalance();
-            }
         }
+    }
 
 
     void Update()
@@ -132,25 +132,8 @@ public class PlayerController : MonoBehaviour
                 PlaySound(); 
             }
 
-            int index = UnityEngine.Random.Range(0, projectile.Length);
-            GameObject newProj = Instantiate(projectile[index], firePos.transform.position, firePos.transform.rotation);
-            if (newProj != null)
-            {
-                ProjectileController PController = newProj.GetComponent<ProjectileController>();
-                if (PController != null)
-                {
-                    PController.SetValues(firePos.transform.up * projectileVelocity);
-                } else
-                {
-                    Destroy(newProj);
-                }
-
-                Recoil(firePos.transform.up);
-
-                newProj.SetActive(true);
-            }
-
-
+            GameObject newProj = Instantiate(projectile, firePos.transform.position, firePos.transform.rotation);
+            newProj.SetActive(true);
             lastFireTime = Time.time;
         }
     }
