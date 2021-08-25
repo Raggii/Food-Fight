@@ -1778,7 +1778,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0c7c8de5523d09429fc35a56941af1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hit: 0
 --- !u!114 &1817500386
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2219,10 +2218,13 @@ MonoBehaviour:
   gunshot: {fileID: 540560642}
   motor: {fileID: 2126118066}
   account: {fileID: 0}
+  camShake: {fileID: 1817500385}
   recoilAnimation: {fileID: 2126118064}
   recoilVelocity: 0.5
   projectileVelocity: 5
   rateOfFire: 10
+  shakeDuration: 0.1
+  shakeMagnitude: 0.1
   playShotSFX: 0
 --- !u!4 &2126118068
 Transform:

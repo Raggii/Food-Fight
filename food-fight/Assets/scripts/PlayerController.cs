@@ -16,15 +16,18 @@ public class PlayerController : MonoBehaviour
     public AudioSource gunshot;
     public MovementMotor motor;
     public BankAccountManager account;
+    public CamShake camShake;
     public Animator recoilAnimation;
 
 
     public float recoilVelocity;
     public float projectileVelocity;
     public float rateOfFire = 10; // proj per second. Default ak47 rate of fire.
+    public float shakeDuration = 0.25f;
+    public float shakeMagnitude = 2f;
 
-    private bool readyToShoot = false;
     public bool playShotSFX = false;
+    private bool readyToShoot = false;
 
     private bool isActive = true;
     private float lastFireTime = 0f;
@@ -71,7 +74,6 @@ public class PlayerController : MonoBehaviour
                 moneyBar.value = account.getBalance();
             }
 
-            Recoil();
         }
     }
 
@@ -102,15 +104,7 @@ public class PlayerController : MonoBehaviour
 
     private void Recoil()
     {
-        return;
-        if (lastFireTime == Time.time)
-        {
-            recoilAnimation.SetBool("isRecoiled", true);
-        } else
-        {
-            recoilAnimation.SetBool("isRecoiled", false);
-        }
-
+        StartCoroutine(camShake.Shake(shakeDuration, shakeMagnitude));
     }
 
 
@@ -149,6 +143,8 @@ public class PlayerController : MonoBehaviour
             Recoil();
             lastFireTime = Time.time;
             lastFireRotation = transform.rotation;
+
+            Recoil();
         }
     }
 
