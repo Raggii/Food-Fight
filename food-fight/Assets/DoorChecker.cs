@@ -51,12 +51,12 @@ public class DoorChecker : MonoBehaviour
         {
 
             isDoorOpen = true;
-            animator.SetBool("Speed", true);
+            animator.SetBool("isOpen", true);
         }
         else {
 
             isDoorOpen = false;
-            animator.SetBool("Speed", false);
+            animator.SetBool("isOpen", false);
         }
 
         //Checker
