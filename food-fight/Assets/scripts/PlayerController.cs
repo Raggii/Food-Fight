@@ -48,7 +48,6 @@ public class PlayerController : MonoBehaviour
 
         if (isActive)
         {
-            anim.SetBool("isRecoiled", lastFireTime + waitTime >= Time.time);
 
             int activeFingerIndex = GetNewActiveFingerIndex();
 
@@ -105,10 +104,7 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator Recoil()
     {
-        StartCoroutine(camShake.Shake(shakeDuration, shakeMagnitude));
-        anim.SetBool("isRecoiled", true);
-        yield return new WaitForSeconds(0.25f);
-        yield return null;
+        return null;
     }
 
 
