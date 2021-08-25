@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5686513938691117517}
   - component: {fileID: 1541519794094315423}
   - component: {fileID: 8976807461382557153}
+  - component: {fileID: -5557968720702463769}
   m_Layer: 0
   m_Name: DoorUp
   m_TagString: Untagged
@@ -135,3 +136,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.18173009, y: 0.21026696}
   m_EdgeRadius: 0
+--- !u!95 &-5557968720702463769
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4338991056587454279}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bff1b58df344b894784032787cd8b436, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

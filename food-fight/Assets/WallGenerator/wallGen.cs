@@ -7,11 +7,12 @@ public class wallGen : MonoBehaviour
     //The 4 given walls to input for the generation
     public GameObject[] tops;
     public GameObject[] sides;
+    public GameObject trapDoor;
     public int maxCount = 3;
     int count = 0;
     bool genRooms = true;
     int roomCount = 0;
-    int countChecker = 0;
+    bool isCountChecker = true;
     //public LayerMask room;
 
     // Coords for wall positions
@@ -25,6 +26,7 @@ public class wallGen : MonoBehaviour
 
     private List<Vector3> os = new List<Vector3>();
 
+    private Vector2 maxRoom = new Vector2(0,0); // This moves the end position to the furthest away room so that the end room can be made there
 
 
     //goes around clockwise starting from the top spawning rooms
@@ -65,6 +67,10 @@ public class wallGen : MonoBehaviour
                     // need to get information from i, 0 = top, 1 = right ect
                     // These are put into a set list
                     Vector2 roomLocationNew = new Vector2(startingPosition.x + moveRoomIndexesSide[i], startingPosition.y + moveRoomIndexesUp[i]);
+                    if (maxRoom.magnitude < roomLocationNew.magnitude)
+                    {
+                        maxRoom = roomLocationNew;
+                    }
                     roomLocations.Insert(0, roomLocationNew); //
                     
                 }
@@ -89,6 +95,28 @@ public class wallGen : MonoBehaviour
 
     }
 
+    //This creates the last room and removes any other doors into it
+    //Needs to be called before update removes everything
+    void endRoomGenerator()
+    {
+        //Checks all sides of room and finds the walls;
+        //Position of transform is in center of the room
+        /*for (int i = 0; i < 4; i++) {
+
+            Vector2 positionOfCheck = new Vector2(transform.position.x + wallTops[i], transform.position.y + wallSides[i]);
+            Collider2D wallFinder = Physics2D.OverlapCircle(positionOfCheck, 1,1, -Mathf.Infinity,Mathf.Infinity); // Then we have to do this twice?
+            if (wallFinder != null && wallFinder.tag == "Door")
+            {
+                Debug.Log("Found one");
+            
+            }
+        }*/
+
+        Instantiate(trapDoor, transform.position, Quaternion.identity);
+
+    
+    }
+
 
 
     void Start()
@@ -110,20 +138,23 @@ public class wallGen : MonoBehaviour
 
 
         }
-
-        //diable everything at start
-        // Get all objects
-        // Disable render property
-        
+        //at this point all the rooms are finished loading.
+        Debug.Log(transform.position);
+        transform.position = maxRoom;
+        //Call a function that checks for a wall that doesnt have a room behind it
+        endRoomGenerator();
+        //count = 0;
 
     }
+
+
 
 
     void Update()
     {
         //This disables all renderer objects
         // There is many objects that do not have renderers so we need to compensate for this
-        if (countChecker == 0) {
+        if (isCountChecker) {
 
             GameObject[] allColliders = FindObjectsOfType<GameObject>();
             for (int i = 0; i < allColliders.Length; i++)
@@ -138,7 +169,7 @@ public class wallGen : MonoBehaviour
                     }
                 }
             }
-            countChecker += 1;
+            isCountChecker = false;
 
         }
 
