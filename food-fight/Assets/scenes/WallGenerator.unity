@@ -786,10 +786,11 @@ MonoBehaviour:
   gunshot: {fileID: 1660720433}
   motor: {fileID: 674286759}
   account: {fileID: 0}
-  recoilAnimation: {fileID: 0}
-  recoilVelocity: 0.5
-  projectileVelocity: 5
+  camShake: {fileID: 0}
+  anim: {fileID: 0}
   rateOfFire: 10
+  shakeDuration: 0.25
+  shakeMagnitude: 2
   playShotSFX: 0
 --- !u!4 &674286761
 Transform:
@@ -1171,6 +1172,7 @@ GameObject:
   - component: {fileID: 1640404581}
   - component: {fileID: 1640404580}
   - component: {fileID: 1640404585}
+  - component: {fileID: 1640404586}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1190,7 +1192,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0c7c8de5523d09429fc35a56941af1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hit: 0
 --- !u!114 &1640404581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1285,6 +1286,20 @@ MonoBehaviour:
   cameraInput: {fileID: 1640404579}
   isDoorOpen: 1
   countOfEnemies: 0
+  animator: {fileID: 0}
+--- !u!114 &1640404586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1640404579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc52076043cac6b49a6dfb29786582e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetAspect: {x: 16, y: 9}
 --- !u!1 &1660720432
 GameObject:
   m_ObjectHideFlags: 0
@@ -1769,6 +1784,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   offset: 0
   player: {fileID: 674286751}
+  gunRenderer: {fileID: 0}
 --- !u!212 &1849095271
 SpriteRenderer:
   m_ObjectHideFlags: 0
