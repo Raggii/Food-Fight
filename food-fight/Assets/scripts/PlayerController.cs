@@ -20,8 +20,6 @@ public class PlayerController : MonoBehaviour
     public Animator anim;
 
 
-    public float recoilVelocity;
-    public float projectileVelocity;
     public float rateOfFire = 10; // proj per second. Default ak47 rate of fire.
     public float shakeDuration = 0.25f;
     public float shakeMagnitude = 2f;
@@ -102,9 +100,10 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    private IEnumerator Recoil()
+    private void Recoil()
     {
-        return null;
+        StartCoroutine(camShake.Shake(shakeDuration, shakeMagnitude));
+        anim.SetTrigger("shoot");
     }
 
 
@@ -142,8 +141,7 @@ public class PlayerController : MonoBehaviour
             newProj.SetActive(true);
             lastFireTime = Time.time;
             lastFireRotation = transform.rotation;
-
-            StartCoroutine(Recoil());
+            Recoil();
         }
     }
 

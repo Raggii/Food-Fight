@@ -495,7 +495,7 @@ SpriteRenderer:
   m_Sprite: {fileID: 21300000, guid: 451f083c110f10c49a00100c7c2153a5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
-  m_FlipY: 1
+  m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.32, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
@@ -513,7 +513,7 @@ Animator:
   m_GameObject: {fileID: 641726074}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1d73c15053555a045b77871149c39417, type: 2}
+  m_Controller: {fileID: 9100000, guid: 11cdb5d65f3edcf4a9098d92418fdae0, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1778,7 +1778,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 3.4160757
+  orthographic size: 2.7624044
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2252,7 +2252,7 @@ MonoBehaviour:
   projectileVelocity: 5
   rateOfFire: 10
   shakeDuration: 0.1
-  shakeMagnitude: 0.1
+  shakeMagnitude: 0.04
   playShotSFX: 0
 --- !u!4 &2126118068
 Transform:

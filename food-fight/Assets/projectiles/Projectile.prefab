@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fda7a829767397b409bd311b670020dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: 5
+  velocity: 10
   decay: 0
   damage: 1
   myCollider: {fileID: 3145182715367176696}
