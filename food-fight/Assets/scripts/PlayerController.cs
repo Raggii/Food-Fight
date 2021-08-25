@@ -48,6 +48,7 @@ public class PlayerController : MonoBehaviour
 
         if (isActive)
         {
+            anim.SetBool("isRecoiled", lastFireTime + waitTime >= Time.time);
 
             int activeFingerIndex = GetNewActiveFingerIndex();
 
@@ -102,10 +103,12 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    private void Recoil()
+    private IEnumerator Recoil()
     {
         StartCoroutine(camShake.Shake(shakeDuration, shakeMagnitude));
-        anim.SetBool("isRecoiled", lastFireTime + waitTime >= Time.time);
+        anim.SetBool("isRecoiled", true);
+        yield return new WaitForSeconds(0.25f);
+        yield return null;
     }
 
 
@@ -141,11 +144,10 @@ public class PlayerController : MonoBehaviour
 
             GameObject newProj = Instantiate(projectile, firePos.transform.position + firePos.transform.up.normalized * 0.15f, firePos.transform.rotation);
             newProj.SetActive(true);
-            Recoil();
             lastFireTime = Time.time;
             lastFireRotation = transform.rotation;
 
-            Recoil();
+            StartCoroutine(Recoil());
         }
     }
 
