@@ -246,6 +246,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   offset: 0
   player: {fileID: 1171386424}
+  gunRenderer: {fileID: 0}
 --- !u!212 &461565957
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -861,6 +862,7 @@ GameObject:
   - component: {fileID: 1554144433}
   - component: {fileID: 1554144432}
   - component: {fileID: 1554144431}
+  - component: {fileID: 1554144437}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -883,7 +885,7 @@ MonoBehaviour:
   cameraInput: {fileID: 1554144430}
   isDoorOpen: 1
   countOfEnemies: 0
-  animator: {fileID: 1171386430}
+  animator: {fileID: 1554144437}
 --- !u!114 &1554144432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -975,3 +977,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1554144437
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1554144430}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4612f27929b657148a1687decf7f410e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
