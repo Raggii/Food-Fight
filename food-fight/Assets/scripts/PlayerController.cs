@@ -104,6 +104,13 @@ public class PlayerController : MonoBehaviour
     {
         StartCoroutine(camShake.Shake(shakeDuration, shakeMagnitude));
         anim.SetTrigger("shoot");
+        StartCoroutine(Vibrate());
+    }
+
+    private IEnumerator Vibrate()
+    {
+        Handheld.Vibrate();
+        yield return null;
     }
 
 
