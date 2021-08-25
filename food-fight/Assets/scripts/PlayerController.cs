@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     public MovementMotor motor;
     public BankAccountManager account;
     public CamShake camShake;
-    public Animator recoilAnimation;
+    public Animator anim;
 
 
     public float recoilVelocity;
@@ -105,6 +105,7 @@ public class PlayerController : MonoBehaviour
     private void Recoil()
     {
         StartCoroutine(camShake.Shake(shakeDuration, shakeMagnitude));
+        anim.SetBool("isRecoiled", lastFireTime + waitTime >= Time.time);
     }
 
 

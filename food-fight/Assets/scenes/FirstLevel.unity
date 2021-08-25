@@ -432,6 +432,7 @@ GameObject:
   - component: {fileID: 641726075}
   - component: {fileID: 641726077}
   - component: {fileID: 641726076}
+  - component: {fileID: 641726078}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Player
@@ -517,6 +518,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &641726078
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 641726074}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1d73c15053555a045b77871149c39417, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &732503306
 GameObject:
   m_ObjectHideFlags: 0
@@ -1750,7 +1770,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 3.0010383
+  orthographic size: 2.6586938
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2219,7 +2239,7 @@ MonoBehaviour:
   motor: {fileID: 2126118066}
   account: {fileID: 0}
   camShake: {fileID: 1817500385}
-  recoilAnimation: {fileID: 2126118064}
+  anim: {fileID: 641726078}
   recoilVelocity: 0.5
   projectileVelocity: 5
   rateOfFire: 10

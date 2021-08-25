@@ -31,8 +31,15 @@ public class MovementMotor : MonoBehaviour
 
     public void Update()
     {
-        dir.x = Input.GetAxisRaw("Horizontal") + joystick.Horizontal;
-        dir.y = Input.GetAxisRaw("Vertical") + joystick.Vertical;
+        if (joystick)
+        {
+            dir.x = Input.GetAxisRaw("Horizontal") + joystick.Horizontal;
+            dir.y = Input.GetAxisRaw("Vertical") + joystick.Vertical;
+        } else
+        {
+            dir.x = Input.GetAxisRaw("Horizontal");
+            dir.y = Input.GetAxisRaw("Vertical");
+        }
         AnimatorUpdate();
     }
 
@@ -84,41 +91,7 @@ public class MovementMotor : MonoBehaviour
             }
         }
 
-        
-/*
- *      Recoil sends you into the void at Mach 18. Triggers float precision warning...
- *      Figure out a way to decrease the recoil overtime, as the max value hard cap of
- *      the speed slows you down immediatly and doesn't work...
- *      Good luck...
- * 
-        if (Mathf.Abs(recoil_val) > 0)
-        {
-            newVelocity += recoil_val;
-            float newRecoil = 0;
-            if (is_x_axis)
-            {
-                if (Mathf.Abs(recoil.x) <= speedThreshold)
-                {
-                    newRecoil = 0f;
-                } else
-                {
-                    newRecoil = recoil.x + decclaration * deltaTime * -Mathf.Sign(recoil.x);
-                }
-                recoil.x = newRecoil;
-            } else {
-                if (Mathf.Abs(recoil.y) <= speedThreshold)
-                {
-                    newRecoil = 0f;
-                }
-                else
-                {
-                    newRecoil = recoil.y + decclaration * deltaTime * -Mathf.Sign(recoil.x);
-                }
-                recoil.y = newRecoil;
-            }
-        }
-*/
-
+       
      return newVelocity;
     }
 
