@@ -20,8 +20,8 @@ public class HealthManager : MonoBehaviour
     public int numOfHearts; // Get script from here
 
     public Image[] hearts;
-    public Sprite fullHeart;
-    public Sprite emptyHeart;
+    public Sprite fullHeart = null;
+    public Sprite emptyHeart= null;
 
     public bool getAmountOfHealth()
     {

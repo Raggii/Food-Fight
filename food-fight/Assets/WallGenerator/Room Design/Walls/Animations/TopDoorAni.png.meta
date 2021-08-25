@@ -1,28 +1,28 @@
 fileFormatVersion: 2
-guid: 2e315f01febee3445ab539c56f480423
+guid: 42f652d1662e6dc488ec20a18de23dc1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6057477820159692519
-    second: Door slam_0
+      213: -5400417702122582416
+    second: TopDoorAni_0
   - first:
-      213: 4203126569580541072
-    second: Door slam_1
+      213: -6142781664792002389
+    second: TopDoorAni_1
   - first:
-      213: 6319440442733887363
-    second: Door slam_2
+      213: -7800843789140048512
+    second: TopDoorAni_2
   - first:
-      213: -7599483311904391872
-    second: Door slam_3
+      213: 2259171637024421609
+    second: TopDoorAni_3
   - first:
-      213: 2682148176757889033
-    second: Door slam_4
+      213: 7528366852679919966
+    second: TopDoorAni_4
   - first:
-      213: 7371401169821100180
-    second: Door slam_5
+      213: 4026453260457903996
+    second: TopDoorAni_5
   - first:
-      213: 8306794022432535506
-    second: Door slam_6
+      213: 8529113014620597814
+    second: TopDoorAni_6
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -120,13 +120,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Door slam_0
+      name: TopDoorAni_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 64
-        height: 64
+        height: 40
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,20 +134,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 911f29634048feba0800000000000000
-      internalID: -6057477820159692519
+      spriteID: 07e804a66bcdd05b0800000000000000
+      internalID: -5400417702122582416
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Door slam_1
+      name: TopDoorAni_1
       rect:
         serializedVersion: 2
         x: 64
         y: 0
         width: 64
-        height: 64
+        height: 40
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -155,20 +155,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 094badd8851845a30800000000000000
-      internalID: 4203126569580541072
+      spriteID: ba04a492f9470caa0800000000000000
+      internalID: -6142781664792002389
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Door slam_2
+      name: TopDoorAni_2
       rect:
         serializedVersion: 2
         x: 128
         y: 0
         width: 64
-        height: 64
+        height: 40
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -176,20 +176,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 38ff360d99923b750800000000000000
-      internalID: 6319440442733887363
+      spriteID: 085cef787e5ddb390800000000000000
+      internalID: -7800843789140048512
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Door slam_3
+      name: TopDoorAni_3
       rect:
         serializedVersion: 2
         x: 192
         y: 0
         width: 64
-        height: 64
+        height: 40
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -197,20 +197,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 04dfd6d0136398690800000000000000
-      internalID: -7599483311904391872
+      spriteID: 9e67a7f52a03a5f10800000000000000
+      internalID: 2259171637024421609
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Door slam_4
+      name: TopDoorAni_4
       rect:
         serializedVersion: 2
         x: 256
         y: 0
         width: 64
-        height: 64
+        height: 40
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -218,20 +218,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9089d9e5e87e83520800000000000000
-      internalID: 2682148176757889033
+      spriteID: e59efc8f3c12a7860800000000000000
+      internalID: 7528366852679919966
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Door slam_5
+      name: TopDoorAni_5
       rect:
         serializedVersion: 2
         x: 320
         y: 0
         width: 64
-        height: 64
+        height: 40
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -239,20 +239,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 498e5100f4a7c4660800000000000000
-      internalID: 7371401169821100180
+      spriteID: c778e4648e5d0e730800000000000000
+      internalID: 4026453260457903996
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Door slam_6
+      name: TopDoorAni_6
       rect:
         serializedVersion: 2
         x: 384
         y: 0
         width: 64
-        height: 64
+        height: 40
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -260,8 +260,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2d3fd61f629a74370800000000000000
-      internalID: 8306794022432535506
+      spriteID: 63e2f9df81f7d5670800000000000000
+      internalID: 8529113014620597814
       vertices: []
       indices: 
       edges: []

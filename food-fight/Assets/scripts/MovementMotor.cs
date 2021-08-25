@@ -15,7 +15,7 @@ public class MovementMotor : MonoBehaviour
 
     [Header("Components")]
     public Animator animator;
-    public Joystick joystick;
+    public Joystick joystick = null;
 
     private Vector2 dir = new Vector2(0, 0);            // direction
     private Vector2 currentVelocity = new Vector2(0, 0);
