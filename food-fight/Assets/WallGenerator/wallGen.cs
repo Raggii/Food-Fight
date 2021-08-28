@@ -12,7 +12,7 @@ public class wallGen : MonoBehaviour
     int count = 0;
     bool genRooms = true;
     int roomCount = 0;
-    bool isCountChecker = true;
+    //bool isCountChecker = true;
     //public LayerMask room;
 
     // Coords for wall positions
