@@ -1,28 +1,19 @@
 fileFormatVersion: 2
-guid: 42f652d1662e6dc488ec20a18de23dc1
+guid: 1c7a59c617c04e844ad49ee6f32e71e6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5400417702122582416
-    second: TopDoorAni_0
+      213: -8450511301345544039
+    second: CloseDoorAni_0
   - first:
-      213: -6142781664792002389
-    second: TopDoorAni_1
+      213: -460746920810043153
+    second: CloseDoorAni_1
   - first:
-      213: -7800843789140048512
-    second: TopDoorAni_2
+      213: 6384346337231221137
+    second: CloseDoorAni_2
   - first:
-      213: 2259171637024421609
-    second: TopDoorAni_3
-  - first:
-      213: 7528366852679919966
-    second: TopDoorAni_4
-  - first:
-      213: 4026453260457903996
-    second: TopDoorAni_5
-  - first:
-      213: 8529113014620597814
-    second: TopDoorAni_6
+      213: 8341632863132732239
+    second: CloseDoorAni_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -120,7 +111,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: TopDoorAni_0
+      name: CloseDoorAni_0
       rect:
         serializedVersion: 2
         x: 0
@@ -134,14 +125,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 07e804a66bcdd05b0800000000000000
-      internalID: -5400417702122582416
+      spriteID: 998ffd08eb0c9ba80800000000000000
+      internalID: -8450511301345544039
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDoorAni_1
+      name: CloseDoorAni_1
       rect:
         serializedVersion: 2
         x: 64
@@ -155,14 +146,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ba04a492f9470caa0800000000000000
-      internalID: -6142781664792002389
+      spriteID: fe823cddd191b99f0800000000000000
+      internalID: -460746920810043153
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDoorAni_2
+      name: CloseDoorAni_2
       rect:
         serializedVersion: 2
         x: 128
@@ -176,14 +167,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 085cef787e5ddb390800000000000000
-      internalID: -7800843789140048512
+      spriteID: 191bbb10b21c99850800000000000000
+      internalID: 6384346337231221137
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TopDoorAni_3
+      name: CloseDoorAni_3
       rect:
         serializedVersion: 2
         x: 192
@@ -197,71 +188,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9e67a7f52a03a5f10800000000000000
-      internalID: 2259171637024421609
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TopDoorAni_4
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 0
-        width: 64
-        height: 40
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e59efc8f3c12a7860800000000000000
-      internalID: 7528366852679919966
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TopDoorAni_5
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 0
-        width: 64
-        height: 40
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c778e4648e5d0e730800000000000000
-      internalID: 4026453260457903996
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TopDoorAni_6
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 0
-        width: 64
-        height: 40
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 63e2f9df81f7d5670800000000000000
-      internalID: 8529113014620597814
+      spriteID: f4b40c5a4ee63c370800000000000000
+      internalID: 8341632863132732239
       vertices: []
       indices: 
       edges: []

@@ -12,7 +12,7 @@ public class DoorChecker : MonoBehaviour
     public bool isDoorOpen = true;
     public int countOfEnemies;
     private List<Collider2D> enemyGameObjects = new List<Collider2D>();
-    public Animator animator;
+    //public Animator animator;
     private void Start()
     {
         currentCameraPos = new Vector3(cameraInput.transform.position.x, cameraInput.transform.position.y,0);
@@ -51,12 +51,12 @@ public class DoorChecker : MonoBehaviour
         {
 
             isDoorOpen = true;
-            animator.SetBool("isOpen", true);
+            //animator.SetBool("isOpen", true);
         }
         else {
 
             isDoorOpen = false;
-            animator.SetBool("isOpen", false);
+            //animator.SetBool("isOpen", false);
         }
 
         //Checker

@@ -152,27 +152,6 @@ public class wallGen : MonoBehaviour
 
     void Update()
     {
-        //This disables all renderer objects
-        // There is many objects that do not have renderers so we need to compensate for this
-        if (isCountChecker) {
-
-            GameObject[] allColliders = FindObjectsOfType<GameObject>();
-            for (int i = 0; i < allColliders.Length; i++)
-            {
-                if (allColliders[i].GetComponent<Renderer>() != null)
-                {
-                    if (allColliders[i].tag != "Player")
-                    {
-                        Renderer renderObject = allColliders[i].GetComponent<Renderer>();
-                        //Debug.Log(renderObject);
-                        renderObject.enabled = false;
-                    }
-                }
-            }
-            isCountChecker = false;
-
-        }
-
 
     }
 }
