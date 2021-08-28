@@ -6,12 +6,18 @@ using System;
 public class MovementMotor : MonoBehaviour
 {
     [Header("Constants")]
-    public float maxSpeed = 20f;
-    public float acceleration = 30f;
-    public float decclaration = 40f;
     public float speedThreshold = 0.3f;
     public int stepResolution = 20;
     public float recoilDuration = 0.1f;
+
+    [Header("Movement")]
+    public float maxSpeed = 20f;
+    public float acceleration = 30f;
+    public float decclaration = 40f;
+
+    [Header("Controls")]
+    public float joystickDeadzone = 0.2f;
+    public float joystickOffset = 0.2f;
 
     [Header("Components")]
     public Animator animator;
@@ -33,13 +39,28 @@ public class MovementMotor : MonoBehaviour
     {
         if (joystick)
         {
-            dir.x = Input.GetAxisRaw("Horizontal") + joystick.Horizontal;
-            dir.y = Input.GetAxisRaw("Vertical") + joystick.Vertical;
+            // Getting direction vector and clamping the joystick constants
+            Vector2 newDir = new Vector2(Input.GetAxisRaw("Horizontal") + joystick.Horizontal, Input.GetAxisRaw("Vertical") + joystick.Vertical);
+            joystickDeadzone = Mathf.Clamp01(joystickDeadzone);
+            joystickOffset = Mathf.Clamp01(joystickOffset);
+
+            // X axis controls
+            if (Mathf.Abs(newDir.x) >= joystickDeadzone) {
+                dir.x = newDir.x - Mathf.Max(joystickOffset, joystickDeadzone);
+            } else { dir.x = 0;  }
+
+            // Y axis controls 
+            if (Mathf.Abs(newDir.y) >= joystickDeadzone)
+            {
+                dir.y = newDir.y - Mathf.Max(joystickOffset, joystickDeadzone); ;
+            } else { dir.y = 0; }
         } else
         {
+            // If we don't have a joystick we simply use the input raw axis values.
             dir.x = Input.GetAxisRaw("Horizontal");
             dir.y = Input.GetAxisRaw("Vertical");
         }
+
         AnimatorUpdate();
     }
 
