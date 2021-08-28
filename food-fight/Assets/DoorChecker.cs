@@ -59,7 +59,7 @@ public class DoorChecker : MonoBehaviour
                     {
                         Debug.Log("Yus");
                         Animator animator = detection[i].GetComponent<Animator>();
-                        animator.SetBool("dan", isDoorOpen);
+                        animator.SetBool("isOpen", isDoorOpen);
                     }
                 }
                 
@@ -77,7 +77,7 @@ public class DoorChecker : MonoBehaviour
                     if (detection[i].GetComponent<Animator>() != null)
                     {
                         Animator animator = detection[i].GetComponent<Animator>();
-                        animator.SetBool("dan", isDoorOpen);
+                        animator.SetBool("isOpen", isDoorOpen);
                     }
                 }
 

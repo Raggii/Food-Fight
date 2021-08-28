@@ -128,5 +128,5 @@ MonoBehaviour:
   spriteRender: {fileID: 4236929101404667822}
   offset: {x: 0.0001, y: 0.0001, z: 0}
   trackingThresholdDistance: 0.00005
-  playerHiddenSpeed: 2
-  playerVisibileSpeed: 5
+  playerHiddenSpeed: 1
+  playerVisibileSpeed: 3
