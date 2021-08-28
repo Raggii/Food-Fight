@@ -5,7 +5,8 @@ using UnityEngine;
 public class EnemeyController : MonoBehaviour
 {
 
-    public GameObject player;
+    private GameObject player;
+    public SpriteRenderer spriteRender;
     public Vector3 offset = new Vector3(0.0001f, 0.0001f, 0);
     public float trackingThresholdDistance = 0.00005f;
     public float playerHiddenSpeed = 2f;
@@ -29,9 +30,32 @@ public class EnemeyController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        TargetNearestPlayer();
         FacePlayer();
         UpdateSensors();
         UpdateMovement();
+        UpdateSprite();
+    }
+
+    private void TargetNearestPlayer()
+    {
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        player = null;
+        float smallestDistance = Mathf.Infinity;
+        for (int i = 0; i < players.Length; i++)
+        {
+            float distance = Mathf.Abs(Vector3.Distance(players[i].transform.position, transform.position));
+            if (distance < smallestDistance)
+            {
+                smallestDistance = distance;
+                player = players[i];
+            }
+        }
+    }
+
+    private void UpdateSprite()
+    {
+
     }
 
     private void UpdateMovement()

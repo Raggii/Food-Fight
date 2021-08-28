@@ -12,6 +12,7 @@ public class AimWeapon : MonoBehaviour
     void Update()
     {
         Vector3 mouseWorldCoords = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mouseWorldCoords.z = transform.position.z;
         transform.LookAt(mouseWorldCoords);
     }
 }
