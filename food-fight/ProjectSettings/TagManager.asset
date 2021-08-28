@@ -9,6 +9,7 @@ TagManager:
   - Projectiles
   - Door
   - Enemy
+  - OpenableDoor
   layers:
   - Default
   - TransparentFX
