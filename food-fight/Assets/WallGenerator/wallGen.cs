@@ -19,11 +19,12 @@ public class wallGen : MonoBehaviour
     int[] wallTops = {3, -3, -3, 3};
     int[] wallSides = {0, 5, -5, -5};
 
+    private int snubVal;
+
     int[] moveRoomIndexesSide = {0, 10, 0, -10};
     int[] moveRoomIndexesUp = {6, 0, -6, 0};
     List<Vector2> roomLocations = new List<Vector2>(); // Queue format
     List<Vector2> pastWallLocations = new List<Vector2>(); // 
-
     private List<Vector3> os = new List<Vector3>();
 
     private Vector2 maxRoom = new Vector2(0,0); // This moves the end position to the furthest away room so that the end room can be made there
@@ -33,34 +34,51 @@ public class wallGen : MonoBehaviour
     void generateRoom(bool generateRooms)
     {
         Vector2 newPos;
-        int rand;
-        Vector2 startingPosition = transform.position;
+        Vector2 startingPosition = transform.position; // changes position to center of the room
+        List<int> randomDoorDecider = new List<int>();
         for (int i = 0; i < 4; i++) {
+            if (generateRooms) // if we want doors to happen
+            {
+                randomDoorDecider.Add( Random.Range(0, 2));
+            }
+            else
+            {
+                randomDoorDecider.Add(1); // This stops doors from being created
+            }
+        }
+        //Check for no rooms at the start
+        if (generateRooms)
+        {
+            int counter = 0;
+            for (int i = 0; i < 4; i++)
+            {
+                counter += randomDoorDecider[i];            
+            }
+            Debug.Log(counter);
+            if (counter == 4)
+            { // If its 4 then all are walls
+                snubVal = Random.Range(0, 4);
+                randomDoorDecider[snubVal] = 0; // Snubbs it so garanteed to be at least 1 door
+            }
+        }
+        for (int i = 0; i < 4; i++) { // Makes all 4 walls for each room
 
-            newPos = new Vector2(transform.position.x + wallSides[i], transform.position.y + wallTops[i]);
-            transform.position = newPos;
-            // also needs to have a collision checker here and if collides does not add it to the room and doesnt spawn anything
-            //Stopping it from spawing if there is a door works nicely just need the logic
+            newPos = new Vector2(transform.position.x + wallSides[i], transform.position.y + wallTops[i]); 
+            transform.position = newPos; // Moves around the room for each side clockwise
+
             if (pastWallLocations.IndexOf(newPos) == -1) // returns -1 if not found so room needs to go there
             {
-                pastWallLocations.Add(newPos);
-                if (generateRooms)
-                {
-                    rand = Random.Range(0, 2);
-                }
-                else
-                {
-                    rand = 1;
-                }
+                pastWallLocations.Add(newPos); // adds a new room to the list which is just a list of vector2
+                
                 if (i % 2 == 0)
                 {
-                    Instantiate(tops[rand], transform.position, Quaternion.identity);
+                    Instantiate(tops[randomDoorDecider[i]], transform.position, Quaternion.identity);
                 }
                 else
                 {
-                    Instantiate(sides[rand], transform.position, Quaternion.identity);
+                    Instantiate(sides[randomDoorDecider[i]], transform.position, Quaternion.identity);
                 }
-                if (rand == 0)
+                if (randomDoorDecider[i] == 0)
                 {
                     //add door to queue
                     //as both the doors are set to the first index.
@@ -71,30 +89,24 @@ public class wallGen : MonoBehaviour
                     {
                         maxRoom = roomLocationNew;
                     }
-                    roomLocations.Insert(0, roomLocationNew); //
-                    
+                    roomLocations.Insert(0, roomLocationNew); //                  
                 }
             }
             else {
-                //Debug.Log("Collision Detected");
             
             }
         }
         roomCount++;
         // reset back position
         newPos = new Vector2(transform.position.x + wallSides[1], transform.position.y);
-        transform.position = newPos;
-        
-
+        transform.position = newPos;     
     }
     void changeToNewRoom() {
 
         Vector2 tempHolder = roomLocations[0];// as Vector2;
         roomLocations.RemoveAt(0);
         transform.position = tempHolder;
-
     }
-
     //This creates the last room and removes any other doors into it
     //Needs to be called before update removes everything
     void endRoomGenerator()
@@ -122,6 +134,7 @@ public class wallGen : MonoBehaviour
     void Start()
     {
         // first room needs to garentee at least 2 rooms in it somehow
+        
         generateRoom(true);
         while (roomLocations.Count != 0)
         {//roomLocations.Count != 0) {
