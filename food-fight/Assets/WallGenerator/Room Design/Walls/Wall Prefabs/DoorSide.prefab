@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3866700810233578218}
   - component: {fileID: 7937415946781869240}
   - component: {fileID: 565148397854875334}
+  - component: {fileID: -5176530440405460320}
   m_Layer: 0
   m_Name: DoorSide
   m_TagString: OpenableDoor
@@ -135,3 +136,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.10840376, y: 0.16838562}
   m_EdgeRadius: 0
+--- !u!95 &-5176530440405460320
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5149013822743258208}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a1c3c5e4baa88e34190d815a52e75a1d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

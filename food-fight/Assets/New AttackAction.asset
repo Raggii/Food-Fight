@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0379f4ebac27e4442a1a91f359a4b172, type: 3}
+  m_Name: New AttackAction
+  m_EditorClassIdentifier: 
+  name: 
+  delay: 0
+  numProjs: 0
+  fireRadius: 0
+  spawnAngleOffset: 0
+  inBetweenShootsDelta: 0
+  timeDeltaShots: 0
+  bulletLimit: 0
+  objectRotatesIndepedentlyAlongZ: 0
+  dynamicOffset: 0
+  reverseOrderFiring: 0
+  loopFiring: 0
+  limitBullets: 0
+  projectile: {fileID: 0}
+  timeToLive: 0
+  upwardsVelocity: 0
+  sideVelocity: 0
+  pullVelcoity: 0

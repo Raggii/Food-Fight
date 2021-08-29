@@ -923,12 +923,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac86f7d314771264aa186cb574237844, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 4
-  acceleration: 2
-  decclaration: 2
   speedThreshold: 0.3
   stepResolution: 50
   recoilDuration: 0.1
+  maxSpeed: 4
+  acceleration: 2
+  decclaration: 2
+  joystickDeadzone: 0.2
+  joystickOffset: 0.2
   animator: {fileID: 1445531877}
   joystick: {fileID: 591911143}
 --- !u!114 &1445531880
