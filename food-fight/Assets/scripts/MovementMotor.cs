@@ -132,7 +132,7 @@ public class MovementMotor : MonoBehaviour
             currPos += (currentVelocity * stepSize * Time.deltaTime );
 
 
-            //transform.position = currPos;
+            transform.position = currPos;
         }        
     }
 
