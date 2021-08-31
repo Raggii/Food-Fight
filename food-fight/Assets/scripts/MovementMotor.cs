@@ -41,25 +41,27 @@ public class MovementMotor : MonoBehaviour
         {
             // Getting direction vector and clamping the joystick constants
             Vector2 newDir = new Vector2(Input.GetAxisRaw("Horizontal") + joystick.Horizontal, Input.GetAxisRaw("Vertical") + joystick.Vertical);
+            newDir.Normalize();
             joystickDeadzone = Mathf.Clamp01(joystickDeadzone);
             joystickOffset = Mathf.Clamp01(joystickOffset);
+            float scale = 1 - Mathf.Max(joystickDeadzone, joystickOffset);
 
             // X axis controls
             if (Mathf.Abs(newDir.x) >= joystickDeadzone) {
-                dir.x = newDir.x - Mathf.Max(joystickOffset, joystickDeadzone);
+                dir.x = newDir.x * scale;
             } else { dir.x = 0;  }
 
             // Y axis controls 
             if (Mathf.Abs(newDir.y) >= joystickDeadzone)
             {
-                dir.y = newDir.y - Mathf.Max(joystickOffset, joystickDeadzone); ;
+                dir.y = newDir.y * scale;
             } else { dir.y = 0; }
         } else
         {
             // If we don't have a joystick we simply use the input raw axis values.
             dir.x = Input.GetAxisRaw("Horizontal");
             dir.y = Input.GetAxisRaw("Vertical");
-        }
+        }        
 
         AnimatorUpdate();
     }
@@ -87,7 +89,7 @@ public class MovementMotor : MonoBehaviour
         recoil = pushVector;
     }
 
-    public float GetNewVelocity(float direction, float currentVelocity, float deltaTime, float recoil_val, bool is_x_axis=false)
+    public float CalculateVelocity(float direction, float currentVelocity, float deltaTime, float recoil_val)
     {
         float newVelocity = currentVelocity;
         if (currentVelocity != direction * maxSpeed)
@@ -104,7 +106,7 @@ public class MovementMotor : MonoBehaviour
             } else {
                 newVelocity = currentVelocity + acceleration * deltaTime * Mathf.Sign(direction);
 
-                if (Mathf.Abs(newVelocity) > maxSpeed)
+                if (Mathf.Abs(newVelocity) > direction * maxSpeed)
                 {
                     newVelocity = Mathf.Sign(direction) * maxSpeed;
                 }
@@ -116,7 +118,6 @@ public class MovementMotor : MonoBehaviour
      return newVelocity;
     }
 
-
     void FixedUpdate()
     {
         currPos = gameObject.transform.position;
@@ -124,13 +125,21 @@ public class MovementMotor : MonoBehaviour
 
         for (step = 0; step < 1f; step += stepSize)
         {
-            currentVelocity.x = GetNewVelocity(dir.x, currentVelocity.x, Time.deltaTime, recoil.x, true);
-            currentVelocity.y = GetNewVelocity(dir.y, currentVelocity.y, Time.deltaTime, recoil.y);
+            currentVelocity.x = CalculateVelocity(dir.x, currentVelocity.x, Time.deltaTime, recoil.x);
+            currentVelocity.y = CalculateVelocity(dir.y, currentVelocity.y, Time.deltaTime, recoil.y);
+            Debug.Log(currentVelocity);
 
             currPos += (currentVelocity * stepSize * Time.deltaTime );
 
-            transform.position = currPos;
+
+            //transform.position = currPos;
         }        
+    }
+
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawLine(transform.position, transform.position + new Vector3(dir.x, dir.y, transform.position.z));
     }
 
 }
