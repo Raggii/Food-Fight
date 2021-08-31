@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 
 public class HealthManager : MonoBehaviour
@@ -12,6 +14,8 @@ public class HealthManager : MonoBehaviour
     public float shakeDuration = 0.15f;
     public GameObject deathDrop;
 
+    public SpriteRenderer spriteRenderer;
+
     private CamShake camShake;
     float currentHealth = 100f;
 
@@ -22,6 +26,8 @@ public class HealthManager : MonoBehaviour
     public Image[] hearts;
     public Sprite fullHeart = null;
     public Sprite emptyHeart= null;
+
+    private bool isHit = false;
 
     public bool getAmountOfHealth()
     {
@@ -69,8 +75,17 @@ public class HealthManager : MonoBehaviour
         return currentHealth <= 0;
     }
 
+    public IEnumerator ShowHit()
+    {
+        spriteRenderer.color = new Color(1, .514151f, .514151f);
+        yield return new WaitForSeconds(0.1f);
+        spriteRenderer.color = new Color(1, 1, 1);
+        yield return null;
+    }
+
     public bool Damage(float damage)
     {
+        StartCoroutine(ShowHit());
 
         if(screenShakeOnHit && camShake != null)
         {

@@ -102,6 +102,7 @@ MonoBehaviour:
   shakeDuration: 0.15
   deathDrop: {fileID: 1255316684659503144, guid: a559cf76244552d4e808e5386ec65c5b,
     type: 3}
+  spriteRenderer: {fileID: 6971021615894525132}
   amountOfHealth: 0
   numOfHearts: 0
   hearts: []

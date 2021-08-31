@@ -7,7 +7,7 @@ public class EnemeyController : MonoBehaviour
 
     private GameObject player;
     public SpriteRenderer spriteRender;
-    public Vector3 offset = new Vector3(0.0001f, 0.0001f, 0);
+    public float offset = 1f;
     public float trackingThresholdDistance = 0.00005f;
     public float playerHiddenSpeed = 2f;
     public float playerVisibileSpeed = 5f;
@@ -82,7 +82,7 @@ public class EnemeyController : MonoBehaviour
     {
         // Check player
         if (player) {
-            playerHit = Physics2D.Raycast(transform.position + offset, (player.transform.position - transform.position).normalized);
+            playerHit = Physics2D.Raycast(transform.position + (player.transform.position - transform.position).normalized * offset, (player.transform.position - transform.position).normalized);
 
             if (playerHit && playerHit.collider.gameObject.Equals(player) ) {
                 lastKnownLocation = playerHit.point;
