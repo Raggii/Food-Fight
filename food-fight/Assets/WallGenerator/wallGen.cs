@@ -8,6 +8,9 @@ public class wallGen : MonoBehaviour
     public GameObject[] tops;
     public GameObject[] sides;
     public GameObject trapDoor;
+
+    public GameObject[] roomFillers;
+
     public int maxCount = 3;
     int count = 0;
     bool genRooms = true;
@@ -35,26 +38,26 @@ public class wallGen : MonoBehaviour
     {
         Vector2 newPos;
         Vector2 startingPosition = transform.position; // changes position to center of the room
+        Instantiate(roomFillers[0], transform.position, Quaternion.identity); // Spawns the room fillers (will do the random part in the roomfiller)
         List<int> randomDoorDecider = new List<int>();
+        int counter = 0;
+        int adderHolder = 0;
         for (int i = 0; i < 4; i++) {
             if (generateRooms) // if we want doors to happen
             {
-                randomDoorDecider.Add( Random.Range(0, 2));
+                adderHolder = Random.Range(0, 2);
+                randomDoorDecider.Add(adderHolder);
             }
             else
             {
-                randomDoorDecider.Add(1); // This stops doors from being created
+                adderHolder = 1;
+                randomDoorDecider.Add(adderHolder); // This stops doors from being created
             }
+            counter += adderHolder;
         }
         //Check for no rooms at the start
         if (generateRooms)
         {
-            int counter = 0;
-            for (int i = 0; i < 4; i++)
-            {
-                counter += randomDoorDecider[i];            
-            }
-            Debug.Log(counter);
             if (counter == 4)
             { // If its 4 then all are walls
                 snubVal = Random.Range(0, 4);
@@ -98,7 +101,9 @@ public class wallGen : MonoBehaviour
         }
         roomCount++;
         // reset back position
+        
         newPos = new Vector2(transform.position.x + wallSides[1], transform.position.y);
+        
         transform.position = newPos;     
     }
     void changeToNewRoom() {
