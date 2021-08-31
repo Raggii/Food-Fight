@@ -33,7 +33,7 @@ public class ProjectileController : MonoBehaviour
     private void SimplyDie(Collider2D col)
     {
 
-        if (col.CompareTag("Damagable") || col.CompareTag("Player") ) {
+        if (col.CompareTag("Damagable") || col.CompareTag("Player") || col.CompareTag("Enemy")) {
             HealthManager hp = col.gameObject.GetComponent<HealthManager>();
             if (hp != null)
             {

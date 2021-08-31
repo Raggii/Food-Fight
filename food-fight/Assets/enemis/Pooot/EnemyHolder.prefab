@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: -3687192868385790606}
   m_Layer: 0
   m_Name: EnemyHolder
-  m_TagString: Untagged
+  m_TagString: Damagable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRender: {fileID: 4236929101404667822}
-  offset: {x: 0.0001, y: 0.0001, z: 0}
+  offset: {x: 1, y: 1, z: 0}
   trackingThresholdDistance: 0.00005
   playerHiddenSpeed: 1
   playerVisibileSpeed: 3

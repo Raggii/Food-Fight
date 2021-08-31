@@ -753,6 +753,7 @@ MonoBehaviour:
   shakeMagnitude: 0.12
   shakeDuration: 0.09
   deathDrop: {fileID: 0}
+  spriteRenderer: {fileID: 1445531878}
   amountOfHealth: 5
   numOfHearts: 5
   hearts:

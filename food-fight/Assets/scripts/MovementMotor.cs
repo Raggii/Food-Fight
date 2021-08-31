@@ -34,6 +34,7 @@ public class MovementMotor : MonoBehaviour
     private float stepSize = 0f;
     private float step = 0;
     private float recoilTimeLeft;
+    private Vector2 prevPos;
 
     public void Update()
     {
@@ -121,25 +122,29 @@ public class MovementMotor : MonoBehaviour
     void FixedUpdate()
     {
         currPos = gameObject.transform.position;
+        
         stepSize = 1f / stepResolution;
 
         for (step = 0; step < 1f; step += stepSize)
         {
             currentVelocity.x = CalculateVelocity(dir.x, currentVelocity.x, Time.deltaTime, recoil.x);
             currentVelocity.y = CalculateVelocity(dir.y, currentVelocity.y, Time.deltaTime, recoil.y);
-            Debug.Log(currentVelocity);
-
+            
+            
             currPos += (currentVelocity * stepSize * Time.deltaTime );
-
+            //Debug.Log(currPos);
+            //Debug.Log(transform.position);
 
             transform.position = currPos;
-        }        
+        }
     }
 
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawLine(transform.position, transform.position + new Vector3(dir.x, dir.y, transform.position.z));
+        //Gizmos.DrawLine(transform.position, transform.position + new Vector3(dir.x, dir.y, transform.position.z));
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(currPos, new Vector3(prevPos.x, prevPos.y, transform.position.z));
     }
 
 }
