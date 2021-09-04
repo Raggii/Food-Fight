@@ -21,6 +21,9 @@ public class EnemeyController : MonoBehaviour
 
     private Vector3 lastKnownLocation;
 
+    private bool ableToMove = true;
+    private bool updateSensors = true;
+
     private void OnEnable()
     {
         trackingStartLocation = transform.position;
@@ -34,7 +37,6 @@ public class EnemeyController : MonoBehaviour
         FacePlayer();
         UpdateSensors();
         UpdateMovement();
-        UpdateSprite();
     }
 
     private void TargetNearestPlayer()
@@ -53,23 +55,67 @@ public class EnemeyController : MonoBehaviour
         }
     }
 
-    private void UpdateSprite()
+    public float DistanceFromPlayer()
     {
+        if (lastKnownLocation != transform.position) {
+            return Vector3.Distance(transform.position, lastKnownLocation);
+        } else
+        {
+            return Mathf.Infinity;
+        }
+    }
 
+    public bool IsPlayerVisible()
+    {
+        if (playerHit) return true;
+        return false;
+    }
+
+    public void EnableMovement()
+    {
+        this.ableToMove = true;
+    }
+
+    public void DisableMovement()
+    {
+        this.ableToMove = false;
+    }
+
+    public void EnableSensors()
+    {
+        this.updateSensors = true;
+    }
+
+    public void DisableSensors()
+    {
+        this.updateSensors = false;
+    }
+
+    public bool MoveTowardsLastKnownLocation()
+    {
+        ableToMove = true;
+        return transform.position.Equals(lastKnownLocation);
     }
 
     private void UpdateMovement()
     {
-        if ((lastKnownLocation - transform.position).magnitude > trackingThresholdDistance) {
-            transform.position = Vector3.MoveTowards(transform.position, lastKnownLocation, speed * Time.fixedDeltaTime);
-        } else {
-            transform.position = lastKnownLocation;
+        if (ableToMove)
+        {
+
+            if ((lastKnownLocation - transform.position).magnitude > trackingThresholdDistance)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, lastKnownLocation, speed * Time.fixedDeltaTime);
+            }
+            else
+            {
+                transform.position = lastKnownLocation;
+            }
         }
     }
 
     private void FacePlayer()
     {
-        if (player && playerHit) {
+        if (updateSensors && player && playerHit) {
             if (playerHit.collider.gameObject.Equals(player)) {
                 Vector3 playerDir = player.transform.position - transform.position;
                 Quaternion rotation = Quaternion.LookRotation(-Vector3.forward, playerDir);
@@ -81,7 +127,7 @@ public class EnemeyController : MonoBehaviour
     private void UpdateSensors()
     {
         // Check player
-        if (player) {
+        if (updateSensors && player) {
             playerHit = Physics2D.Raycast(transform.position + (player.transform.position - transform.position).normalized * offset, (player.transform.position - transform.position).normalized);
 
             if (playerHit && playerHit.collider.gameObject.Equals(player) ) {

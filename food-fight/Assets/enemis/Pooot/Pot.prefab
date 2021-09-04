@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4236929101404667821}
   - component: {fileID: 4236929101404667822}
+  - component: {fileID: 4023522891969206901}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -81,6 +82,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &4023522891969206901
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4236929101404667820}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 126f440ba948e8e4bbde23e79e42bc75, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4236929101646073727
 GameObject:
   m_ObjectHideFlags: 0
@@ -91,9 +111,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4236929101646073721}
   - component: {fileID: 4236929101646073720}
-  - component: {fileID: -3687192868385790606}
+  - component: {fileID: 6179161377699338720}
+  - component: {fileID: 4904195228493728628}
   m_Layer: 0
-  m_Name: EnemyHolder
+  m_Name: Pot
   m_TagString: Damagable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -127,26 +148,47 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRender: {fileID: 4236929101404667822}
-  offset: {x: 1, y: 1, z: 0}
+  offset: 1
   trackingThresholdDistance: 0.00005
   playerHiddenSpeed: 1
   playerVisibileSpeed: 3
---- !u!95 &-3687192868385790606
-Animator:
-  serializedVersion: 3
+--- !u!114 &6179161377699338720
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4236929101646073727}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 20262250b50534340923897c242beb34, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b34ffbbf49080144a0022bbc507f902, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 3
+  anim: {fileID: 4023522891969206901}
+  con: {fileID: 4236929101646073720}
+  hostileStartupTime: 0.85
+--- !u!114 &4904195228493728628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4236929101646073727}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64f768f5eb8ce7a41b84e33704d58bc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 10
+  destroyOnDeath: 0
+  screenShakeOnHit: 0
+  shakeMagnitude: 0.4
+  shakeDuration: 0.15
+  deathDrop: {fileID: 0}
+  spriteRenderer: {fileID: 4236929101404667822}
+  amountOfHealth: 0
+  numOfHearts: 0
+  hearts: []
+  fullHeart: {fileID: 0}
+  emptyHeart: {fileID: 0}
