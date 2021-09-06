@@ -2,70 +2,192 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum PotState {
+    idle = 0,
+    agro,
+    attacking,
+    waitingForWall,
+    stunned,
+    idleDecision
+};
+
 public class PotController : MonoBehaviour
 {
-
-    public float range;
+    [Header("Components")]
+    public BoxCollider2D col;
     public Animator anim;
-    public EnemeyController con;
+    public EnemeyController motor;
+
+    [Header("Attack Stats")]
+    public float range;
     public float attackSpeed;
-    public float hostileStartupTime; 
+    public float damage;
 
-    private bool startingAttack = false;
-    private float hostileStartupCount = 0;
-    private float targetHostileTime = 0;
+    [Header("Animation timing")]
+    public float agroTime;
+    public float attackingTime;
+    public float stunnedTime;
 
-    private bool attacking = false;
-    private Vector3 lastKnownLocation;
+    private PotState state = PotState.idle;
+    private float transitionCount = 0;
+    private float transitionTarget = 0;
+    private bool playerAttackable = false;
+    private int wallHitCount = 0;
+    private Vector3 direction; 
 
-    void Start()
+    void Awake()
     {
-        // anim.SetBool("PlayerVisibleAndRange", true);
-        // anim.SetBool("Attacking", true);
+        anim.SetBool("PlayerVisibleAndRange", false);
+        anim.SetBool("Attacking", false);
     }
 
 
     void Update()
     {
-        startingAttack = con.DistanceFromPlayer() <= range && con.IsPlayerVisible();
-        Debug.Log(startingAttack);
+        playerAttackable =
+            motor.DistanceFromPlayer() <= range &&
+            motor.IsPlayerVisible();
 
-        // Begin agro
-        HandleAgro();
+        Debug.Log(state);
 
-        // Start attack
-        StartCoroutine(HandleAttacking());
+        switch (state)
+        {
+            
+            case PotState.idle:
+                if (playerAttackable)
+                {
+                    state = PotState.agro;
+                }
+                return;
+
+            case PotState.agro:
+                HandleAgro();
+                return;
+
+            case PotState.attacking:
+                HandleAttacking();
+                return;
+
+            case PotState.waitingForWall:
+                HandleMovement();
+                return;
+
+            case PotState.stunned:
+                HandleStunned();
+                return;
+
+            case PotState.idleDecision:
+                HandleDecision();
+                return;
+
+        }
     }
 
     void HandleAgro()
     {
-        if (startingAttack || attacking)
+        if (!anim.GetBool("PlayerVisibleAndRange") && playerAttackable)
         {
-            con.DisableMovement();
+            transitionTarget = Time.time + agroTime;
             anim.SetBool("PlayerVisibleAndRange", true);
+            wallHitCount = 0;
+            motor.DisableMovement();
         }
-        else
+
+        if (anim.GetBool("PlayerVisibleAndRange") && !playerAttackable)
         {
-            con.EnableMovement();
             anim.SetBool("PlayerVisibleAndRange", false);
-            targetHostileTime = Time.time + hostileStartupTime;
+            motor.EnableMovement();
+            state = PotState.idle;
         }
-        hostileStartupCount = Time.time;
+
+        if (transitionTarget <= transitionCount)
+        {
+            state = PotState.attacking;
+        }
+        transitionCount = Time.time;
     }
 
 
-    IEnumerator HandleAttacking()
+    void HandleAttacking()
     {
-        if (startingAttack && targetHostileTime <= hostileStartupCount)
+        if (!anim.GetBool("Attacking"))
         {
             anim.SetBool("Attacking", true);
-            attacking = true;
-            con.DisableSensors();
-            yield return new WaitForSeconds(0.8f);
-            con.MoveTowardsLastKnownLocation();
+            motor.DisableMovement();
+            motor.DisableSensors();
+            direction = motor.getLastKnownLocation() - transform.position;
+            transitionTarget = Time.time + attackingTime;
+        }
+
+        if (transitionTarget <= transitionCount)
+        {
+            motor.DisableMovement();
+            motor.DisableSensors();
+            state = PotState.waitingForWall;
+        }
+        transitionCount = Time.time;
+    }
+
+    void HandleMovement()
+    {
+        if (MoveUntilWall(direction, attackSpeed, new Vector2(0.01f, 0.01f)))
+        {
+            state = PotState.stunned;
         }
     }
 
+    void HandleStunned()
+    {
+        if (anim.GetBool("Attacking"))
+        {
+            anim.SetBool("Attacking", false);
+            anim.SetBool("ReadyForTransition", false);
+            transitionTarget = Time.time + stunnedTime;
+        }
 
-    
+        if (transitionTarget <= transitionCount)
+        {
+            state = PotState.idleDecision;
+        }
+        transitionCount = Time.time;
+    }
+
+    void HandleDecision()
+    {
+        if (anim.GetBool("PlayerVisibleAndRange"))
+        {
+            transitionTarget = Time.time + Random.Range(0.4f, 1.25f);
+            anim.SetBool("PlayerVisibleAndRange", false);
+        }
+
+        if (transitionTarget <= transitionCount)
+        {
+            motor.EnableMovement();
+            motor.EnableSensors();
+            anim.SetBool("ReadyForTransition", true);
+            state = PotState.idle;
+        }
+        transitionCount = Time.time;
+    }
+
+    public bool MoveUntilWall(Vector3 direction, float speed, Vector2 threshold)
+    {
+
+        transform.position = Vector3.MoveTowards(transform.position, transform.position + direction, speed * Time.fixedDeltaTime);
+        Collider2D[] cols = Physics2D.OverlapBoxAll(transform.position, col.size + threshold, 0);
+
+        foreach (Collider2D collider in cols)
+        {
+            if (collider.tag == "Untagged" && cols.Length > 1)
+            {
+                return true;
+            } else if (!collider.Equals(col) && (collider.tag == "Damagable" || collider.tag == "Player"))
+            {
+                collider.GetComponent<HealthManager>().Damage(damage);
+            }
+        }
+
+        return false;
+    }
+
 }

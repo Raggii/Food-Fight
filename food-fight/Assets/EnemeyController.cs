@@ -5,13 +5,14 @@ using UnityEngine;
 public class EnemeyController : MonoBehaviour
 {
 
-    private GameObject player;
+    
     public SpriteRenderer spriteRender;
     public float offset = 1f;
     public float trackingThresholdDistance = 0.00005f;
     public float playerHiddenSpeed = 2f;
     public float playerVisibileSpeed = 5f;
 
+    private GameObject player;
     private Vector3 currentDir = new Vector3(0, 0, 0);
     private RaycastHit2D playerHit;
     private float speed = 0;
@@ -67,13 +68,14 @@ public class EnemeyController : MonoBehaviour
 
     public bool IsPlayerVisible()
     {
-        if (playerHit) return true;
+        if (playerHit.collider.gameObject.Equals(player)) return true;
         return false;
     }
 
     public void EnableMovement()
     {
         this.ableToMove = true;
+        lastKnownLocation = transform.position;
     }
 
     public void DisableMovement()
@@ -84,6 +86,7 @@ public class EnemeyController : MonoBehaviour
     public void EnableSensors()
     {
         this.updateSensors = true;
+        lastKnownLocation = transform.position;
     }
 
     public void DisableSensors()
@@ -91,10 +94,9 @@ public class EnemeyController : MonoBehaviour
         this.updateSensors = false;
     }
 
-    public bool MoveTowardsLastKnownLocation()
+    public Vector3 getLastKnownLocation()
     {
-        ableToMove = true;
-        return transform.position.Equals(lastKnownLocation);
+        return lastKnownLocation;
     }
 
     private void UpdateMovement()
