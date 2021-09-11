@@ -16,7 +16,6 @@ public class PlayerController : MonoBehaviour
     public AudioSource gunshot;
     public MovementMotor motor;
     public BankAccountManager account;
-    public CamShake camShake;
     public Animator anim;
 
 
@@ -102,7 +101,7 @@ public class PlayerController : MonoBehaviour
 
     private void Recoil()
     {
-        StartCoroutine(camShake.Shake(shakeDuration, shakeMagnitude));
+        StartCoroutine(EffectsManager.ShakeMainCamera(shakeDuration, shakeMagnitude));
         anim.SetTrigger("shoot");
         StartCoroutine(Vibrate());
     }
@@ -151,7 +150,6 @@ public class PlayerController : MonoBehaviour
             Recoil();
         }
     }
-
 
     private void OnDrawGizmos()
     {

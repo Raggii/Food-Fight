@@ -2,13 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CamShake : MonoBehaviour
-{
-
-    public IEnumerator Shake(float duration, float magnitude)
+public class EffectsManager : MonoBehaviour
+{    
+    public static IEnumerator ShakeMainCamera(float duration, float magnitude)
     {
-
-        Vector3 originalPos = transform.position;
+        Vector3 originalPos = Camera.main.transform.position;
         float elapsed = 0.0f;
 
         while (elapsed < duration)
@@ -16,15 +14,14 @@ public class CamShake : MonoBehaviour
             float x = Random.Range(-1f, 1f) * magnitude;
             float y = Random.Range(-1f, 1f) * magnitude;
 
-            transform.position = new Vector3(originalPos.x + x, originalPos.y + y, originalPos.z);
+            Camera.main.transform.position = new Vector3(originalPos.x + x, originalPos.y + y, originalPos.z);
 
             elapsed += Time.deltaTime;
 
             yield return null;
         }
 
-        transform.position = originalPos;
+        Camera.main.transform.position = originalPos;
     }
-
 
 }
