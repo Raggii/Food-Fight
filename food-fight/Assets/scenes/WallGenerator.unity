@@ -1181,13 +1181,13 @@ GameObject:
   - component: {fileID: 1445531881}
   - component: {fileID: 1445531880}
   - component: {fileID: 1445531879}
+  - component: {fileID: 1445531872}
   - component: {fileID: 1445531878}
   - component: {fileID: 1445531877}
   - component: {fileID: 1445531876}
   - component: {fileID: 1445531875}
   - component: {fileID: 1445531874}
   - component: {fileID: 1445531873}
-  - component: {fileID: 1445531872}
   - component: {fileID: 1445531882}
   m_Layer: 0
   m_Name: Player
@@ -1416,7 +1416,6 @@ MonoBehaviour:
   gunshot: {fileID: 939241280}
   motor: {fileID: 1445531879}
   account: {fileID: 0}
-  camShake: {fileID: 1640404580}
   anim: {fileID: 1886489831}
   rateOfFire: 10
   shakeDuration: 0.1
@@ -1448,7 +1447,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1445531871}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 800f9c2851a4c824a83b1c79cdefcfad, type: 3}
+  m_Script: {fileID: 11500000, guid: a15c3ab9cb101044b8c7efed1a8df978, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1464938924
@@ -1709,7 +1708,6 @@ GameObject:
   - component: {fileID: 1640404583}
   - component: {fileID: 1640404582}
   - component: {fileID: 1640404581}
-  - component: {fileID: 1640404580}
   - component: {fileID: 1640404585}
   - component: {fileID: 1640404586}
   m_Layer: 0
@@ -1719,18 +1717,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1640404580
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1640404579}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0c7c8de5523d09429fc35a56941af1a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1640404581
 MonoBehaviour:
   m_ObjectHideFlags: 0

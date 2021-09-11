@@ -48,8 +48,6 @@ public class PotController : MonoBehaviour
             motor.DistanceFromPlayer() <= range &&
             motor.IsPlayerVisible();
 
-        Debug.Log(state);
-
         switch (state)
         {
             

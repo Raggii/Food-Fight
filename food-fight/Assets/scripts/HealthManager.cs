@@ -16,7 +16,6 @@ public class HealthManager : MonoBehaviour
 
     public SpriteRenderer spriteRenderer;
 
-    private CamShake camShake;
     float currentHealth = 100f;
 
     [Header("Health Bar")]
@@ -39,7 +38,6 @@ public class HealthManager : MonoBehaviour
     public void Awake()
     {
         currentHealth = maxHealth; // This needs to be set like this unless we set maxHealth to static.
-        camShake = Camera.main.GetComponent<CamShake>();
     }
 
     public void SetCurrentHealth(float health)
@@ -87,9 +85,9 @@ public class HealthManager : MonoBehaviour
     {
         StartCoroutine(ShowHit());
 
-        if(screenShakeOnHit && camShake != null)
+        if (screenShakeOnHit)
         {
-            StartCoroutine(camShake.Shake(shakeDuration, shakeMagnitude));
+            StartCoroutine(EffectsManager.ShakeMainCamera(shakeDuration, shakeMagnitude));
         }
 
         if (currentHealth - damage < 0)
