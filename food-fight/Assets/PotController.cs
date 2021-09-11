@@ -130,7 +130,7 @@ public class PotController : MonoBehaviour
 
     void HandleMovement()
     {
-        if (MoveUntilWall(direction, attackSpeed, new Vector2(0.01f, 0.01f)))
+        if (MoveUntilWall(direction, attackSpeed, 0.01f))
         {
             state = PotState.stunned;
         }
@@ -170,20 +170,23 @@ public class PotController : MonoBehaviour
         transitionCount = Time.time;
     }
 
-    public bool MoveUntilWall(Vector3 direction, float speed, Vector2 threshold)
+    public bool MoveUntilWall(Vector3 direction, float speed, float threshold)
     {
 
         transform.position = Vector3.MoveTowards(transform.position, transform.position + direction, speed * Time.fixedDeltaTime);
-        Collider2D[] cols = Physics2D.OverlapBoxAll(transform.position, col.size + threshold, 0);
+        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, col.size.x, direction);
 
-        foreach (Collider2D collider in cols)
+        foreach (RaycastHit2D hit in hits)
         {
-            if (collider.tag == "Untagged" && cols.Length > 1)
-            {
-                return true;
-            } else if (!collider.Equals(col) && (collider.tag == "Damagable" || collider.tag == "Player"))
-            {
-                collider.GetComponent<HealthManager>().Damage(damage);
+            if (hit && hit.distance <= threshold) {
+                Collider2D collider = hit.collider;
+                if (collider.tag == "Untagged")
+                {
+                    return true;
+                } else if (!collider.Equals(col) && (collider.tag == "Damagable" || collider.tag == "Player"))
+                {
+                    collider.GetComponent<HealthManager>().Damage(damage);
+                }
             }
         }
 
